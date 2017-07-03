@@ -6,7 +6,7 @@
  * and open the template in the editor.
  */
 try{
-    $bdd = $bdd = new PDO('mysql:host=localhost;dbname=wiki;charset=utf8', 'root', '');
+    $pdo = new PDO('mysql:host=localhost;dbname=wiki;charset=utf8', 'root', '');
     $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 }
 catch(Exception $e){
