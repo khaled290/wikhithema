@@ -18,6 +18,11 @@ a:hover, a:focus {
   text-decoration: none;
 }
 
+
+.container-infos-user {
+  margin-top: 100px;
+}
+
 .container-connexion-inscription {
   z-index: 999;
 }

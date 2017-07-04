@@ -1,5 +1,3 @@
-<?php
-session_start(); ?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -7,16 +5,13 @@ session_start(); ?>
 	<link rel="stylesheet" type="text/css" href="css/demo.css" />
     <link rel="stylesheet" type="text/css" href="css/slideshow.css" />
 	<link rel="stylesheet" href="css/bootstrap.css">
+	<link href="font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
 	<link rel="stylesheet" href="css/wiki-style.css">
-           
+
 </head>
 
 <body id="page">
-    <h1 class="text-center logo">WikHiTema</h1>
-    
-    <noscript>
-        <meta http-equiv="refresh" content="0;url=inscription2.php">
-    </noscript>
+	<h1 class="text-center logo">WikHiTema</h1>
 
     <ul class="slideshow">
         <li><span>Image 01</span></li>
@@ -59,7 +54,7 @@ session_start(); ?>
 
 			<div class="row row-sm-offset-3">
 				<div class="col-xs-12 col-sm-6">	
-				    <form class="loginForm" action="../Controller/Controller.php?page=inscription" autocomplete=off method="POST">
+				    <form class="loginForm" action="" autocomplete="off" method="POST">
 
 				    	<div class="input-group">
 							<span class="input-group-addon"><i class="fa fa-user"></i></span>
@@ -69,7 +64,7 @@ session_start(); ?>
 
 						<div class="input-group">
 							<span class="input-group-addon"><i class="fa fa-user"></i></span>
-							<input type="email" class="form-control email-zone" name="email" placeholder="Votre e-mail" autocomplete="on" required>
+							<input type="email" class="form-control email-zone" name="email" placeholder="Votre e-mail" required>
 						</div>
 						<span class="help-block"></span>
 											
@@ -82,7 +77,7 @@ session_start(); ?>
 							<span class="input-group-addon"><i class="fa fa-lock"></i></span>
 							<input  type="password" class="form-control mdp-zone" name="passwordConfirm" placeholder="Confirmez le mot de passe" required>
 						</div>
-                                                <span class="help-block"></span>
+	                    <span class="help-block"></span>
 
 						<button class="btn btn-lg btn-success btn-block" type="submit">Créer un compte</button>
 					</form>

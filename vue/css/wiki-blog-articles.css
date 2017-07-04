@@ -5,3 +5,7 @@ a {
 a:hover, a:focus {
 	color: #000;
 }
+
+.container-infos-user {
+	margin-top: 100px;
+}

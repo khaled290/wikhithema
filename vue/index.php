@@ -1,6 +1,5 @@
-<?php
-session_start(); ?>
 <!DOCTYPE html>
+<html>
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -14,7 +13,6 @@ session_start(); ?>
 </head>
 
 <body>
-    <?php ?>
     <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
         <div class="container">
             <div class="navbar-header">
@@ -59,9 +57,6 @@ session_start(); ?>
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown">Compte <b class="caret"></b></a>
                         <ul class="dropdown-menu">
                             <li>
-                                <p>Pseudo: <?php echo $_SESSION['user']['pseudo'] ?></p>
-                            </li>
-                            <li>
                                 <a href="index.html">Parametres</a>
                             </li>
                             <li>
@@ -72,7 +67,6 @@ session_start(); ?>
                             </li>
                         </ul>
                     </li>
-                    <li>
                 </ul>
             </div>
             <!-- /.navbar-collapse -->
