@@ -22,33 +22,33 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand logo" href="index.html">WikHiTema</a>
+                <a class="navbar-brand logo" href="index.php">WikHiTema</a>
             </div>
 
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 <ul class="nav navbar-nav navbar-right">
                     <li>
                         <button class="btn btn-warning add-publication-btn">
-                            <a href="new-publication.html" class="btn-new-post">Ajouter une publication</a>
+                            <a href="new-publication.php" class="btn-new-post">Ajouter une publication</a>
                         </button>
                     </li>
                     <li class="dropdown">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown">Catégories <b class="caret"></b></a>
                         <ul class="dropdown-menu">
                             <li>
-                                <a href="publications-cat.html">Informatique</a>
+                                <a href="publications-cat.php">Informatique</a>
                             </li>
                             <li>
-                                <a href="publications-cat.html">High Tech</a>
+                                <a href="publications-cat.php">High Tech</a>
                             </li>
                             <li>
-                                <a href="publications-cat.html">Sport</a>
+                                <a href="publications-cat.php">Sport</a>
                             </li>
                             <li>
-                                <a href="publications-cat.html">Cuisine</a>
+                                <a href="publications-cat.php">Cuisine</a>
                             </li>
                             <li>
-                                <a href="publications-cat.html">Managment</a>
+                                <a href="publications-cat.php">Managment</a>
                             </li>
                             
                         </ul>
@@ -57,13 +57,13 @@
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown">Compte <b class="caret"></b></a>
                         <ul class="dropdown-menu">
                             <li>
-                                <a href="index.html">Parametres</a>
+                                <a href="index.php">Parametres</a>
                             </li>
                             <li>
-                                <a href="index.html">Mes publication</a>
+                                <a href="index.php">Mes publication</a>
                             </li>
                             <li>
-                                <a href="index.html">Déconnexion</a>
+                                <a href="index.php">Déconnexion</a>
                             </li>
                         </ul>
                     </li>
@@ -86,43 +86,43 @@
         <div class="row">
             <div class="col-md-6">
                 <h3>
-                    <a href="blog-post.html">Titre publication</a>
+                    <a href="blog-post.php">Titre publication</a>
                 </h3>
                 <p>Publié par <strong>User</strong> dans la catégorie <strong>Informatique</strong></p>
                 <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</p>
-                <a class="btn btn-primary" href="blog-post.html">Lire l'article <i class="fa fa-angle-right"></i></a>
+                <a class="btn btn-primary" href="blog-post.php">Lire l'article <i class="fa fa-angle-right"></i></a>
             </div>
             <hr>
 
        
             <div class="col-md-6">
                 <h3>
-                    <a href="blog-post.html">Titre publication</a>
+                    <a href="blog-post.php">Titre publication</a>
                 </h3>
                 <p>Publié par <strong>User</strong> dans la catégorie <strong>Informatique</strong></p>
                 <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</p>
-                <a class="btn btn-primary" href="blog-post.html">Lire l'article <i class="fa fa-angle-right"></i></a>
+                <a class="btn btn-primary" href="blog-post.php">Lire l'article <i class="fa fa-angle-right"></i></a>
             </div>
             <hr>
 
             <div class="col-md-6">
                 <h3>
-                    <a href="blog-post.html">Titre publication</a>
+                    <a href="blog-post.php">Titre publication</a>
                 </h3>
                 <p>Publié par <strong>User</strong> dans la catégorie <strong>Informatique</strong></p>
                 <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</p>
-                <a class="btn btn-primary" href="blog-post.html">Lire l'article <i class="fa fa-angle-right"></i></a>
+                <a class="btn btn-primary" href="blog-post.php">Lire l'article <i class="fa fa-angle-right"></i></a>
             </div>
             <hr>
 
        
             <div class="col-md-6">
                 <h3>
-                    <a href="blog-post.html">Titre publication</a>
+                    <a href="blog-post.php">Titre publication</a>
                 </h3>
                 <p>Publié par <strong>User</strong> dans la catégorie <strong>Informatique</strong></p>
                 <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</p>
-                <a class="btn btn-primary" href="blog-post.html">Lire l'article <i class="fa fa-angle-right"></i></a>
+                <a class="btn btn-primary" href="blog-post.php">Lire l'article <i class="fa fa-angle-right"></i></a>
             </div>
             <hr>
         </div>

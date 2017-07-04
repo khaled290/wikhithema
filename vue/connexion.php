@@ -80,13 +80,13 @@
 				</div>
 				<div class="col-xs-12 col-sm-3">
 					<p class="forgotPwd">
-						<a href="oublie-mdp.html">Mot de passe oublié</a>
+						<a href="oublie-mdp.php">Mot de passe oublié</a>
 					</p>
 				</div>
 				<br><br><br><br>
 
 				<div class="col-xs-12 col-sm-6">	
-				    <button class="btn btn-lg btn-success btn-block"><a href="inscription.html">Créer un compte</a></button>
+				    <button class="btn btn-lg btn-success btn-block"><a href="inscription.php">Créer un compte</a></button>
 				</div>
 
 			</div>	    	

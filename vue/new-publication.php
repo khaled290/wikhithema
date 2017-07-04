@@ -22,7 +22,7 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand logo" href="index.html">WikHiTema</a>
+                <a class="navbar-brand logo" href="index.php">WikHiTema</a>
             </div>
 
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
@@ -31,19 +31,19 @@
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown">Catégories <b class="caret"></b></a>
                         <ul class="dropdown-menu">
                             <li>
-                                <a href="publications-cat.html">Informatique</a>
+                                <a href="publications-cat.php">Informatique</a>
                             </li>
                             <li>
-                                <a href="publications-cat.html">High Tech</a>
+                                <a href="publications-cat.php">High Tech</a>
                             </li>
                             <li>
-                                <a href="publications-cat.html">Sport</a>
+                                <a href="publications-cat.php">Sport</a>
                             </li>
                             <li>
-                                <a href="publications-cat.html">Cuisine</a>
+                                <a href="publications-cat.php">Cuisine</a>
                             </li>
                             <li>
-                                <a href="publications-cat.html">Managment</a>
+                                <a href="publications-cat.php">Managment</a>
                             </li>
                             
                         </ul>
@@ -52,13 +52,13 @@
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown">Compte <b class="caret"></b></a>
                         <ul class="dropdown-menu">
                             <li>
-                                <a href="index.html">Parametres</a>
+                                <a href="index.php">Parametres</a>
                             </li>
                             <li>
-                                <a href="index.html">Mes publication</a>
+                                <a href="index.php">Mes publication</a>
                             </li>
                             <li>
-                                <a href="index.html">Déconnexion</a>
+                                <a href="index.php">Déconnexion</a>
                             </li>
                         </ul>
                     </li>
