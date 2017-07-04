@@ -84,18 +84,20 @@ class User {
         
         //Les lignes suivantes sont des conditions ternaire, cela permet d'aller plus vite
         //Et pour notre cas je trouve ça plus simple à comprendre... Si la nouvelle valeur est vide, on met l'ancienne
-        $isPseudoChanged = !empty($user->pseudo) || $user->pseudo === NULL || $user->pseudo !== $this->getPseudo() || $user->pseudo !== '';
+        $isPseudoChanged = !empty($user->pseudo) && $user->pseudo !== NULL && $user->pseudo !== $this->getPseudo() && $user->pseudo !== '';
         $pseudo = $isPseudoChanged && filter_var($user->pseudo, FILTER_SANITIZE_FULL_SPECIAL_CHARS) ? $user->pseudo : $this->getPseudo();
         
-        $isEmailChanged = !empty($user->email) || $user->email === NULL || $user->email !== $this->getEmail() || $user->email !== '';
+        $isEmailChanged = !empty($user->email) && $user->email === NULL && $user->email !== $this->getEmail() && $user->email !== '';
         $email = $isEmailChanged && filter_var($user->email, FILTER_SANITIZE_EMAIL) ? $user->email : $this->getEmail();
         
-        $isMdpChanged = !empty($user->mdp) || $user->mdp === NULL || $user->mdp !== $this->getMdp() || $user->mdp !== '';
+        $isMdpChanged = !empty($user->mdp) && $user->mdp === NULL && $user->mdp !== $this->getMdp() && $user->mdp !== '';
         $mdp = $isMdpChanged && filter_var($user->mdp) ? $user->mdp : $this->getMdp();
         
-        $isRoleChanged = !empty($user->role) || $user->role === NULL || $user->role !== $this->getRole() || $user->role !== '';
+        $isRoleChanged = !empty($user->role) && $user->role === NULL && $user->role !== $this->getRole() && $user->role !== '';
         $role = $isRoleChanged && filter_var($user->role, FILTER_VALIDATE_INT) ? $user->role : $this->getRole();
         
         $rowCount = $pdo->execute(array($pseudo, $email, $mdp, $role, $id_user));
     }
+    
+    //SelectALL et selectOne
 }
