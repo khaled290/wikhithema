@@ -89,7 +89,7 @@ class thematique
 
         $req = $pdo->prerare("SELECT nom FROM thematique WHERE id_thematique = :id_thematique");
         $rowCount = $req->execute(array(
-                "id_thematique" => $id
+            "id_thematique" => $id
         ));
         return $rowCount;
     }
