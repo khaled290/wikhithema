@@ -1,16 +1,22 @@
+<?php
+session_start(); ?>
 <!DOCTYPE html>
 <html>
 <head>
-	<title>WikHiTema - Connexion</title>
+	<title>WikHiTema - créer un compte</title>
 	<link rel="stylesheet" type="text/css" href="css/demo.css" />
     <link rel="stylesheet" type="text/css" href="css/slideshow.css" />
 	<link rel="stylesheet" href="css/bootstrap.css">
 	<link rel="stylesheet" href="css/wiki-style.css">
-
+           
 </head>
 
 <body id="page">
-	<h1 class="text-center logo">WikHiTema</h1>
+    <h1 class="text-center logo">WikHiTema</h1>
+    
+    <noscript>
+        <meta http-equiv="refresh" content="0;url=inscription2.php">
+    </noscript>
 
     <ul class="slideshow">
         <li><span>Image 01</span></li>
@@ -53,42 +59,35 @@
 
 			<div class="row row-sm-offset-3">
 				<div class="col-xs-12 col-sm-6">	
-				    <form class="loginForm" action="" autocomplete="off" method="POST">
+				    <form class="loginForm" action="../Controller/Controller.php?page=inscription" autocomplete=off method="POST">
+
+				    	<div class="input-group">
+							<span class="input-group-addon"><i class="fa fa-user"></i></span>
+							<input type="text" class="form-control pseudo-zone" name="pseudo" placeholder="Votre pseudo" autofocus autocomplete="on" required>
+						</div>
+						<span class="help-block"></span>
+
 						<div class="input-group">
 							<span class="input-group-addon"><i class="fa fa-user"></i></span>
-							<input type="email" class="form-control email-zone" name="email" placeholder="Votre e-mail" autofocus autocomplete="on" required>
+							<input type="email" class="form-control email-zone" name="email" placeholder="Votre e-mail" autocomplete="on" required>
 						</div>
 						<span class="help-block"></span>
 											
 						<div class="input-group">
 							<span class="input-group-addon"><i class="fa fa-lock"></i></span>
-							<input  type="password" class="form-control mdp-zone" name="password" placeholder="Password" required>
+							<input  type="password" class="form-control mdp-zone" name="password" placeholder="Votre mot de passe" required>
 						</div>
-	                    <span class="help-block"></span>
+						<span class="help-block"></span>
+						<div class="input-group">
+							<span class="input-group-addon"><i class="fa fa-lock"></i></span>
+							<input  type="password" class="form-control mdp-zone" name="passwordConfirm" placeholder="Confirmez le mot de passe" required>
+						</div>
+                                                <span class="help-block"></span>
 
-						<button class="btn btn-lg btn-primary btn-block" type="submit">Connexion</button>
+						<button class="btn btn-lg btn-success btn-block" type="submit">Créer un compte</button>
 					</form>
 				</div>
-	    	</div>
-
-	    	<div class="row row-sm-offset-3">
-				<div class="col-xs-12 col-sm-3 garder-session">
-					<label class="checkbox">
-						<input type="checkbox" value="remember-me">Garder ma session
-					</label>
-				</div>
-				<div class="col-xs-12 col-sm-3">
-					<p class="forgotPwd">
-						<a href="oublie-mdp.html">Mot de passe oublié</a>
-					</p>
-				</div>
-				<br><br><br><br>
-
-				<div class="col-xs-12 col-sm-6">	
-				    <button class="btn btn-lg btn-success btn-block"><a href="inscription.html">Créer un compte</a></button>
-				</div>
-
-			</div>	    	
+	    	</div>	    	
 
 
 	    	

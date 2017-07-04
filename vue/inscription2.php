@@ -1,12 +1,15 @@
+<?php 
+    session_start();
+    $_SESSION["javascript"]=false
+?>
 <!DOCTYPE html>
 <html>
 <head>
-	<title>WikHiTema - créer un compte</title>
-	<link rel="stylesheet" type="text/css" href="css/demo.css" />
+    <title>WikHiTema - créer un compte</title>
+    <link rel="stylesheet" type="text/css" href="css/demo.css" />
     <link rel="stylesheet" type="text/css" href="css/slideshow.css" />
-	<link rel="stylesheet" href="css/bootstrap.css">
-	<link rel="stylesheet" href="css/wiki-style.css">
-
+    <link rel="stylesheet" href="css/bootstrap.css">
+    <link rel="stylesheet" href="css/wiki-style.css">
 </head>
 
 <body id="page">
@@ -53,7 +56,7 @@
 
 			<div class="row row-sm-offset-3">
 				<div class="col-xs-12 col-sm-6">	
-				    <form class="loginForm" action="" autocomplete="off" method="POST">
+				    <form class="loginForm" action="../Controller/Controller.php?page=inscription" autocomplete="off" method="POST">
 
 				    	<div class="input-group">
 							<span class="input-group-addon"><i class="fa fa-user"></i></span>

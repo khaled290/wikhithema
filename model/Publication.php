@@ -144,6 +144,8 @@ class Publication
         }
     }
     public static function updatePublication ($id_publication, Array $publication){
+    
+    public  function updatePublication ($id_publication, Array $publication){
         global $pdo;
 
         $oldPublication = Publication::selectPublication($id_publication);

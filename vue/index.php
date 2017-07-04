@@ -1,3 +1,5 @@
+<?php
+session_start(); ?>
 <!DOCTYPE html>
 <head>
     <meta charset="utf-8">
@@ -12,6 +14,7 @@
 </head>
 
 <body>
+    <?php ?>
     <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
         <div class="container">
             <div class="navbar-header">
@@ -55,6 +58,9 @@
                     <li class="dropdown">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown">Compte <b class="caret"></b></a>
                         <ul class="dropdown-menu">
+                            <li>
+                                <p>Pseudo: <?php echo $_SESSION['user']['pseudo'] ?></p>
+                            </li>
                             <li>
                                 <a href="index.html">Parametres</a>
                             </li>
