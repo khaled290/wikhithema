@@ -1,3 +1,8 @@
+/* Infos utiles : 
+Couleur logo: #fa5e12;
+
+*/
+
 body {
 	height: 100%;
   padding-top: 50px;
@@ -12,6 +17,7 @@ a:hover, a:focus {
   color: #fff;
   text-decoration: none;
 }
+
 .container-connexion-inscription {
   z-index: 999;
 }
@@ -26,7 +32,6 @@ a:hover, a:focus {
 }
 
 h1 {
-  color: #fa5e12;
   font-weight: bold;  
   z-index: 9999;
   position: relative;
@@ -79,6 +84,32 @@ h1 {
 
 *[class*="zone"]{
    padding: 25px;
+}
+
+.btn-new-post {
+  color: #fff;
+}
+
+.btn-new-post:hover,.btn-new-post:focus {
+  color: #fff;
+}
+
+.container-publications {
+  margin-top: 50px;
+}
+.add-publication-btn {
+  position: relative;
+  top: 8px;
+  background-color: #fa5e12;
+  border: none;
+  right: 20px;
+}
+.add-publication-btn:hover {
+  background-color: #cf4a09;
+  border: none;
+}
+.navbar-header .logo,h1.logo {
+  color: #fa5e12;
 }
 
 .login .loginOr {
