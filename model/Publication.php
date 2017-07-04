@@ -122,7 +122,7 @@ class Publication
         $this->id_thematique = $id_thematique;
     }
 
-    public function createPublication ($titre,$contenu,$id_user,$path_media,$id_thematique){
+    public static function createPublication ($titre,$contenu,$id_user,$path_media,$id_thematique){
         global $pdo;
         $titre = filter_var($titre, FILTER_SANITIZE_FULL_SPECIAL_CHARS);
         $contenu = filter_var($contenu, FILTER_SANITIZE_FULL_SPECIAL_CHARS);
@@ -132,7 +132,7 @@ class Publication
         $id_thematique = filter_var($id_thematique, FILTER_SANITIZE_FULL_SPECIAL_CHARS);
 
         if ($titre && $contenu && $id_user && $id_thematique){
-            $req = $pdo->prepare("INSERT INTO publication (titre,contenu,date,id_user,path_media,id_thematique) VALUES (:titre,:contenu,:date,:id_user,path_media,id_thematique)");
+            $req = $pdo->prepare("INSERT INTO publication (titre,contenu,date,id_user,path_media,id_thematique) VALUES (:titre,:contenu,:date,:id_user,:path_media,:id_thematique)");
             $req->execute(array(
                 "titre" => $titre,
                 "contenu" => $contenu,
@@ -143,21 +143,23 @@ class Publication
             ));
         }
     }
-    public  function updatePublication ($id_publication, Array $publication){
+    public static function updatePublication ($id_publication, Array $publication){
         global $pdo;
+
+        $oldPublication = Publication::selectPublication($id_publication);
 
         $req = $pdo->prepare("UPDATE publication SET titre = :titre, contenu = :contenu, path_media = :path_media, date = :date WHERE id_publication = :id_publication ");
 
-        $isTitreChanged = !empty($publication->titre) && $publication->titre !== $this->getTitre() && $publication->titre === NULL  &&  $publication->titre !== '';
-        $titre = $isTitreChanged && filter_var($publication->titre, FILTER_SANITIZE_FULL_SPECIAL_CHARS) ? $publication->titre : $this->getTitre();
+        $isTitreChanged = !empty($publication->titre) && $publication->titre !== $oldPublication["titre"] && $publication->titre === NULL  &&  $publication->titre !== '';
+        $titre = $isTitreChanged && filter_var($publication->titre, FILTER_SANITIZE_FULL_SPECIAL_CHARS) ? $publication->titre : $oldPublication["titre"];
 
-        $isContenuChanged = !empty($publication->contenu) && $publication->contenu !== $this->getContenu() && $publication->contenu === NULL  &&  $publication->contenu !== '';
-        $contenu = $isContenuChanged && filter_var($publication->contenu, FILTER_SANITIZE_FULL_SPECIAL_CHARS) ? $publication->contenu : $this->getContenu();
+        $isContenuChanged = !empty($publication->contenu) && $publication->contenu !== $oldPublication["contenu"] && $publication->contenu === NULL  &&  $publication->contenu !== '';
+        $contenu = $isContenuChanged && filter_var($publication->contenu, FILTER_SANITIZE_FULL_SPECIAL_CHARS) ? $publication->contenu : $oldPublication["contenu"];
 
         $date = $date = new DateTime();
 
-        $isPath_mediaChanged = !empty($publication->path_media) && $publication->path_media !== $this->getPathMedia() && $publication->path_media === NULL  &&  $publication->path_media !== '';
-        $path_media= $isPath_mediaChanged && filter_var($publication->path_media, FILTER_SANITIZE_FULL_SPECIAL_CHARS) ? $publication->path_media : $this->getPathMedia();
+        $isPath_mediaChanged = !empty($publication->path_media) && $publication->path_media !== $oldPublication["path_media"] && $publication->path_media === NULL  &&  $publication->path_media !== '';
+        $path_media= $isPath_mediaChanged && filter_var($publication->path_media, FILTER_SANITIZE_FULL_SPECIAL_CHARS) ? $publication->path_media : $oldPublication["path_media"];
 
         $rowCount = $req->execute(array(
             "id_publication" => $id_publication,
@@ -165,6 +167,32 @@ class Publication
             "contenu" => $contenu,
             "path_media" => $path_media,
             "date" =>$date
+        ));
+        return $rowCount;
+    }
+    public static function selectAllPublication (){
+        global $pdo;
+
+        $req = $pdo->prerare("SELECT * FROM publication");
+        $rowCount = $req->execute();
+        return $rowCount;
+}
+    public static function selectPublication ($id_publication){
+        global $pdo;
+
+        $req = $pdo->prerare("SELECT * FROM publication WHERE id_publication = :id_publication");
+        $rowCount = $req->execute(array(
+            "id_thematique" => $id_publication
+        ));
+        return $rowCount;
+    }
+
+    public static function deletePublication ($id_publication){
+        global $pdo;
+
+        $req = $pdo->prepare("DELETE FROM publication WHERE id_publication = :id_publication");
+        $rowCount = $req->execute(array(
+            "id_publication" => $id_publication
         ));
         return $rowCount;
     }

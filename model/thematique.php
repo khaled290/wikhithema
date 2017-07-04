@@ -42,7 +42,7 @@ class thematique
         $this->nom = $nom;
     }
 
-    function createThematique ($nom){
+    public static function createThematique ($nom){
         global $pdo;
         $nom = filter_var($nom, FILTER_SANITIZE_FULL_SPECIAL_CHARS);
 
@@ -54,13 +54,16 @@ class thematique
         }
 
     }
-    function updateThematique ($id,$nom){
+    public static function updateThematique ($id,$nom){
         global $pdo;
 
         $req = $pdo->prepare("UPDATE thematique SET nom = :nom WHERE id_thematique = :id_thematique");
 
-        $isThematiqueChanged = !empty($nom) && $nom !== $this->getNom() && $nom === NULL  &&  $nom !== '';
-        $name = $isThematiqueChanged && filter_var($nom, FILTER_SANITIZE_FULL_SPECIAL_CHARS) ? $nom : $this->getNom();
+        $oldThematique = Publication::selectThematique ($id);
+
+
+        $isThematiqueChanged = !empty($nom) && $nom !== $oldThematique["nom"] && $nom === NULL  &&  $nom !== '';
+        $name = $isThematiqueChanged && filter_var($nom, FILTER_SANITIZE_FULL_SPECIAL_CHARS) ? $nom : $oldThematique["nom"];
 
         $rowCount = $req->execute(array(
             "nom" => $name,
@@ -68,7 +71,7 @@ class thematique
         ));
         return $rowCount;
     }
-    function deleteThematique ($id){
+    public static function deleteThematique ($id){
         global $pdo;
 
         $req = $pdo->prepare("DELETE FROM thematique WHERE id_thematique = :id_thematique");
@@ -77,7 +80,7 @@ class thematique
         ));
         return $rowCount;
     }
-    function selectAllThematique (){
+    public static function selectAllThematique (){
         global $pdo;
 
         $req = $pdo->prerare("SELECT * FROM thematique");
@@ -85,7 +88,7 @@ class thematique
         return $rowCount;
     }
 
-    function selectThematique ($id){
+    public static function selectThematique ($id){
         global $pdo;
 
 
