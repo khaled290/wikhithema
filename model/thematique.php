@@ -60,17 +60,37 @@ class thematique
         $isThematiqueChanged = !empty($nom) && $nom !== $this->getNom() && $nom === NULL  &&  $nom !== '';
         $name = $isThematiqueChanged && filter_var($nom, FILTER_SANITIZE_FULL_SPECIAL_CHARS) ? $nom : $this->getNom();
 
-        $req->execute(array(
+        $rowCount = $req->execute(array(
             "nom" => $name,
             "id_thematique" => $id
         ));
+        return $rowCount;
     }
     function deleteThematique ($id){
         global $pdo;
 
         $req = $pdo->prepare("DELETE FROM thematique WHERE id_thematique = :id_thematique ");
-        $req->execute(array(
+        $rowCount = $req->execute(array(
             "id_thematique" => $id
         ));
+        return $rowCount;
+    }
+    function selectAllThematique (){
+        global $pdo;
+
+        $req = $pdo->prerare("SELECT * FROM thematique");
+        $rowCount = $req->execute();
+        return $rowCount;
+    }
+
+    function selectThematique ($id){
+        global $pdo;
+
+
+        $req = $pdo->prerare("SELECT nom FROM thematique WHERE id_thematique = :id_thematique");
+        $rowCount = $req->execute(array(
+                "id_thematique" => $id
+        ));
+        return $rowCount;
     }
 }
