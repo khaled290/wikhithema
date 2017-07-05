@@ -49,7 +49,7 @@ class thematique
         if ($nom){
             $req = $pdo->prepare("INSERT INTO thematique (nom) VALUES (:nom)");
             $req->execute(array(
-                "nom" => $nom
+                ":nom" => $nom
             ));
         }
 
@@ -66,36 +66,36 @@ class thematique
         $name = $isThematiqueChanged && filter_var($nom, FILTER_SANITIZE_FULL_SPECIAL_CHARS) ? $nom : $oldThematique["nom"];
 
         $rowCount = $req->execute(array(
-            "nom" => $name,
-            "id_thematique" => $id
+            ":nom" => $name,
+            ":id_thematique" => $id
         ));
         return $rowCount;
     }
     public static function deleteThematique ($id){
         global $pdo;
 
-        $req = $pdo->prepare("DELETE FROM thematique WHERE id_thematique = :id_thematique");
+        $req = $pdo->prepare('DELETE FROM thematique WHERE id_thematique = :id_thematique');
         $rowCount = $req->execute(array(
-            "id_thematique" => $id
+            ":id_thematique" => $id
         ));
         return $rowCount;
     }
     public static function selectAllThematique (){
         global $pdo;
 
-        $req = $pdo->prepare("SELECT * FROM thematique");
-        $rowCount = $req->execute();
-        $result = $req->fetchall();
-        return $result;
+        $req = $pdo->prepare('SELECT * FROM thematique');
+        $req->execute();
+        $rowCount = $req->fetchAll(PDO::FETCH_ASSOC);
+        return $rowCount;
     }
 
     public static function selectThematique ($id){
         global $pdo;
 
 
-        $req = $pdo->prerare("SELECT nom FROM thematique WHERE id_thematique = :id_thematique");
+        $req = $pdo->prepare('SELECT nom FROM thematique WHERE id_thematique = :id_thematique');
         $rowCount = $req->execute(array(
-            "id_thematique" => $id
+            ":id_thematique" => $id
         ));
         return $rowCount;
     }

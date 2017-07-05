@@ -21,7 +21,7 @@ if($page==='connexion'){
         include '../vue/connexion.php';
     }
     else{
-        header('Location: http://localhost/wikhitema/Controller/Controller.php?page=index');
+        include '../vue/index.php';
     }
 }
 else if ($page ==='inscription'){

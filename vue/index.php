@@ -35,7 +35,7 @@ if (isset($_SESSION['user']['pseudo'])){
                 <ul class="nav navbar-nav navbar-right">
                     <li>
                         <button class="btn btn-warning add-publication-btn">
-                            <a href="../Controller/Controller.php?page=" class="btn-new-post">Ajouter une publication</a>
+                            <a href="../Controller/Controller.php?page=formPublication" class="btn-new-post">Ajouter une publication</a>
                         </button>
                     </li>
                     <li class="dropdown">

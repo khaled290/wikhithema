@@ -9,6 +9,8 @@
     <link href="font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
     <link href="css/bootstrap.css" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="css/wiki-style.css">
+    <link href="../vue/css/bootstrap.css" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="../vue/css/wiki-style.css">
     <script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
 </head>
 
@@ -70,8 +72,35 @@
     </nav>
 
     <section class="container-wiki-text-editor">
+        <form action="../Controller/Controller.php?page=ajoutMedia" method="post" enctype="multipart/form-data">
+            <p>
+                Formulaire d'envoi de fichier :<br />
+                <input type="file" name="media" /><br />
+                <input type="submit" value="Envoyer le fichier" />
+            </p>
+        </form>
+        <form class="" action="../Controller/UserController.php?page=ajoutPublication" autocomplete="on" method="POST">
 
+            <div class="input-group">
+                <span class="input-group-addon"><i class=""></i></span>
+                <input type="text" size="25" class="form-control " name="" placeholder="" autofocus autocomplete="on" required>
+            </div>
+            <span class="help-block"></span>
 
+            <?php
+            echo "<select id='select'>";
+            foreach ($listeThematique as $thematique) {
+                    echo "<option value=".$thematique['id_thematique'].">".$thematique['nom']."</option>";
+            }
+            echo "</select>";
+            ?>
+            <div class="input-group">
+                <span class="input-group-addon"><i class=""></i></span>
+                <textarea name="" id =""></textarea>
+            </div>
+
+            <button class="btn btn-lg btn-success btn-block" type="submit">Ajout publication</button>
+        </form>
     </section>
 </body>
 </html>

@@ -1,4 +1,5 @@
 <?php
+require_once 'connect.php';
 
 class Publication
 {
@@ -163,11 +164,11 @@ class Publication
         $path_media= $isPath_mediaChanged && filter_var($publication->path_media, FILTER_SANITIZE_FULL_SPECIAL_CHARS) ? $publication->path_media : $oldPublication["path_media"];
 
         $rowCount = $req->execute(array(
-            "id_publication" => $id_publication,
-            "titre" => $titre,
-            "contenu" => $contenu,
-            "path_media" => $path_media,
-            "date" =>$date
+            ":id_publication" => $id_publication,
+            ":titre" => $titre,
+            ":contenu" => $contenu,
+            ":path_media" => $path_media,
+            ":date" =>$date
         ));
         return $rowCount;
     }
@@ -195,7 +196,7 @@ class Publication
 
         $req = $pdo->prepare("DELETE FROM publication WHERE id_publication = :id_publication");
         $rowCount = $req->execute(array(
-            "id_publication" => $id_publication
+            ":id_publication" => $id_publication
         ));
         return $rowCount;
     }
