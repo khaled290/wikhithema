@@ -28,6 +28,10 @@ a:hover, a:focus {
 .container-connexion-inscription {
   z-index: 999;
 }
+
+.btn-submit-publication{
+  text-align: center;
+}
 .garder-session {
 	position: relative;
 	left: 2%;
