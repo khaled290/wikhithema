@@ -1,4 +1,5 @@
-
+//https://developer.mozilla.org/fr/docs/Web/API/Document/execCommand
+//https://developer.mozilla.org/fr/docs/Web/API/Document/designMode
         function iFrameOn(){
             richTextField.document.designMode = 'On';
         }
@@ -37,6 +38,10 @@
         }
         function submit_form(){
             var theForm = document.getElementById("textEditor");
-            theForm.elements["zone-saisie"].value = window.frames['richTextField'].document.body.innerHTML;
+            var content = theForm.elements["zone-saisie"].value;
+            content = window.frames['richTextField'].document.body.innerHTML;
+            alert(content);
+            theForm = content.replace(/<|>|\//g, "*");
+            alert(theForm);
             theForm.submit();
         }

@@ -114,7 +114,6 @@
                 <label><input type="radio" name="optradio" id="selectThematique">blablacar</label>
                 </div>
             </div><br><br>
-
             <input class="btn btn-primary btn-submit-publication" name="btnSubmit" type="button" value="Publier" onClick="javascript:submit_form();"/>
         </form>
     </section>
