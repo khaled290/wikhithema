@@ -12,7 +12,6 @@ require_once 'UserController.php';
 //require_once 'ThematiqueController.php';
 
 
-
 if ($page === 'index'){
     
     $thematiques = thematique::selectAllThematique();
