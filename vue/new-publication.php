@@ -105,7 +105,17 @@
                 <p class="help-block">Formats acceptés : mp3, jpeg</p>
             </div>
             <br>
-            <input class="btn btn-primary" name="btnSubmit" type="button" value="Publier" onClick="javascript:submit_form();"/>
+            <div class="form-group">
+                <label for="selectThematique">Choisissez votre catégorie : </label>
+                <div class="radio">
+                <label><input type="radio" name="optradio" id="selectThematique">blabla</label>
+                </div>
+                <div class="radio">
+                <label><input type="radio" name="optradio" id="selectThematique">blablacar</label>
+                </div>
+            </div><br><br>
+
+            <input class="btn btn-primary btn-submit-publication" name="btnSubmit" type="button" value="Publier" onClick="javascript:submit_form();"/>
         </form>
     </section>
 </body>
