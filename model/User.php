@@ -18,7 +18,8 @@ class User {
     private $email;
     private $role;
     
-    public function __construct($pseudo, $email, $role) {
+    public function __construct($id_user, $pseudo, $email, $role) {
+        $this->id_user = $id_user;
         $this->pseudo = $pseudo;
         $this->email  = $email;
         $this->role = $role;
@@ -60,6 +61,7 @@ class User {
     
     public function to_array(){
         return array(
+            "id_user" => $this->getId_user(),
             "pseudo" => $this->getPseudo(),
             "email" => $this->getEmail(),
             "role" => $this->getRole()
@@ -69,6 +71,7 @@ class User {
     public static function json_to_user($json){
         $tab=json_decode($json);
         return new User(
+            filter_var($tab['id_user'], FILTER_VALIDATE_INT),
             filter_var($tab['pseudo'], FILTER_SANITIZE_FULL_SPECIAL_CHARS), 
             filter_var($tab['email'], FILTER_VALIDATE_EMAIL), 
             filter_var($tab['role'], FILTER_VALIDATE_INT)
@@ -153,7 +156,7 @@ class User {
         $sth = $pdo->prepare($requete);
         $sth->execute(array($login, $mdpCrypt));
         $result = $sth->fetch(PDO::FETCH_ASSOC);
-        return new User($result['pseudo'], $result['email'], $result['role']);
+        return new User($result['id_user'], $result['pseudo'], $result['email'], $result['role']);
     }
     
     public static function cryptMdp($mdp){

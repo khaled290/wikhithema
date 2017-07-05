@@ -1,6 +1,4 @@
 <?php
-require '../model/Publication.php';
-require '../model/thematique.php';
 
 if ($page === 'formPublication'){
     $listeThematique = THEMATIQUE::selectAllThematique();

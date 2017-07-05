@@ -2,6 +2,7 @@
 session_start();
 require '../model/Publication.php';
 require '../model/thematique.php';
+require '../model/User.php';
 
 $page = filter_input(INPUT_GET, 'page', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
 

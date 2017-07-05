@@ -6,10 +6,10 @@
     <meta name="description" content="meilleur wiki au monde - WikHiTema">
     <meta name="author" content="AMLYS KHALED JASON">
     <title>WikHiTema -- Compte utilisateur</title>
-    <link href="font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
-    <link href="css/bootstrap.css" rel="stylesheet">
-    <link rel="stylesheet" type="text/css" href="css/wiki-style.css">
-    <script type="text/javascript" src="js/text-editor.js"></script>
+    <link href="../vue/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <link href="../vue/css/bootstrap.css" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="../vue/css/wiki-style.css">
+    <script type="text/javascript" src="../vue/js/text-editor.js"></script>
     <script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
 </head>
 
