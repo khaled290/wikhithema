@@ -12,16 +12,19 @@ else if ($page === 'ajoutPublication'){
     $publication["path_media"] = filter_input(INPUT_POST,"media", FILTER_SANITIZE_FULL_SPECIAL_CHARS);
     $publication["id_thematique"]= filter_input(INPUT_POST,"thematique", FILTER_SANITIZE_FULL_SPECIAL_CHARS);
 
-    if ($publication["path_media"] && $publication["titre"] && $publication["contenu"]){
-        echo Publication::createPublication($publication["titre"],$publication["contenu"],$publication["path_media"]);
+
+    if ($publication["path_media"] && $publication["titre"] && $publication["contenu"] && $publication["id_user"] && $publication["id_thematique"]){
+        echo Publication::createPublication($publication["titre"],$publication["contenu"],$publication["id_user"],$publication["path_media"],$publication["id_thematique"]);
+        upload();
     }
-    else if ($publication["titre"] && $publication["contenu"]){
-        echo Publication::createPublication($publication["titre"],$publication["contenu"]);
+    else if ($publication["titre"] && $publication["contenu"] && $publication["id_user"] && $publication["id_thematique"]){
+        echo Publication::createPublication($publication["titre"],$publication["contenu"],$publication["id_user"],NULL,$publication["id_thematique"]);
     }else{
-        echo [$_SESSION["user"]["pseudo"]," Nous n'avonns pas pu ajouter une publication, veuillez réessayer s'il vous plait"];
+        [$_SESSION["user"]["pseudo"]," Nous n'avonns pas pu ajouter une publication, veuillez réessayer s'il vous plait"];
     }
+
 }
-else if ($page === "ajoutMedia"){
+function upload(){
     if (isset($_FILES['media']) AND $_FILES['media']['error'] == 0)
     {
         // Testons si le fichier n'est pas trop gros

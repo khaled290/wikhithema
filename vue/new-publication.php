@@ -10,6 +10,13 @@
     <link href="../vue/css/bootstrap.css" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="../vue/css/wiki-style.css">
     <script type="text/javascript" src="../vue/js/text-editor.js"></script>
+
+    <link href="font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <link href="css/bootstrap.css" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="css/wiki-style.css">
+    <script type="text/javascript" src="js/text-editor.js"></script>
+    <link href="../vue/css/bootstrap.css" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="../vue/css/wiki-style.css">
     <script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
 </head>
 
@@ -69,13 +76,12 @@
         </div>
         <!-- /.container -->
     </nav>
-
     <section class="container-wiki-text-editor">
         <h2 class="title-new-publication">Création d'une nouvelle publication</h2><br>
-        <form action="../Controller/textEditor.php" name="textEditor" id="textEditor" method="post">
+        <form action="../Controller/Controller.php?page=ajoutPublication" name="textEditor" id="textEditor" method="post">
             <div class="form-group">
                 <label for="publicationTitle">Titre de votre publication</label>
-                <input type="text" class="form-control" id="publicationTitle" placeholder="EX: quelque chose blabla">
+                <input type="text" name="titre" class="form-control" id="publicationTitle" placeholder="EX: quelque chose blabla">
             </div>
             <br>
             <div class="form-group">
@@ -94,28 +100,25 @@
 
                 </div><br><br>
                 <!-- Hide(but keep)your normal textarea and place in the iFrame replacement for it -->
-                <textarea style="display:none;" name="zone-saisie" id="zone-saisie" cols="100" rows="14"></textarea>
+                <textarea style="display:none;" name="contenu" id="zone-saisie" cols="100" rows="14"></textarea>
                 <iframe name="richTextField" id="richTextField" style="border:#000000 1px solid; width:100%; height:300px;"></iframe>
                 <!-- End replacing your normal textarea -->
             </div>
             <br>
+                <?php
+                echo "<select id='select' name='thematique'>";
+                foreach ($listeThematique as $thematique) {
+                    echo "<option value=".$thematique['id_thematique'].">".$thematique['nom']."</option>";
+                }
+                echo "</select>";
+                ?>
             <div class="form-group">
                 <label for="fileUpload">Charger un fichier (optionnel)</label>
-                <input type="file" id="fileUpload">
+                <input type="file" id="fileUpload" name="media" >
                 <p class="help-block">Formats acceptés : mp3, jpeg</p>
             </div>
             <br>
-            <div class="form-group">
-                <label for="selectThematique">Choisissez votre catégorie : </label>
-                <div class="radio">
-                <label><input type="radio" name="optradio" id="selectThematique">blabla</label>
-                </div>
-                <div class="radio">
-                <label><input type="radio" name="optradio" id="selectThematique">blablacar</label>
-                </div>
-            </div><br><br>
-
-            <input class="btn btn-primary btn-submit-publication" name="btnSubmit" type="button" value="Publier" onClick="javascript:submit_form();"/>
+            <input class="btn btn-primary" name="btnSubmit" type="button" value="Publier" onClick="javascript:submit_form();"/>
         </form>
     </section>
 </body>

@@ -127,20 +127,18 @@ class Publication
         global $pdo;
         $titre = filter_var($titre, FILTER_SANITIZE_FULL_SPECIAL_CHARS);
         $contenu = filter_var($contenu, FILTER_SANITIZE_FULL_SPECIAL_CHARS);
-        $date = $date = new DateTime();
         $id_user = filter_var($id_user, FILTER_SANITIZE_FULL_SPECIAL_CHARS);
         $path_media = filter_var($path_media, FILTER_SANITIZE_FULL_SPECIAL_CHARS);
         $id_thematique = filter_var($id_thematique, FILTER_SANITIZE_FULL_SPECIAL_CHARS);
 
         if ($titre && $contenu && $id_user && $id_thematique){
-            $req = $pdo->prepare("INSERT INTO publication (titre,contenu,date,id_user,path_media,id_thematique) VALUES (:titre,:contenu,:date,:id_user,:path_media,:id_thematique)");
+            $req = $pdo->prepare("INSERT INTO publication (titre,contenu,date,id_user,path_media,id_thematique) VALUES (:titre,:contenu,NOW(),:id_user,:path_media,:id_thematique)");
             $req->execute(array(
-                "titre" => $titre,
-                "contenu" => $contenu,
-                "id_user" => $id_user,
-                "path_media" => $path_media,
-                "id_thematique" => $id_thematique,
-                "date" =>$date
+                ":titre" => $titre,
+                ":contenu" => $contenu,
+                ":id_user" => $id_user,
+                ":path_media" => $path_media,
+                ":id_thematique" => $id_thematique
             ));
         }
     }
