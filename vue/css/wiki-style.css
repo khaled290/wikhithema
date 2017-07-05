@@ -18,7 +18,9 @@ a:hover, a:focus {
   text-decoration: none;
 }
 
-
+.title-new-publication {
+  text-align: center;
+}
 .container-infos-user {
   margin-top: 100px;
 }
@@ -115,6 +117,10 @@ h1 {
 }
 .navbar-header .logo,h1.logo {
   color: #fa5e12;
+}
+
+.container-wiki-text-editor{
+  padding: 30px 30px 30px 30px;
 }
 
 .login .loginOr {
