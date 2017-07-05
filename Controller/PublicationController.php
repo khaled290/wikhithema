@@ -24,7 +24,55 @@ else if ($page === 'ajoutPublication'){
     }
 
 }
-function upload(){
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+else if ($page === "ajoutMedia"){
     if (isset($_FILES['media']) AND $_FILES['media']['error'] == 0)
     {
         // Testons si le fichier n'est pas trop gros
@@ -42,4 +90,52 @@ function upload(){
             }
         }
     }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+elseif ($page = 'publication-cat') {
+    $cat = filter_input(INPUT_GET, 'cat', FILTER_VALIDATE_INT);
+    
+    if (isset($_GET['cat']) && $cat!==false){
+        
+    }
+    else{
+        
+    }
+
 }

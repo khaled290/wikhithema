@@ -173,7 +173,7 @@ class Publication
     public static function selectAllPublication (){
         global $pdo;
 
-        $req = $pdo->prepare("SELECT * FROM publication");
+        $req = $pdo->prepare("SELECT * FROM publication ORDER BY date DESC");
         $req->execute();
         $rowCount = $req->fetchAll(PDO::FETCH_ASSOC);
         return $rowCount;

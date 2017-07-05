@@ -110,15 +110,17 @@ if (isset($_SESSION['user']['pseudo'])){
            
             <article class="col-md-6">
                 <h3><a href="file:///C:/Users/LAM/Desktop/Wiki-Project/bootstrap/blog-post.php" class="titre-article-link"> <?php echo $publication['titre']; ?></a></h3>
+                <span><strong>Date de mise à jour :</strong> <?php echo date_format(date_create($publication['date']), 'd/m/Y H:i' ) ?></span>
                 <p>
                     <?php echo $publication['contenu']; ?>
                 </p>
-                <?php if($_SESSION['user']['id_user']===$publication['id_user'] && $_SESSION['user']['role'] === 2 || $_SESSION['user']['role']===1) {
+                <?php if(($_SESSION['user']['id_user']===$publication['id_user'] && $_SESSION['user']['role'] < 3) || $_SESSION['user']['role']===1) {
                     ?>
-                        
-                    <?php
+                    <a href="../Controller/Controller.php?page=modifPublications&id=<?php echo $publication['id_publication']; ?>" class="btn btn-default" >modifier</a> 
+                    <a href="../Controller/Controller.php?page=supprPublications&id=<?php echo $publication['id_publication']; ?>" class="btn btn-default" >supprimer</a>
+                <?php
                 } 
-                var_dump($_SESSION['user']);
+                //var_dump($_SESSION['user']);
                     ?>
             </article>
             <?php } ?>
