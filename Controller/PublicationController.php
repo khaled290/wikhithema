@@ -21,6 +21,54 @@ else if ($page === 'ajoutPublication'){
         echo [$_SESSION["user"]["pseudo"]," Nous n'avonns pas pu ajouter une publication, veuillez réessayer s'il vous plait"];
     }
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 else if ($page === "ajoutMedia"){
     if (isset($_FILES['media']) AND $_FILES['media']['error'] == 0)
     {
@@ -39,4 +87,52 @@ else if ($page === "ajoutMedia"){
             }
         }
     }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+elseif ($page = 'publication-cat') {
+    $cat = filter_input(INPUT_GET, 'cat', FILTER_VALIDATE_INT);
+    
+    if (isset($_GET['cat']) && $cat!==false){
+        
+    }
+    else{
+        
+    }
+
 }

@@ -5,6 +5,7 @@ require '../model/thematique.php';
 require '../model/User.php';
 
 $page = filter_input(INPUT_GET, 'page', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+$option = filter_input(INPUT_GET, 'otpion', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
 
 require_once 'PublicationController.php';
 
