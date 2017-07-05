@@ -113,7 +113,7 @@ if (isset($_SESSION['user']['pseudo'])){
                 <p>
                     <?php echo $publication['contenu']; ?>
                 </p>
-                <?php if($_SESSION['user']['id_user']===$publication['id_user'] && $_SESSION['user']['role']=== 2 || $_SESSION['user']['role']===1) {
+                <?php if($_SESSION['user']['id_user']===$publication['id_user'] && $_SESSION['user']['role'] === 2 || $_SESSION['user']['role']===1) {
                     ?>
                         
                     <?php

@@ -86,7 +86,10 @@ class User {
         $mdp = USER::cryptMdp(filter_var($mdp, FILTER_SANITIZE_FULL_SPECIAL_CHARS));
         $role = filter_var($role, FILTER_VALIDATE_INT);
         
-        if ($pseudo && $email && $mdp && $role){
+        $user = USER::selectUserByPseudo($pseudo);
+        $user2 = USER::selectUserByEmail($email);
+        
+        if ($pseudo && $email && $mdp && $role && $user->getPseudo()!==$pseudo && $user2->getEmail() !== $email){
             $requete="INSERT INTO user VALUES (default , ?, ?, ?, ?);";
             $sth=$pdo->prepare($requete);
             $rowCount = $sth->execute(array($pseudo, $email, $mdp, $role));
@@ -132,11 +135,29 @@ class User {
         return $rowCount;
     }
     
-    public static function selectUser($id_user){
+    public static function selectUserById($id_user){
         global $pdo;
         $requete = "SELECT * FROM user where id_user = ?";
         $sth=$pdo->prepare($requete);
         $sth->execute(array($id_user));
+        $result=$sth->fetch(PDO::FETCH_ASSOC);
+        return new User($result['pseudo'], $result['email'], $result['role']);
+    }
+    
+    public static function selectUserByEmail($email){
+        global $pdo;
+        $requete = "SELECT * FROM user where email = ?";
+        $sth=$pdo->prepare($requete);
+        $sth->execute(array($email));
+        $result=$sth->fetch(PDO::FETCH_ASSOC);
+        return new User($result['pseudo'], $result['email'], $result['role']);
+    }
+    
+    public static function selectUserByPseudo($pseudo){
+        global $pdo;
+        $requete = "SELECT * FROM user where pseudo = ?";
+        $sth=$pdo->prepare($requete);
+        $sth->execute(array($$pseudo));
         $result=$sth->fetch(PDO::FETCH_ASSOC);
         return new User($result['pseudo'], $result['email'], $result['role']);
     }

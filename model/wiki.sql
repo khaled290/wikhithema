@@ -18,6 +18,7 @@ SET time_zone = "+00:00";
 
 CREATE DATABASE IF NOT EXISTS wiki;
 
+USE wiki;
 --
 -- Base de données :  `wiki`
 --
