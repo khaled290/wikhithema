@@ -2,11 +2,11 @@
 <html>
 <head>
 	<title>WikHiTema - Connexion</title>
-	<link rel="stylesheet" type="text/css" href="css/demo.css" />
-    <link rel="stylesheet" type="text/css" href="css/slideshow.css" />
-	<link rel="stylesheet" href="css/bootstrap.css">
-	<link href="font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
-	<link rel="stylesheet" href="css/wiki-style.css">
+	<link rel="stylesheet" type="text/css" href="../vue/css/demo.css" />
+        <link rel="stylesheet" type="text/css" href="../vue/css/slideshow.css" />
+	<link rel="stylesheet" href="../vue/css/bootstrap.css">
+	<link href="../vue/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+	<link rel="stylesheet" href="../vue/css/wiki-style.css">
 
 </head>
 
@@ -54,10 +54,10 @@
 
 			<div class="row row-sm-offset-3">
 				<div class="col-xs-12 col-sm-6">	
-				    <form class="loginForm" action="" autocomplete="off" method="POST">
+                                    <form class="loginForm" action="../Controller/Controller.php?page=connexion" autocomplete="off" method="POST">
 						<div class="input-group">
 							<span class="input-group-addon"><i class="fa fa-user"></i></span>
-							<input type="email" class="form-control email-zone" name="email" placeholder="Votre e-mail" autofocus autocomplete="on" required>
+							<input type="text" class="form-control email-zone" name="login" placeholder="Votre login" autofocus autocomplete="on" required>
 						</div>
 						<span class="help-block"></span>
 											

@@ -65,6 +65,9 @@
                             <li>
                                 <a href="index.php">Déconnexion</a>
                             </li>
+                            <li>
+                                <a href="../Controller/Controller.php?page=supprimerCompte">Supprimer votre compte</a>
+                            </li>
                         </ul>
                     </li>
                 </ul>
@@ -94,6 +97,11 @@
 					<div class="input-group">
 						<span class="input-group-addon"><i class="fa fa-lock"></i></span>
 						<input  type="password" class="form-control mdp-zone" name="password" placeholder="Votre NOUVEAU mot de passe">
+					</div>
+                                        <span class="help-block"></span>
+                                        <div class="input-group">
+						<span class="input-group-addon"><i class="fa fa-lock"></i></span>
+						<input  type="password" class="form-control mdp-zone" name="passwordConfirme" placeholder="Confirmez votre nouveau mot de passe">
 					</div>
 					<span class="help-block"></span>
 

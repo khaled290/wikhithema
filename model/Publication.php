@@ -143,8 +143,7 @@ class Publication
             ));
         }
     }
-    public static function updatePublication ($id_publication, Array $publication){
-    
+
     public  function updatePublication ($id_publication, Array $publication){
         global $pdo;
 
@@ -175,17 +174,19 @@ class Publication
     public static function selectAllPublication (){
         global $pdo;
 
-        $req = $pdo->prerare("SELECT * FROM publication");
-        $rowCount = $req->execute();
+        $req = $pdo->prepare("SELECT * FROM publication");
+        $req->execute();
+        $rowCount = $req->fetchAll(PDO::FETCH_ASSOC);
         return $rowCount;
 }
     public static function selectPublication ($id_publication){
         global $pdo;
 
-        $req = $pdo->prerare("SELECT * FROM publication WHERE id_publication = :id_publication");
-        $rowCount = $req->execute(array(
+        $req = $pdo->prepare("SELECT * FROM publication WHERE id_publication = :id_publication");
+        $req->execute(array(
             "id_thematique" => $id_publication
         ));
+        $rowCount = $req->fetch(PDO::FETCH_ASSOC);
         return $rowCount;
     }
 

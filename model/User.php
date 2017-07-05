@@ -16,9 +16,14 @@ class User {
     private $id_user;
     private $pseudo;
     private $email;
-    private $mdp;
     private $role;
     
+    public function __construct($pseudo, $email, $role) {
+        $this->pseudo = $pseudo;
+        $this->email  = $email;
+        $this->role = $role;
+    }
+
     public function getId_user() {
         return $this->id_user;
     }
@@ -29,10 +34,6 @@ class User {
 
     public function getEmail() {
         return $this->email;
-    }
-
-    public function getMdp() {
-        return $this->mdp;
     }
 
     public function getRole() {
@@ -47,14 +48,34 @@ class User {
         $this->email = $email;
     }
 
-    public function setMdp($mdp) {
-        $this->mdp = $mdp;
-    }
-
     public function setRole($role) {
         $this->role = $role;
     }
     
+    public function to_json(){
+        return json_encode(
+            $this->to_array()
+        );
+    }
+    
+    public function to_array(){
+        return array(
+            "pseudo" => $this->getPseudo(),
+            "email" => $this->getEmail(),
+            "role" => $this->getRole()
+        );
+    }
+    
+    public static function json_to_user($json){
+        $tab=json_decode($json);
+        return new User(
+            filter_var($tab['pseudo'], FILTER_SANITIZE_FULL_SPECIAL_CHARS), 
+            filter_var($tab['email'], FILTER_VALIDATE_EMAIL), 
+            filter_var($tab['role'], FILTER_VALIDATE_INT)
+        );
+    }
+    
+    // Le role par défaut est 3, c'est l'utilisateur de base de l'application
     public static function createUser ($pseudo, $email, $mdp, $role=3){
         global $pdo;
         $pseudo = filter_var($pseudo, FILTER_SANITIZE_FULL_SPECIAL_CHARS);
@@ -68,7 +89,7 @@ class User {
             $rowCount = $sth->execute(array($pseudo, $email, $mdp, $role));
             return $rowCount;
         }else{
-            return array($pseudo, $email, $mdp, $role);
+            return new User($pseudo, $email, $role);
         }
     }
     
@@ -113,8 +134,8 @@ class User {
         $requete = "SELECT * FROM user where id_user = ?";
         $sth=$pdo->prepare($requete);
         $sth->execute(array($id_user));
-        $rowCount=$sth->fetch(PDO::FETCH_ASSOC);
-        return $rowCount;
+        $result=$sth->fetch(PDO::FETCH_ASSOC);
+        return new User($result['pseudo'], $result['email'], $result['role']);
     }
     
     public static function connexion($login, $mdp){
@@ -131,9 +152,8 @@ class User {
         }
         $sth = $pdo->prepare($requete);
         $sth->execute(array($login, $mdpCrypt));
-        $user = $sth->fetch(PDO::FETCH_ASSOC);
-        unset($user["mdp"]);
-        return $user;
+        $result = $sth->fetch(PDO::FETCH_ASSOC);
+        return new User($result['pseudo'], $result['email'], $result['role']);
     }
     
     public static function cryptMdp($mdp){
@@ -143,6 +163,5 @@ class User {
         ];
         return password_hash($mdp, PASSWORD_BCRYPT, $options);
     }
-    
     
 }

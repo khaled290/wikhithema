@@ -1,3 +1,8 @@
+<?php
+session_start(); 
+//On vérifie que l'utilisateur est connecté pour afficher la page (toutes les pages sauf inscription et connexion l'ont
+if (isset($_SESSION['user']['pseudo'])){
+?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -175,3 +180,8 @@
 </body>
 
 </html>
+<?php }
+
+else{
+    header('Location: http://localhost/wikhitema/vue/connexion.php');
+}

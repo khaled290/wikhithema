@@ -83,9 +83,10 @@ class thematique
     public static function selectAllThematique (){
         global $pdo;
 
-        $req = $pdo->prerare("SELECT * FROM thematique");
+        $req = $pdo->prepare("SELECT * FROM thematique");
         $rowCount = $req->execute();
-        return $rowCount;
+        $result = $req->fetchall();
+        return $result;
     }
 
     public static function selectThematique ($id){

@@ -1,3 +1,9 @@
+<?php
+//On vérifie que l'utilisateur est connecté pour afficher la page (toutes les pages sauf inscription et connexion l'ont
+if (isset($_SESSION['user']['pseudo'])){
+        if (isset($publications) && isset($thematiques)){
+?>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -6,10 +12,10 @@
     <meta name="description" content="meilleur wiki au monde - WikHiTema">
     <meta name="author" content="AMLYS KHALED JASON">
     <title>WikHiTema</title>
-    <link href="css/bootstrap.css" rel="stylesheet">
-    <link rel="stylesheet" type="text/css" href="css/wiki-style.css">
-    <link href="font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
-    <link rel="stylesheet" type="text/css" href="css/wiki-blog-articles.css">
+    <link href="../vue/css/bootstrap.css" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="../vue/css/wiki-style.css">
+    <link href="../vue/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" type="text/css" href="../vue/css/wiki-blog-articles.css">
 </head>
 
 <body>
@@ -29,33 +35,25 @@
                 <ul class="nav navbar-nav navbar-right">
                     <li>
                         <button class="btn btn-warning add-publication-btn">
-                            <a href="new-publication.php" class="btn-new-post">Ajouter une publication</a>
+                            <a href="../Controller/Controller.php?page=" class="btn-new-post">Ajouter une publication</a>
                         </button>
                     </li>
                     <li class="dropdown">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown">Catégories <b class="caret"></b></a>
                         <ul class="dropdown-menu">
+                            <?php foreach($thematiques as $thematique){ ?>
                             <li>
-                                <a href="publications-cat.php">Informatique</a>
-                            </li>
-                            <li>
-                                <a href="publications-cat.php">High Tech</a>
-                            </li>
-                            <li>
-                                <a href="publications-cat.php">Sport</a>
-                            </li>
-                            <li>
-                                <a href="publications-cat.php">Cuisine</a>
-                            </li>
-                            <li>
-                                <a href="publications-cat.php">Managment</a>
-                            </li>
-                            
+                                <a href="../Controller/Controller.php?page=publications&cat=<?php echo $thematique['id_thematique']; ?>"><?php echo $thematique['nom']; ?></a>
+                            </li>     
+                            <?php  }?>
                         </ul>
                     </li>
                     <li class="dropdown">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown">Compte <b class="caret"></b></a>
                         <ul class="dropdown-menu">
+                            <li>
+                                Pseudo : <?php echo $_SESSION['user']['pseudo']; ?>
+                            </li>
                             <li>
                                 <a href="index.php">Parametres</a>
                             </li>
@@ -84,87 +82,47 @@
                 <h1 class="page-header"> Catégories de publications
                 </h1>
             </div>
+            <?php foreach ($thematiques as $thematique){ ?>
             <div class="col-md-4">
                 <div class="panel panel-default">
                     <div class="panel-heading">
-                        <h4><i class="fa fa-fw fa-keyboard-o"></i> Informatique</h4>
+                        <h4><i class="<?php  ?>"></i> <?php echo $thematique['nom']; ?></h4>
                     </div>
                     <div class="panel-body">
-                        <a href="publications-cat.php" class="btn btn-default"> Voir les publications</a>
+                        <a href="../Controller/Controller.php?page=publications&cat=<?php echo $thematique['id_thematique']; ?>" class="btn btn-default"> Voir les publications</a>
                     </div>
                 </div>
             </div>
-            <div class="col-md-4">
-                <div class="panel panel-default">
-                    <div class="panel-heading">
-                        <h4><i class="fa fa-fw fa-laptop"></i> High Tech</h4>
-                    </div>
-                    <div class="panel-body">
-                        <a href="#" class="btn btn-default">Voir les publications</a>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-4">
-                <div class="panel panel-default">
-                    <div class="panel-heading">
-                        <h4><i class="fa fa-fw fa-soccer-ball-o"></i> Sport</h4>
-                    </div>
-                    <div class="panel-body">
-                        <a href="#" class="btn btn-default">Voir les publications</a>
-                    </div>
-                </div>
-            </div>
-
-            <div class="col-md-4">
-                <div class="panel panel-default">
-                    <div class="panel-heading">
-                        <h4><i class="fa fa-fw fa-birthday-cake"></i> Cuisine</h4>
-                    </div>
-                    <div class="panel-body">
-                        <a href="#" class="btn btn-default">Voir les publications</a>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-4">
-                <div class="panel panel-default">
-                    <div class="panel-heading">
-                        <h4><i class="fa fa-fw fa-users"></i> Management</h4>
-                    </div>
-                    <div class="panel-body">
-                        <a href="#" class="btn btn-default">Voir les publications</a>
-                    </div>
-                </div>
-            </div>
+            <?php  }?>
         </div>
         <!-- /.row -->
 
         <!-- Features Section -->
+        
         <div class="row">
             <div class="col-lg-12">
                 <h2 class="page-header">Dernieres publications</h2>
             </div>
+            <?php 
+                for ($i=0; $i<2 && $i< count($publications); $i++) {  
+                    $publication = $publications[$i];
+            ?>
+           
             <article class="col-md-6">
-                <h3><a href="file:///C:/Users/LAM/Desktop/Wiki-Project/bootstrap/blog-post.php" class="titre-article-link"> Article machin</a></h3>
-                <p> Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-                tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-                quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-                consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-                cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-                proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+                <h3><a href="file:///C:/Users/LAM/Desktop/Wiki-Project/bootstrap/blog-post.php" class="titre-article-link"> <?php echo $publication['titre']; ?></a></h3>
+                <p>
+                    <?php echo $publication['contenu']; ?>
+                </p>
+                <?php if($_SESSION['user']['id_user']===$publication['id_auteur'] && $_SESSION['user']['role']===2 || $_SESSION['user']['role']===1) {
+                    ?>
+                        
+                    <?php
+                }
+                    ?>
             </article>
-            <article class="col-md-6">
-                <h3><a href="file:///C:/Users/LAM/Desktop/Wiki-Project/bootstrap/blog-post.php" class="titre-article-link"> Article machin</a></h3>
-                <p> Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-                tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-                quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-                consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-                cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-                proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-            </article>
-            <div class="col-md-6">
-                <!--<img class="img-responsive" src="http://placehold.it/700x450" alt="">-->
-            </div>
+            <?php } ?>
         </div>
+        
         <!-- /.row -->
 
         <hr><br><br>
@@ -182,10 +140,10 @@
     <!-- /.container -->
 
     <!-- jQuery -->
-    <script src="js/jquery.js"></script>
+    <script src="../vue/js/jquery.js"></script>
 
     <!-- Bootstrap Core JavaScript -->
-    <script src="js/bootstrap.min.js"></script>
+    <script src="../vue/js/bootstrap.min.js"></script>
 
     <!-- Script to Activate the Carousel -->
     <script>
@@ -197,3 +155,12 @@
 </body>
 
 </html>
+<?php }
+    //Si les variables publications et thematiques ne sont pas présentes, on redirige
+    else{
+        header('Location: http://localhost/wikhitema/Controller/Controller.php?page=index');
+    }
+}
+else{
+    header('Location: http://localhost/wikhitema/vue/connexion.php');
+}
