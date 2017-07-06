@@ -1,8 +1,8 @@
 <?php
 session_start();
-require '/model/Publication.php';
-require '/model/thematique.php';
-require '/model/User.php';
+require 'model/Publication.php';
+require 'model/thematique.php';
+require 'model/User.php';
 
 //ICI CA FONCTIONNE
 

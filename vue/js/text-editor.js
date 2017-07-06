@@ -39,9 +39,8 @@
         function submit_form(){
             var theForm = document.getElementById("textEditor");
             var content = theForm.elements["zone-saisie"].value;
-            // content = window.frames['richTextField'].document.body.innerHTML;
-            // alert(content);
-            // theForm = content.replace(/<|>|\//g, "*");
-            // alert(theForm);
+            content = window.frames['richTextField'].document.body.innerHTML;
+            theForm.elements["zone-saisie"].value = content.replace(/<|>|\//g, "*");
+            
             theForm.submit();
         }

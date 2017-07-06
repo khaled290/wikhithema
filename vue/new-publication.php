@@ -1,3 +1,8 @@
+<?php
+//On vérifie que l'utilisateur est connecté pour afficher la page (toutes les pages sauf inscription et connexion l'ont
+if (isset($_SESSION['user']['pseudo'])){
+        if (isset($listeThematique)){
+?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -86,8 +91,8 @@
                   <input class="btn" type="button" onClick="iFontSize()" value="Text Size">
                   <input class="btn" type="button" onClick="iForeColor()" value="Text Color">
                   <input class="btn" type="button" onClick="iHorizontalRule()" value="HR"> 
-                  <input class="btn" type="button" onClick="iUnorderedList()" value="UL">
-                  <input class="btn" type="button" onClick="iOrderedList()" value="OL">
+                  <input class="btn" type="button" onClick="iUnorderedList()" value="Liste : 1.">
+                  <input class="btn" type="button" onClick="iOrderedList()" value="Liste : •">
                   <input class="btn" type="button" onClick="iLink()" value="Link">
                   <input class="btn" type="button" onClick="iUnLink()" value="UnLink">
 
@@ -107,7 +112,7 @@
                 ?>
             <div class="form-group">
                 <label for="fileUpload">Charger un fichier (optionnel)</label>
-                <input type="file" id="fileUpload" name="media" >
+                <input type="file" id="fileUpload" name="media" id="pathMedia" >
                 <p class="help-block">Formats acceptés : mp3, jpeg</p>
             </div>
             <br>
@@ -116,3 +121,11 @@
     </section>
 </body>
 </html>
+<?php   }
+        else{
+            header('Location: http://localhost/wikhitema/index.php?page=formPublication');
+        }
+    }
+    else{
+        header('Location: http://localhost/wikhitema/index.php?page=connect');
+    }
