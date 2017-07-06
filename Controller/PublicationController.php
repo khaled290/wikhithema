@@ -14,11 +14,13 @@ else if ($page === 'ajoutPublication'){
     if ($publication["path_media"] && $publication["titre"] && $publication["contenu"] && $publication["id_user"] && $publication["id_thematique"]){
         Publication::createPublication($publication["titre"],$publication["contenu"],$publication["id_user"],$publication["path_media"],$publication["id_thematique"]);
         upload();
+        header('Location: http://localhost/wikhitema/index.php?page=index');
     }
     else if ($publication["titre"] && $publication["contenu"] && $publication["id_user"] && $publication["id_thematique"]){
         Publication::createPublication($publication["titre"],$publication["contenu"],$publication["id_user"],NULL,$publication["id_thematique"]);
+        header('Location: http://localhost/wikhitema/index.php?page=index'); 
     }else{
-        [$_SESSION["user"]["pseudo"]," Nous n'avonns pas pu ajouter une publication, veuillez réessayer s'il vous plait"];
+        [$_SESSION["user"]["error"]," Nous n'avonns pas pu ajouter une publication, veuillez réessayer s'il vous plait"];
     }
 
 }

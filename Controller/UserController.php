@@ -45,11 +45,12 @@ else if ($page ==='inscription'){
         unset($user["mdpConfirme"]);
         if ($user["pseudo"] && $user["email"] && $user["mdp"]){
             echo USER::createUser($user["pseudo"], $user["email"], $user["mdp"]);
+            header('Location: http://localhost/wikhitema/index.php?page=connect');
         }else{
             include_once 'vue/inscription.php';
         }
     }
-    header('Location: http://localhost/wikhitema/index.php?page=connect');
+    
 }
 else if ($page === 'modification'){
     
