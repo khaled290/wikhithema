@@ -62,7 +62,11 @@ else if ($page ==='modifierPublications'){
  * -------------------------- SUPPRESSION -----------------------------------------------
  ---------------------------------------------------------------------------------------*/
 else if ($page ==='supprPublications'){
-    
+    $id = filter_input(INPUT_GET, 'id', FILTER_SANITIZE_NUMBER_INT);
+    if ($id !== '' && $id !== NULL){
+        Publication::deletePublication($id);
+        header('Location: http://localhost/wikhitema/index.php?page=index'); 
+    }
 }
 
 
