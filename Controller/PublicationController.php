@@ -1,9 +1,17 @@
 <?php
 
+
+/*---------------------------------------------------------------------------------------
+ * -------------------------- FORMULAIRE AJOUT/MODIFICATION -----------------------------------------------
+ ---------------------------------------------------------------------------------------*/
 if ($page === 'formPublication'){
     $listeThematique = THEMATIQUE::selectAllThematique();
     include 'vue/new-publication.php';
 }
+
+/*---------------------------------------------------------------------------------------
+ * -------------------------- AJOUT -----------------------------------------------------
+ ---------------------------------------------------------------------------------------*/
 else if ($page === 'ajoutPublication'){
     if (verifier_token($referer)){
         $publication["titre"] = filter_input(INPUT_POST,"titre", FILTER_SANITIZE_FULL_SPECIAL_CHARS);
@@ -24,9 +32,7 @@ else if ($page === 'ajoutPublication'){
             $_SESSION["user"]["error"]=" Nous n'avonns pas pu ajouter une publication, veuillez réessayer s'il vous plait";
         }
     }
-}
-
-else if ($page === "ajoutMedia"){
+}else if ($page === "ajoutMedia"){
     if (isset($_FILES['media']) AND $_FILES['media']['error'] == 0)
     {
         // Testons si le fichier n'est pas trop gros
@@ -45,6 +51,24 @@ else if ($page === "ajoutMedia"){
         }
     }
 }
+/*---------------------------------------------------------------------------------------
+ * -------------------------- MODIFICATION -----------------------------------------------
+ ---------------------------------------------------------------------------------------*/
+else if ($page ==='modifierPublications'){
+    
+}
+
+/*---------------------------------------------------------------------------------------
+ * -------------------------- SUPPRESSION -----------------------------------------------
+ ---------------------------------------------------------------------------------------*/
+else if ($page ==='supprPublications'){
+    
+}
+
+
+/*---------------------------------------------------------------------------------------
+ * -------------------------- RECHERCHE PAR THEME ---------------------------------------
+ ---------------------------------------------------------------------------------------*/
 elseif ($page === 'publications-cat') {
     $option = filter_input(INPUT_GET, 'cat', FILTER_VALIDATE_INT);
     if (isset($option) && $option!=false){
@@ -56,6 +80,10 @@ elseif ($page === 'publications-cat') {
     }
 
 }
+
+/*---------------------------------------------------------------------------------------
+ * -------------------------- RECHERCHE GLOBALE -----------------------------------------
+ ---------------------------------------------------------------------------------------*/
 else if ($page === "recherchePublication"){
     $recherche = filter_input(INPUT_POST, "recherche", FILTER_SANITIZE_FULL_SPECIAL_CHARS);
     $publications = Publication::recherchePublications($recherche);

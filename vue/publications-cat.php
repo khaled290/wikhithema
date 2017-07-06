@@ -15,12 +15,15 @@ if (isset($_SESSION['user']['pseudo'])){
         <div class="row">
             
             
-            <hr>
+
             <?php 
             $numPage = filter_input(INPUT_GET, 'numPage', FILTER_SANITIZE_NUMBER_INT);
             $numPage = isset($numPage) ? $numPage : 1 ;
-            for($i=($numPage*4-1); $i< (($numPage)*4); $i++){ 
-               $publication = $publications[$i];
+            $i=0;
+            foreach($publications as $publication){ 
+               if ($i%4===0){
+                    echo '<hr>';
+                }
             ?>
            
             <article class="col-md-6">
@@ -51,29 +54,6 @@ if (isset($_SESSION['user']['pseudo'])){
 
         </div>
         <!-- /.row -->
-        <hr>
-
-        <div class="row text-center">
-            <nav aria-label="Page navigation">
-              <ul class="pagination">
-                <li>
-                  <a href="#" aria-label="Previous">
-                    <span aria-hidden="true">&laquo;</span>
-                  </a>
-                </li>
-                <li><a class="active" href="#">1</a></li>
-                <li><a href="#">2</a></li>
-                <li><a href="#">3</a></li>
-                <li><a href="#">4</a></li>
-                <li><a href="#">5</a></li>
-                <li>
-                  <a href="#" aria-label="Next">
-                    <span aria-hidden="true">&raquo;</span>
-                  </a>
-                </li>
-              </ul>
-            </nav>
-        </div>
 
 
         <!-- Footer -->

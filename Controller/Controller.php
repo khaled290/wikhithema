@@ -1,12 +1,20 @@
 <?php
+
+/*---------------------------------------------------------------------------------------
+ * -------------------------- CONTROLLER -----------------------------------------------
+ ---------------------------------------------------------------------------------------*/
+
+
 session_start();
-//session_destroy();
 require 'model/Publication.php';
 require 'model/thematique.php';
 require 'model/User.php';
 
-//ICI CA FONCTIONNE
 
+
+/*---------------------------------------------------------------------------------------
+ * -------------------------- INITIALISATION --------------------------------------------
+ ---------------------------------------------------------------------------------------*/
 $page = filter_input(INPUT_GET, 'page', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
 $option = filter_input(INPUT_GET, 'otpion', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
 
@@ -19,6 +27,9 @@ require_once 'UserController.php';
 require_once 'ThematiqueController.php';
 
 
+/*---------------------------------------------------------------------------------------
+ * -------------------------- INDEX DU SITE ---------------------------------------------
+ ---------------------------------------------------------------------------------------*/
 if ($page === 'index'){
     
     $thematiques = thematique::selectAllThematique();
@@ -28,6 +39,10 @@ if ($page === 'index'){
     require_once 'vue/index.php';
 }
 
+
+/*---------------------------------------------------------------------------------------
+ * -------------------------- FONTIONS UTILES -------------------------------------------
+ ---------------------------------------------------------------------------------------*/
 
 //Cette fonction génère, sauvegarde et retourne un token
 //Vous pouvez lui passer en paramètre optionnel un nom pour différencier les formulaires
