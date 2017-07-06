@@ -10,7 +10,7 @@
     <link href="vue/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
     <link rel="stylesheet" type="text/css" href="vue/css/wiki-style.css">
     <link rel="stylesheet" type="text/css" href="vue/css/wiki-blog-articles.css">
-    <link rel="stylesheet" type="text/css" href="css/admin-style.css">
+    <link rel="stylesheet" type="text/css" href="vue/css/admin-style.css">
 </head>
 
 <body>

@@ -17,7 +17,7 @@ if (isset($_SESSION['user']['pseudo'])){
             <br>
             <div class="form-group">
                 <label for="zone-text">Mise en texte</label>
-                <div id="form-group">
+                <div id="zone-text">
                   <input class="btn" type="button" onClick="iBold()" value="B">
                   <input class="btn" type="button" onClick="iUnderline()" value="U">
                   <input class="btn" type="button" onClick="iItalic()" value="I">
@@ -28,7 +28,6 @@ if (isset($_SESSION['user']['pseudo'])){
                   <input class="btn" type="button" onClick="iOrderedList()" value="Liste : •">
                   <input class="btn" type="button" onClick="iLink()" value="Link">
                   <input class="btn" type="button" onClick="iUnLink()" value="UnLink">
-
                 </div><br><br>
                 <!-- Hide(but keep)your normal textarea and place in the iFrame replacement for it -->
                 <textarea style="display:none;" name="contenu" id="zone-saisie" cols="100" rows="14"></textarea>
@@ -53,7 +52,7 @@ if (isset($_SESSION['user']['pseudo'])){
                 echo $token;
                         ?>"/>
             <br>
-            <input class="btn btn-primary" name="btnSubmit" type="button" value="Publier" onClick="javascript:submit_form();"/>
+            <input class="btn btn-primary btn-submit-publication" name="btnSubmit" type="button" value="Publier" onClick="javascript:submit_form();"/>
         </form>
     </section>
 
@@ -62,6 +61,8 @@ if (isset($_SESSION['user']['pseudo'])){
 
     <!-- Bootstrap Core JavaScript -->
     <script src="vue/js/bootstrap.min.js"></script>
+
+    <script src="vue/js/text-editor.js"></script>
 
 
 
