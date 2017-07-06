@@ -44,7 +44,7 @@ if (isset($_SESSION['user']['pseudo'])){
                         <ul class="dropdown-menu">
                             <?php foreach($thematiques as $thematique){ ?>
                             <li>
-                                <a href="index.php?page=publications&cat=<?php echo $thematique['id_thematique']; ?>"><?php echo $thematique['nom']; ?></a>
+                                <a href="index.php?page=publications-cat&cat=<?php echo $thematique['id_thematique']; ?>"><?php echo $thematique['nom']; ?></a>
                             </li>     
                             <?php  }?>
                         </ul>
@@ -90,7 +90,7 @@ if (isset($_SESSION['user']['pseudo'])){
                         <h4><i class="<?php  ?>"></i> <?php echo $thematique['nom']; ?></h4>
                     </div>
                     <div class="panel-body">
-                        <a href="index.php?page=publications&cat=<?php echo $thematique['id_thematique']; ?>" class="btn btn-default"> Voir les publications</a>
+                        <a href="index.php?page=publications-cat&cat=<?php echo $thematique['id_thematique']; ?>" class="btn btn-default"> Voir les publications</a>
                     </div>
                 </div>
             </div>

@@ -44,7 +44,7 @@ else if ($page === "ajoutMedia"){
         }
     }
 }
-elseif ($page === 'publication-cat') {
+elseif ($page === 'publications-cat') {
     $option = filter_input(INPUT_GET, 'cat', FILTER_VALIDATE_INT);
     if (isset($option) && $option!=false){
         $publications = Publication::selectPublicationByCat($option);
