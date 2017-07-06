@@ -131,6 +131,10 @@ else if ($page === 'modifierCompte'){
         $_SESSION['user']['error']='le token n\'a pas passer la vérification, veuillez réessayer l\'opération.';
         include_once 'vue/user.php';
     }
+}else if ($page === 'formModifierCompte'){
+    include_once 'vue/user.php';
+}
+
 function updatePubli($publi)
 {
     var_dump($publi);
@@ -139,10 +143,4 @@ function updatePubli($publi)
             Publication::updatePubDelUser($delete["id_publication"]);
         }
     }
-}
-else if ($page === 'formModifierCompte'){
-    include_once 'vue/user.php';
-}
- else if ($page ==='supprimerCompte'){
-    
 }

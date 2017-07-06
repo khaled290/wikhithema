@@ -61,3 +61,6 @@ else if ($page === "recherchePublication"){
     $publications = Publication::recherchePublications($recherche);
     include_once 'vue/publicationsRecherche.php';
 }
+else if ($page ==='supprPublications'){
+    
+}
