@@ -62,7 +62,7 @@ if (isset($_SESSION['user']['pseudo'])){
                                 <a href="index.php">Mes publication</a>
                             </li>
                             <li>
-                                <a href="index.php">Déconnexion</a>
+                                <a href="index.php?page=deconnexion">Déconnexion</a>
                             </li>
                         </ul>
                     </li>

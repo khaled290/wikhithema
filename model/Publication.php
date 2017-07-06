@@ -188,6 +188,17 @@ class Publication
         $rowCount = $req->fetch(PDO::FETCH_ASSOC);
         return $rowCount;
     }
+    
+    public static function selectPublicationByCat ($id_cat){
+        global $pdo;
+
+        $req = $pdo->prepare("SELECT * FROM publication WHERE id_thematique = ?");
+        $req->execute(array(
+            $id_cat
+        ));
+        $rowCount = $req->fetch(PDO::FETCH_ASSOC);
+        return $rowCount;
+    }
 
     public static function deletePublication ($id_publication){
         global $pdo;

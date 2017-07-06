@@ -1,8 +1,7 @@
 <?php
-session_start(); 
 //On vérifie que l'utilisateur est connecté pour afficher la page (toutes les pages sauf inscription et connexion l'ont
 if (isset($_SESSION['user']['pseudo'])){
-    if(isset($page)&&isset($option)){
+    if(isset($page)&&isset($option) && isset($publications)){
 ?>
 
 <!DOCTYPE html>
@@ -94,45 +93,27 @@ if (isset($_SESSION['user']['pseudo'])){
             
             
             <hr>
-            <div class="col-md-6">
-                <h3>
-                    <a href="blog-post.php">Titre publication</a>
-                </h3>
-                <p>Publié par <strong>User</strong> dans la catégorie <strong>Informatique</strong></p>
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</p>
-                <a class="btn btn-primary" href="blog-post.php">Lire l'article <i class="fa fa-angle-right"></i></a>
-            </div>
-           
-
-       
-            <div class="col-md-6">
-                <h3>
-                    <a href="blog-post.php">Titre publication</a>
-                </h3>
-                <p>Publié par <strong>User</strong> dans la catégorie <strong>Informatique</strong></p>
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</p>
-                <a class="btn btn-primary" href="blog-post.php">Lire l'article <i class="fa fa-angle-right"></i></a>
-            </div>
-
-            <div class="col-md-6">
-                <h3>
-                    <a href="blog-post.php">Titre publication</a>
-                </h3>
-                <p>Publié par <strong>User</strong> dans la catégorie <strong>Informatique</strong></p>
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</p>
-                <a class="btn btn-primary" href="blog-post.php">Lire l'article <i class="fa fa-angle-right"></i></a>
-            </div>
+            <?php 
+            $numPage = filter_input(INPUT_GET, 'numPage', FILTER_SANITIZE_NUMBER_INT);
+            $numPage = isset($numPage) ? $numPage : 1 ;
+            for($i=($numPage-1); $i< (($numPage)*4); $i++){ ?>
+                <div class="col-md-6">
+                    <h3>
+                        <a href="blog-post.php">Titre publication</a>
+                    </h3>
+                    <p>Publié par <strong>User</strong> dans la catégorie <strong>Informatique</strong></p>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</p>
+                    <a class="btn btn-primary" href="blog-post.php">Lire l'article <i class="fa fa-angle-right"></i></a>
+                </div>
+            
+            <?php 
+            if ($i%4>1){
+                echo '<hr>';
+            }
+            
+            } ?>
             <hr>
 
-       
-            <div class="col-md-6">
-                <h3>
-                    <a href="blog-post.php">Titre publication</a>
-                </h3>
-                <p>Publié par <strong>User</strong> dans la catégorie <strong>Informatique</strong></p>
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</p>
-                <a class="btn btn-primary" href="blog-post.php">Lire l'article <i class="fa fa-angle-right"></i></a>
-            </div>
         </div>
         <!-- /.row -->
         <hr>

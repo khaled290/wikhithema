@@ -45,13 +45,13 @@ else if ($page === "ajoutMedia"){
     }
 }
 elseif ($page === 'publication-cat') {
-    $cat = filter_input(INPUT_GET, 'cat', FILTER_VALIDATE_INT);
-    
-    if (isset($_GET['cat']) && $cat!==false){
-        
+    $option = filter_input(INPUT_GET, 'cat', FILTER_VALIDATE_INT);
+    if (isset($option) && $option!=false){
+        $publications = Publication::selectPublicationByCat($option);
+        include 'vue/publications-cat.php';
     }
     else{
-        
+        header('Location: http://localhost/wikhitema/index.php?page=index'); 
     }
 
 }

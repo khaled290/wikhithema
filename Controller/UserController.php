@@ -32,6 +32,10 @@ else if($page==='connexion'){
         include 'vue/index.php';
     }
 }
+else if($page==='deconnexion'){
+    session_destroy();
+    header('Location: http://localhost/wikhitema/index.php?page=connect');
+}
 else if ($page ==='inscription'){
     $user["pseudo"] = filter_input(INPUT_POST, "pseudo", FILTER_SANITIZE_FULL_SPECIAL_CHARS);
     $user["email"] = filter_input(INPUT_POST, "email", FILTER_SANITIZE_EMAIL);
