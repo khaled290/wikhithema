@@ -117,7 +117,7 @@ class User {
     public static function deleteUser ($id_user){
         global $pdo;
         
-        $requete= "DELETE FROM user WHERE id = ?";
+        $requete= "DELETE FROM user WHERE id_user = ?";
         $sth=$pdo->prepare($requete);
         $rowCount = $sth->execute(array($id_user));
         return $rowCount;
@@ -208,5 +208,15 @@ class User {
         ];
         return password_hash($mdp, PASSWORD_BCRYPT, $options);
     }
+
+    public static function selectAllUser(){
+        global $pdo;
+        $req = $pdo->prepare('SELECT * FROM user');
+        $req->execute();
+        $rowCount = $req->fetchAll(PDO::FETCH_ASSOC);
+        return $rowCount;
+    }
+
+
     
 }

@@ -7,12 +7,12 @@ if ($page === 'formThematique' && $_SESSION['user']['role'] == 1) {
     $thematique["nom"] = filter_input(INPUT_POST, "titre_thematique", FILTER_SANITIZE_FULL_SPECIAL_CHARS);
 
     if (empty($thematique["nom"])) {
-        echo "<style color='red'>Name field is empty.</style><br/>";
+        header('Location: http://localhost/wikhitema/index.php?page=formThematique');
     } else {
         thematique::updateThematique($thematique["id_thematique"], $thematique["nom"]);
-        header('Location: http://localhost/wikhitema/index.php?page=index');
+        header('Location: http://localhost/wikhitema/index.php?page=formThematique');
     }
-} else if ($page === 'ajoutThematique' &&$_SESSION['user']['role'] == 1 ) {
+} else if ($page === 'ajoutThematique' && $_SESSION['user']['role'] == 1) {
     $thematique["nom"] = filter_input(INPUT_POST, "titre_thematique", FILTER_SANITIZE_FULL_SPECIAL_CHARS);
     if ($thematique["nom"]) {
         echo thematique::createThematique($thematique["nom"]);

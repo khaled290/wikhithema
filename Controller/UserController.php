@@ -10,12 +10,10 @@
 if($page==='connect' ){
     if (!isset($_SESSION["user"]["pseudo"])){
         include 'vue/connexion.php';
+    } else {
+        header('Location: http://localhost/wikhitema/index.php?page=index');
     }
-    else{
-         header('Location: http://localhost/wikhitema/index.php?page=index');
-    }
-}
-else if($page==='connexion'){
+} else if ($page === 'connexion') {
     $login = filter_input(INPUT_POST, "login", FILTER_SANITIZE_EMAIL);
     $mdp = filter_input(INPUT_POST, "password", FILTER_SANITIZE_STRING);
     
@@ -28,15 +26,13 @@ else if($page==='connexion'){
     }else{
         $_SESSION["user"]["error"]="Nous ne pouvons pas vous connecter avec les informations saisies, veuillez réessayer.";
     }
-    
-    if ($_SESSION["user"]===false){
+
+    if ($_SESSION["user"] === false) {
         include 'vue/connexion.php';
-    }
-    else{
+    } else {
         include 'vue/index.php';
     }
-}
-else if($page==='deconnexion'){
+} else if ($page === 'deconnexion') {
     session_destroy();
     header('Location: http://localhost/wikhitema/index.php?page=connect');
 }
@@ -48,10 +44,10 @@ else if ($page ==='inscription'){
     $user["email"] = filter_input(INPUT_POST, "email", FILTER_SANITIZE_EMAIL);
     $user["mdp"] = filter_input(INPUT_POST, "password", FILTER_SANITIZE_STRING);
     $user["mdpConfirme"] = filter_input(INPUT_POST, "passwordConfirm", FILTER_SANITIZE_STRING);
-    
-    if ($user["mdp"] !== $user["mdpConfirme"]){
-        echo [$user["pseudo"] && $user["email"],"Les mots de passes sont différents"];
-    }else{
+
+    if ($user["mdp"] !== $user["mdpConfirme"]) {
+        echo [$user["pseudo"] && $user["email"], "Les mots de passes sont différents"];
+    } else {
         unset($user["mdpConfirme"]);
         if (User::selectUserByEmail($user["email"])->getEmail() === $user["email"]){
              $email = true;
@@ -72,7 +68,24 @@ else if ($page ==='inscription'){
             }
         }
     }
-    
+
+} else if ($page === 'modification') {
+
+
+} else if ($page === 'user') {
+
+} else if ($page === 'supprimerCompte' && $_SESSION['user']['role'] == 1) {
+    $listeUsers = User::selectAllUser();
+    include 'vue/admin-users.php';
+
+    $userDelete["id_user"] = filter_input(INPUT_POST, "id_user", FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+    $PubUserDelete = Publication::selectPublicationByIdUser($userDelete["id_user"]);
+    if (!empty($userDelete)) {
+        updatePubli($PubUserDelete);
+        User::deleteUser($userDelete["id_user"]);
+    } else {
+        [$_SESSION["user"]["pseudo"], " Nous n'avonns pas pu supprimer cette utilisateur, veuillez réessayer s'il vous plait"];
+    }
 }
 else if ($page === 'modifierCompte'){
     $referer = filter_input(INPUT_POST, "token", FILTER_SANITIZE_FULL_SPECIAL_CHARS);
@@ -117,6 +130,14 @@ else if ($page === 'modifierCompte'){
     }else{
         $_SESSION['user']['error']='le token n\'a pas passer la vérification, veuillez réessayer l\'opération.';
         include_once 'vue/user.php';
+    }
+function updatePubli($publi)
+{
+    var_dump($publi);
+    if (!empty($publi)) {
+        foreach ($publi as $delete) {
+            Publication::updatePubDelUser($delete["id_publication"]);
+        }
     }
 }
 else if ($page === 'formModifierCompte'){
