@@ -209,4 +209,15 @@ class Publication
         ));
         return $rowCount;
     }
+    
+    public static function recherchePublications($recherche){
+        global $pdo;
+        $string = "SELECT * FROM user NATURAL JOIN publication NATURAL JOIN thematique WHERE pseudo LIKE '%:cle%' OR publication.titre LIKE '%:cle%' OR publication.contenu LIKE '%:cle%';";
+        $req = $pdo->prepare($tring);
+        $rowCount = $req->execute(array(
+            ":cle" => $recherche
+        ));
+        $rowCount = $req->fetch(PDO::FETCH_ASSOC);
+        return $rowCount;
+    }
 }

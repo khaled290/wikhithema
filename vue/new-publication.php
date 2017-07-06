@@ -1,18 +1,14 @@
 <?php
 //On vérifie que l'utilisateur est connecté pour afficher la page (toutes les pages sauf inscription et connexion l'ont
 if (isset($_SESSION['user']['pseudo'])){
-        if (isset($listeThematique)){
-            include('header.inc.php');
-                    $token = generer_token();
+    if (isset($listeThematique)){
+        $token = generer_token();
+        include('header.inc.php');
 ?>
 
     <section class="container-wiki-text-editor">
         <h2 class="title-new-publication">Création d'une nouvelle publication</h2><br>
-        <?php if (isset($_SESSION['user']['error'])){?>
-        <div class="warning"><?php echo $_SESSION['user']['error'];
-        unset($_SESSION['user']['error']);
-        ?></div>
-        <?php}?>
+
         <form action="index.php?page=ajoutPublication" name="textEditor" id="textEditor" method="post">
             <div class="form-group">
                 <label for="publicationTitle">Titre de votre publication</label>
@@ -49,7 +45,7 @@ if (isset($_SESSION['user']['pseudo'])){
                 ?>
             <div class="form-group">
                 <label for="fileUpload">Charger un fichier (optionnel)</label>
-                <input type="file" id="fileUpload" name="media" id="pathMedia" >
+                <input type="file" id="fileUpload" name="media" id="pathMedia" />
                 <p class="help-block">Formats acceptés : mp3, jpeg</p>
             </div>
             <input type="hidden" name="token" id="token" value="<?php
@@ -70,13 +66,15 @@ if (isset($_SESSION['user']['pseudo'])){
 
 
 
-</body>
+    </body>
 </html>
-<?php   }
-        else{
-            header('Location: http://localhost/wikhitema/index.php?page=formPublication');
-        }
+<?php   
+
     }
     else{
-        header('Location: http://localhost/wikhitema/index.php?page=connect');
+        header('Location: http://localhost/wikhitema/index.php?page=formPublication');
     }
+}
+else{
+    header('Location: http://localhost/wikhitema/index.php?page=connect');
+}
