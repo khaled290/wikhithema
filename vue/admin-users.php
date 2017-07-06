@@ -1,29 +1,48 @@
 <?php include('header.inc.php'); ?>
 
-    <section class="container-infos-user">
-    	<h2 class="text-center">Supprimer les utilisateurs</h3><br><br>
-		<div class="row row-sm-offset-3">
-			<div class="col-xs-12 col-sm-6">
-                <form>
-				<form class="loginForm" action="" autocomplete="off" method="POST" id="modifThematique">
-					<div class="input-group">
-						<span class="bg-info zone-title-thematique">Thematique machin truc</span>
-                        <input class="btn btn-danger btn-modif" value="Supprimer l'utilisateur"></input>
-					</div><hr>
-					<span class="help-block"></span>
-				</form>
-			</div>
-		</div>
+<section class="container-infos-user">
+    <h2 class="text-center">Supprimer les utilisateurs</h2><br><br>
+    <div class="row row-sm-offset-3">
+        <div class="col-xs-12 col-sm-6">
 
-    </section>
 
-    <style type="text/css">
-    	h1 {
-    		color: #993333;
-    	}
-    	.btn-primary {
-    		display: none;
-    	}
-    </style>
+
+            <?php
+
+            foreach ($listeUsers as $users) {
+                echo "<form class='loginForm' action='index.php?page=supprimerCompte' autocomplete='off' method='POST' id='modifThematique'>
+                    <div class='input-group'>";
+                echo "<input type=\"hidden\" name=\"id_user\" value=\"" . $users['id_user'] . "\"/>";
+                echo "<span>".$users['pseudo']."</span>";
+                if ($users['role'] == 1){
+                    echo "<span> admin</span>";
+                }
+                elseif ($users['role'] == 2){
+                    echo "<span> auteur</span>";
+                }
+                elseif ($users['role'] == 3){
+                    echo "<span> Utilisateur</span>";
+                }
+                echo "</div>
+                    <hr>
+                    <button class='btn btn-danger' type=\"submit\">Supprimer l'utilisateur</button>
+                    <span class='help-block'></span>
+                    </form>";
+            }
+            ?>
+
+        </div>
+    </div>
+
+</section>
+
+<style type="text/css">
+    h1 {
+        color: #993333;
+    }
+    .btn-primary {
+        display: none;
+    }
+</style>
 </body>
 </html>
