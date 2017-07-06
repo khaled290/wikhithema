@@ -8,7 +8,6 @@
  */
 
 if($page==='connect' ){
-    echo "Je suis la";
     if (!isset($_SESSION["user"]) ||  $_SESSION["user"]===false  ){
         include 'vue/connexion.php';
     }
@@ -44,7 +43,7 @@ else if ($page ==='inscription'){
     }else{
         unset($user["mdpConfirme"]);
         if ($user["pseudo"] && $user["email"] && $user["mdp"]){
-            echo USER::createUser($user["pseudo"], $user["email"], $user["mdp"]);
+            echo USER::createUser($user["pseudo"], $user["email"], $user["mdp"], 3);
             header('Location: http://localhost/wikhitema/index.php?page=connect');
         }else{
             include_once 'vue/inscription.php';

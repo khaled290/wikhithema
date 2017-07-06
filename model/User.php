@@ -95,7 +95,7 @@ class User {
             $rowCount = $sth->execute(array($pseudo, $email, $mdp, $role));
             return $rowCount;
         }else{
-            return new User($pseudo, $email, $role);
+            return selectUserByPseudo($pseudo);
         }
     }
     
@@ -141,7 +141,7 @@ class User {
         $sth=$pdo->prepare($requete);
         $sth->execute(array($id_user));
         $result=$sth->fetch(PDO::FETCH_ASSOC);
-        return new User($result['pseudo'], $result['email'], $result['role']);
+        return new User($result['id_user'],$result['pseudo'], $result['email'], $result['role']);
     }
     
     public static function selectUserByEmail($email){
@@ -150,7 +150,7 @@ class User {
         $sth=$pdo->prepare($requete);
         $sth->execute(array($email));
         $result=$sth->fetch(PDO::FETCH_ASSOC);
-        return new User($result['pseudo'], $result['email'], $result['role']);
+        return new User($result['id_user'],$result['pseudo'], $result['email'], $result['role']);
     }
     
     public static function selectUserByPseudo($pseudo){
@@ -159,7 +159,7 @@ class User {
         $sth=$pdo->prepare($requete);
         $sth->execute(array($$pseudo));
         $result=$sth->fetch(PDO::FETCH_ASSOC);
-        return new User($result['pseudo'], $result['email'], $result['role']);
+        return new User($result['id_user'],$result['pseudo'], $result['email'], $result['role']);
     }
     
     public static function connexion($login, $mdp){

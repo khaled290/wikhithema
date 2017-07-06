@@ -1,5 +1,6 @@
 <?php
 //On vérifie que l'utilisateur est connecté pour afficher la page (toutes les pages sauf inscription et connexion l'ont
+
 if (isset($_SESSION['user']['pseudo'])){
         if (isset($publications) && isset($thematiques)){
 ?>

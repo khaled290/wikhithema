@@ -61,7 +61,10 @@
 			</div>
                 
                        <?php if (isset($_SESSION["user"]["error"])){ ?>
-                            <div class ="warning"> <?php echo $_SESSION["user"]["error"]; ?> </div>
+                            <div class ="warning"> <?php 
+                            echo $_SESSION["user"]["error"]; 
+                            unset($_SESSION['user']['error']);
+                            ?> </div>
                        <?php } ?>     
 			<div class="row row-sm-offset-3">
 				<div class="col-xs-12 col-sm-6">	

@@ -76,6 +76,11 @@ if (isset($_SESSION['user']['pseudo'])){
     </nav>
     <section class="container-wiki-text-editor">
         <h2 class="title-new-publication">Création d'une nouvelle publication</h2><br>
+        <?php if (isset($_SESSION['user']['error'])){?>
+        <div class="warning"><?php echo $_SESSION['user']['error'];
+        unset($_SESSION['user']['error']);
+        ?></div>
+        <?php}?>
         <form action="index.php?page=ajoutPublication" name="textEditor" id="textEditor" method="post">
             <div class="form-group">
                 <label for="publicationTitle">Titre de votre publication</label>
