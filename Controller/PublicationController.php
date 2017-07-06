@@ -82,6 +82,22 @@ elseif ($page === 'publications-cat') {
 }
 
 /*---------------------------------------------------------------------------------------
+ * -------------------------- RECHERCHE PAR ID ---------------------------------------
+ ---------------------------------------------------------------------------------------*/
+elseif ($page === 'afficherPublication') {
+    $option = filter_input(INPUT_GET, 'id', FILTER_VALIDATE_INT);
+    if (isset($option) && $option!=false){
+        $publication = Publication::selectPublication($option);
+        $publication ['pseudo'] = User::selectUserById($publication['id_user'])->to_array()['pseudo'];
+        include 'vue/blog-post.php';
+    }
+    else{
+        header('Location: http://localhost/wikhitema/index.php?page=index'); 
+    }
+
+}
+
+/*---------------------------------------------------------------------------------------
  * -------------------------- RECHERCHE GLOBALE -----------------------------------------
  ---------------------------------------------------------------------------------------*/
 else if ($page === "recherchePublication"){
