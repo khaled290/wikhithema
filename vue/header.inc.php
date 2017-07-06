@@ -16,7 +16,7 @@
 <body>
     <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
         <div class="container">
-            <div class="navbar-header mobile-menu">
+            <div class="navbar-header">
                 <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
                     <span class="sr-only">Toggle navigation</span>
                     <span class="icon-bar"></span>
@@ -27,14 +27,13 @@
             </div>
 
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-                <ul class="nav navbar-nav navbar-left ">
-                    <form action="" method="POST" class="input-group input-group-md zone-search col-xs-12">
-                        <input type="text" class="form-control col-xs-8" autofocus/>
-                        <button type="submit" class="btn btn-info col-xs-2"><i class="fa fa-search" aria-hidden="true"></i></button>
-                    </form>
+                <ul class="nav navbar-nav navbar-left">
+                 <div class="input-group input-group-lg">
+                    <button type="submit" class="btn btn-info add-thematique">Ajouter la thématique</button>
+                </div>  
                 </ul>
-
                 <ul class="nav navbar-nav navbar-right">
+
                     <li class="dropdown">
                         <button class="btn btn-warning add-publication-btn">
                             <a href="index.php?page=formPublication" class="btn-new-post">Ajouter une publication</a>
@@ -60,15 +59,7 @@
                     </li>
                 </ul>
             </div>
+            <!-- /.navbar-collapse -->
         </div>
+        <!-- /.container -->
     </nav>
-
-
-    <div class="col-xs-12 zone-search-mobile">
-        <center>
-            <form action="" method="POST" class="input-group input-group-md">
-                <input type="text" class="form-control col-xs-8 to-left" autofocus/>
-                <button type="submit" class="btn btn-info col-xs-2 to-right"><i class="fa fa-search" aria-hidden="true"></i></button>
-            </form>
-        </center>
-    </div>
