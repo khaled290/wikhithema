@@ -10,12 +10,11 @@ if (isset($_SESSION['user']['pseudo'])){
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="meilleur wiki au monde - WikHiTema">
     <meta name="author" content="AMLYS KHALED JASON">
-    <title>WikHiTema -- Compte utilisateur</title>
-    <link href="vue/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <title>WikHiTema</title>
     <link href="vue/css/bootstrap.css" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="vue/css/wiki-style.css">
-    <script type="text/javascript" src="vue/js/text-editor.js"></script>
-    <script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+    <link href="vue/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" type="text/css" href="vue/css/wiki-blog-articles.css">
 </head>
 
 <body onLoad="iFrameOn();">
@@ -124,6 +123,16 @@ if (isset($_SESSION['user']['pseudo'])){
             <input class="btn btn-primary" name="btnSubmit" type="button" value="Publier" onClick="javascript:submit_form();"/>
         </form>
     </section>
+
+    <!-- jQuery -->
+    <script src="vue/js/jquery.js"></script>
+
+    <!-- Bootstrap Core JavaScript -->
+    <script src="vue/js/bootstrap.min.js"></script>
+
+
+
+
 </body>
 </html>
 <?php   }

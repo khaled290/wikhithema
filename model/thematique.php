@@ -1,5 +1,6 @@
 <?php
 include_once 'connect.php';
+
 /**
  * Description of thematique
  *
@@ -42,11 +43,12 @@ class thematique
         $this->nom = $nom;
     }
 
-    public static function createThematique ($nom){
+    public static function createThematique($nom)
+    {
         global $pdo;
         $nom = filter_var($nom, FILTER_SANITIZE_FULL_SPECIAL_CHARS);
 
-        if ($nom){
+        if ($nom) {
             $req = $pdo->prepare("INSERT INTO thematique (nom) VALUES (:nom)");
             $req->execute(array(
                 ":nom" => $nom
@@ -54,16 +56,15 @@ class thematique
         }
 
     }
-    public static function updateThematique ($id,$nom){
+
+    public static function updateThematique($id, $nom)
+    {
         global $pdo;
 
         $req = $pdo->prepare("UPDATE thematique SET nom = :nom WHERE id_thematique = :id_thematique");
 
-        $oldThematique = Publication::selectThematique ($id);
-
-
-        $isThematiqueChanged = !empty($nom) && $nom !== $oldThematique["nom"] && $nom === NULL  &&  $nom !== '';
-        $name = $isThematiqueChanged && filter_var($nom, FILTER_SANITIZE_FULL_SPECIAL_CHARS) ? $nom : $oldThematique["nom"];
+//        $oldThematique = thematique::selectThematique ($id);
+        $name = filter_var($nom, FILTER_SANITIZE_FULL_SPECIAL_CHARS);
 
         $rowCount = $req->execute(array(
             ":nom" => $name,
@@ -71,7 +72,9 @@ class thematique
         ));
         return $rowCount;
     }
-    public static function deleteThematique ($id){
+
+    public static function deleteThematique($id)
+    {
         global $pdo;
 
         $req = $pdo->prepare('DELETE FROM thematique WHERE id_thematique = :id_thematique');
@@ -80,7 +83,9 @@ class thematique
         ));
         return $rowCount;
     }
-    public static function selectAllThematique (){
+
+    public static function selectAllThematique()
+    {
         global $pdo;
 
         $req = $pdo->prepare('SELECT * FROM thematique');
@@ -89,14 +94,16 @@ class thematique
         return $rowCount;
     }
 
-    public static function selectThematique ($id){
+    public static function selectThematique($id)
+    {
         global $pdo;
 
 
         $req = $pdo->prepare('SELECT nom FROM thematique WHERE id_thematique = :id_thematique');
-        $rowCount = $req->execute(array(
+        $req->execute(array(
             ":id_thematique" => $id
         ));
+        $rowCount = $req->fetch(PDO::FETCH_ASSOC);
         return $rowCount;
     }
 }

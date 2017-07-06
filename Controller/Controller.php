@@ -13,7 +13,7 @@ require_once 'PublicationController.php';
 
 require_once 'UserController.php';
 
-//require_once 'ThematiqueController.php';
+require_once 'ThematiqueController.php';
 
 
 if ($page === 'index'){
