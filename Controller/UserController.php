@@ -117,14 +117,22 @@ else if ($page === 'supprimerMonCompte') {
 } 
 //Suppression du compte
 else if ($page === 'suppressionMonCompte') {
-    
-    $PubUserDelete = Publication::selectPublicationByIdUser($_SESSION['user']['id_user']);
-    if (!empty($_SESSION['user']['id_user'])) {
-        updatePubli($PubUserDelete);
-        User::deleteUser($_SESSION['user']['id_user']);
-        session_destroy();
-    } else {
-        [$_SESSION["user"]["pseudo"], " Nous n'avonns pas pu supprimer cette utilisateur, veuillez réessayer s'il vous plait"];
+    //Recupération du token
+    $referer = filter_input(INPUT_POST, "token", FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+    //On vérifie le token
+    if (verifier_token($referer)) {
+        //On recupère les publications éventuelles de cet utilisateur
+        $PubUserDelete = Publication::selectPublicationByIdUser($_SESSION['user']['id_user']);
+        if (!empty($_SESSION['user']['id_user'])) {
+            //On les modifies pour qu'elle appartienne à un utilisateur anonyme créer spécialement pour ça.
+            updatePubli($PubUserDelete);
+            User::deleteUser($_SESSION['user']['id_user']);
+            session_destroy();
+            header('Location: http://localhost/wikhitema/index.php?page=connect');
+            
+        } else {
+            [$_SESSION["user"]["pseudo"], " Nous n'avonns pas pu supprimer cette utilisateur, veuillez réessayer s'il vous plait"];
+        }
     }
 }
 /*---------------------------------------------------------------------------------------
@@ -135,6 +143,16 @@ else if ($page === 'formModifierCompte') {
     include_once 'vue/user.php';
 } 
 //Modification du compte si le boutton modifier est cliqué
+else if ($page === "modificationRole" && $_SESSION['user']['role']==1){
+    $id = filter_input(INPUT_GET, 'id', FILTER_SANITIZE_NUMBER_INT);
+    $role = filter_input(INPUT_GET, 'role', FILTER_SANITIZE_NUMBER_INT);
+    if ($id === NULL || $role === NULL){
+        header('Location: http://localhost/wikhitema/index.php?page=supprimerCompte');
+    }else{
+        User::updateRoleUser($id, $role);
+        header('Location: http://localhost/wikhitema/index.php?page=supprimerCompte');
+    }
+}
 else if ($page === 'modifierCompte') {
     //Recupération du token
     $referer = filter_input(INPUT_POST, "token", FILTER_SANITIZE_FULL_SPECIAL_CHARS);
@@ -201,7 +219,6 @@ else if ($page === 'modifierCompte') {
 //PUBICATIONS QUI LUI SONT ATTACHEE
 function updatePubli($publi)
 {
-    var_dump($publi);
     if (!empty($publi)) {
         foreach ($publi as $delete) {
             Publication::updatePubDelUser($delete["id_publication"]);

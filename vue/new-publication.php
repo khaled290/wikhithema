@@ -74,7 +74,7 @@ if (isset($_SESSION['user']['pseudo'])) {
         <?php
 
     } else {
-        header('Location: http://localhost/wikhitema/index.php?page=formPublication');
+        header('Location: http://localhost/wikhitema/index.php?page=index');
     }
 } else {
     header('Location: http://localhost/wikhitema/index.php?page=connect');

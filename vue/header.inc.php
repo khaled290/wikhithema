@@ -50,6 +50,11 @@
                             <li>
                                 <a href="index.php?page=formModifierCompte">Parametres</a>
                             </li>
+                            <?php if ($_SESSION['user']['role']==1){ ?>
+                            <li>
+                                <a href="index.php?page=supprimerCompte">Administration</a>
+                            </li>
+                            <?php } ?>
                             <li>
                                 <a href="index.php">Mes publication</a>
                             </li>

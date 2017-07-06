@@ -9,7 +9,7 @@
             <?php
 
             foreach ($listeUsers as $users) {
-                echo "<form class='loginForm' action='index.php?page=supprimerCompte' autocomplete='off' method='POST' id='modifThematique'>
+                echo "<section><form class='loginForm' action='index.php?page=supprimerCompte' autocomplete='off' method='POST' id='modifThematique'>
                     <div class='input-group'>";
                 echo "<input type=\"hidden\" name=\"id_user\" value=\"" . $users['id_user'] . "\"/>";
                 echo "<span>" . $users['pseudo'] . "</span>";
@@ -20,11 +20,19 @@
                 } elseif ($users['role'] == 3) {
                     echo "<span> Utilisateur</span>";
                 }
-                echo "</div>
-                    <hr>
+                if($users['role']>1){
+                    echo "<span><a href='index.php?page=modificationRole&role=3&id=" . $users['id_user'] . "'>Utilisateur</a>||</span>
+                        <span><a href='index.php?page=modificationRole&role=2&id=" . $users['id_user'] . "'>Auteur</a>||</span>
+                        <span><a href='index.php?page=modificationRole&role=1&id=" . $users['id_user'] . "'>Administrateur</a></span>
+                            </div>
+                    
                     <button class='btn btn-danger' type=\"submit\">Supprimer l'utilisateur</button>
                     <span class='help-block'></span>
-                    </form>";
+                    </form><hr></section>";
+                }   
+                else {echo"</div>
+                    </form><hr></section></br></br>";
+                }
             }
             ?>
 

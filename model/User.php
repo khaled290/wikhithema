@@ -152,6 +152,16 @@ class User {
         return $rowCount;
     }
     
+    public static function updateRoleUser($id, $role){
+        global $pdo;
+        $requete = "UPDATE user SET role = ? WHERE id_user = ?";
+        $sth=$pdo->prepare($requete);
+        
+        $rowCount = $sth->execute(array($role, $id));
+        return $rowCount;
+    }
+
+
     public static function selectUserById($id_user){
         global $pdo;
         $requete = "SELECT * FROM user where id_user = ?";
