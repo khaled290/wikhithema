@@ -1,8 +1,8 @@
 <?php include('header.inc.php'); ?>
-    
-    <section class="container-infos-user">
-    	<h2 class="text-center">Modifiez les champs que vous voulez mettre à jour</h3><br><br>
-		<div class="row row-sm-offset-3">
+
+<section class="container-infos-user">
+    <h2 class="text-center">Modifiez les champs que vous voulez mettre à jour</h3><br><br>
+        <div class="row row-sm-offset-3">
             <div class="col-xs-12 col-sm-6">
                 <form>
                     <div class="input-group input-group-lg">
@@ -10,27 +10,27 @@
                         <span class="input-group-btn">
                             <button type="submit" class="btn btn-info add-thematique">Ajouter la thématique</button>
                         </span>
-                </div>
-            </form>
-            <br><br>
-            <hr>
-            <hr>
+                    </div>
+                </form>
+                <br><br>
+                <hr>
+                <hr>
 
-            <?php
-            foreach ($listeThematique as $thematique) {
-                echo "<form class='loginForm' action='index.php?page=modifierThematique' autocomplete='off' method='POST' id='modifThematique'>
+                <?php
+                foreach ($listeThematique as $thematique) {
+                    echo "<form class='loginForm' action='index.php?page=modifierThematique' autocomplete='off' method='POST' id='modifThematique'>
                     <div class='input-group'>";
-                echo "<input type=\"hidden\" name=\"id_thematique\" value=\"" . $thematique['id_thematique'] . "\"/>";
-                echo "<input type='text' name='titre_thematique' value=\"" . $thematique['nom'] . "\" />";
-                echo "</div>
+                    echo "<input type=\"hidden\" name=\"id_thematique\" value=\"" . $thematique['id_thematique'] . "\"/>";
+                    echo "<input type='text' name='titre_thematique' value=\"" . $thematique['nom'] . "\" />";
+                    echo "</div>
                     <hr>
                     <button class='btn btn-info'>Envoyer les modifications</button>
                     <span class='help-block'></span>
                     </form>";
-            }
-            ?>
+                }
+                ?>
+            </div>
         </div>
-    </div>
 
 </section>
 
