@@ -1,27 +1,13 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="meilleur wiki au monde - WikHiTema">
-    <meta name="author" content="AMLYS KHALED JASON">
-    <title>WikHiTema</title>
-    <link href="vue/css/bootstrap.css" rel="stylesheet">
-    <link rel="stylesheet" type="text/css" href="vue/css/wiki-style.css">
-    <link href="vue/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
-    <link rel="stylesheet" type="text/css" href="vue/css/wiki-blog-articles.css">
-</head>
-
-<body>
-    <?php include('header.inc.php'); ?>
-<section class="container-infos-user">
-    <h2 class="text-center">Modifiez les champs que vous voulez mettre à jour</h2><br><br>
-    <div class="row row-sm-offset-3">
-        <div class="col-xs-12 col-sm-6">
-            <form action="index.php?page=ajoutThematique" method="POST">
-                <div class="input-group input-group-lg">
-                    <input type="text" name="titre_thematique" class="form-control" autofocus/>
-                    <span class="input-group-btn">
+<?php include('header.inc.php'); ?>
+    
+    <section class="container-infos-user">
+    	<h2 class="text-center">Modifiez les champs que vous voulez mettre à jour</h3><br><br>
+		<div class="row row-sm-offset-3">
+            <div class="col-xs-12 col-sm-6">
+                <form>
+                    <div class="input-group input-group-lg">
+                        <input type="text" class="form-control" autofocus/>
+                        <span class="input-group-btn">
                             <button type="submit" class="btn btn-info add-thematique">Ajouter la thématique</button>
                         </span>
                 </div>

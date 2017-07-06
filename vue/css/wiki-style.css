@@ -44,7 +44,7 @@ a:hover, a:focus {
 
 h1 {
   font-weight: bold;  
-  z-index: 9999;
+  z-index: 00;
   position: relative;
   margin-left: 00px;
   margin-right: 00px;
@@ -61,15 +61,8 @@ h1 {
   top: 00px;
 }
 
-@media (min-width: 768px) {
-    .row-sm-offset-3 div:first-child[class*="col-"] {
-        margin-left: 25%;
-    }
-    
-    .col-sm-6 {
-      width: 50%;
-      margin-left: 25%
-    }
+hr {
+  z-index: 00;
 }
 
 .login .authTitle {
@@ -161,13 +154,22 @@ h1 {
 .forgotPwd a{
   color: #fff;
 }
-  
-@media (min-width: 768px) {
-    .login .forgotPwd {
-        text-align: right;
-        margin-top:10px;
-  }   
+
+nav {
+  z-index: 999;
 }
+
+
+/*********** HEADER ********************/
+.to-right {
+  float: right;
+}
+
+.to-left {
+  float: left;
+}
+
+/*********** HEADER ********************/
 
 @media (min-width: 768px) {
     .row-sm-offset-3 div:first-child[class*="col-"] {
@@ -178,4 +180,19 @@ h1 {
       width: 50%;
       margin-left: 25%
     }
+
+    .login .forgotPwd {
+      text-align: right;
+      margin-top:10px;
+    }
+
+}
+
+@media (max-width: 768px) {
+  .add-publication-btn {
+    position: relative;
+    left: 15px;
+    margin-bottom: 10px;
+  }
+
 }
