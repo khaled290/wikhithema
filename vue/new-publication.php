@@ -21,7 +21,6 @@ if (isset($_SESSION['user']['pseudo'])){
             <br>
             <div class="form-group">
                 <label for="zone-text">Mise en texte</label>
-                <div id="zone-text form-group">
                   <input class="btn" type="button" onClick="iBold()" value="B">
                   <input class="btn" type="button" onClick="iUnderline()" value="U">
                   <input class="btn" type="button" onClick="iItalic()" value="I">

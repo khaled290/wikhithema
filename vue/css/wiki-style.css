@@ -155,7 +155,7 @@ hr {
   color: #fff;
 }
 
-nav {
+body>nav {
   z-index: 999;
 }
 
