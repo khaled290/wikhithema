@@ -45,9 +45,7 @@ function verifier_token($referer, $nom = '')
     if(isset($_SESSION[$nom.'_token']) && isset($_SESSION[$nom.'_token_time']) && isset($_POST['token'])){
             if($_SESSION[$nom.'_token'] == $_POST['token']){
                     if($_SESSION[$nom.'_token_time'] >= (time() - $temps)){
-                            if($_SERVER['HTTP_REFERER'] == $referer){
-                                    return true;
-                            }
+                        return true;
                     }
             }
     }

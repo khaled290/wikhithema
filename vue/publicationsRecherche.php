@@ -1,44 +1,28 @@
 <?php
 //On vérifie que l'utilisateur est connecté pour afficher la page (toutes les pages sauf inscription et connexion l'ont
-
 if (isset($_SESSION['user']['pseudo'])){
-        if (isset($publications) && isset($thematiques)){
-            include('header.inc.php');
+    if(isset($page) && isset($publications)){
+        include('header.inc.php');
 ?>
-    <!-- Page Content -->
-    <div class="container">
 
-        <!-- Marketing Icons Section -->
-        <div class="row">
-            <div class="col-lg-12">
-                <h1 class="page-header"> Catégories de publications</h1>
-            </div>
-            <?php foreach ($thematiques as $thematique){ ?>
-            <div class="col-md-4">
-                <div class="panel panel-default">
-                    <div class="panel-heading">
-                        <h4><i class="<?php  ?>"></i> <?php echo $thematique['nom']; ?></h4>
-                    </div>
-                    <div class="panel-body">
-                        <a href="index.php?page=publications-cat&cat=<?php echo $thematique['id_thematique']; ?>" class="btn btn-default"> Voir les publications</a>
-                    </div>
-                </div>
-            </div>
-            <?php  }?>
-        </div>
+    <!-- Page Content -->
+    <div class="container container-publications">
+
+ 
         <!-- /.row -->
 
-        <!-- Features Section -->
-        
+        <!-- Blog Post Row -->
         <div class="row">
-            <div class="col-lg-12">
-                <h2 class="page-header">Dernieres publications</h2>
-            </div>
             <?php 
-                for ($i=0; $i<2 && $i< count($publications); $i++) {  
-                    $publication = $publications[$i];
-            ?>
+            $numPage = filter_input(INPUT_GET, 'numPage', FILTER_SANITIZE_NUMBER_INT);
+            $i=0;
+                foreach($publications as $publication){ 
+                    
            
+            if ($i%4===0){
+                echo '<hr>';
+            }
+            ?>
             <article class="col-md-6">
                 <h3><a href="file:///C:/Users/LAM/Desktop/Wiki-Project/bootstrap/blog-post.php" class="titre-article-link"> <?php echo $publication['titre']; ?></a></h3>
                 <span><strong>Date de mise à jour :</strong> <?php echo date_format(date_create($publication['date']), 'd/m/Y H:i' ) ?></span>
@@ -54,12 +38,19 @@ if (isset($_SESSION['user']['pseudo'])){
                 //var_dump($_SESSION['user']);
                     ?>
             </article>
-            <?php } ?>
-        </div>
-        
-        <!-- /.row -->
+            
+            
+            <?php 
+            if ($i%4>1){
+                echo '<hr>';
+            }
+            $i++;
+            } ?>
 
-        <hr><br><br>
+        </div>
+        <!-- /.row -->
+        <hr>
+
 
         <!-- Footer -->
         <footer>
@@ -79,23 +70,15 @@ if (isset($_SESSION['user']['pseudo'])){
     <!-- Bootstrap Core JavaScript -->
     <script src="vue/js/bootstrap.min.js"></script>
 
-    <!-- Script to Activate the Carousel -->
-    <script>
-    $('.carousel').carousel({
-        interval: 5000 //changes the speed
-    })
-    </script>
-
 </body>
 
 </html>
-<?php }
-    //Si les variables publications et thematiques ne sont pas présentes, on redirige
-    else{
+<?php 
+    }else{
         header('Location: http://localhost/wikhitema/index.php?page=index');
     }
 }
+
 else{
-    session_destroy();
     header('Location: http://localhost/wikhitema/index.php?page=connect');
 }

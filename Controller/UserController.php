@@ -87,6 +87,9 @@ else if ($page === 'modifierCompte'){
             include_once 'vue/user.php';
         }else{
             unset($user["mdpConfirme"]);
+            if (!$mdpChanged){
+                $user["mdp"]=NULL;
+            }
             if (User::selectUserByEmail($user["email"])->getEmail() === $user["email"]){
                 $email = true;
                 include_once 'vue/user.php';
@@ -96,13 +99,14 @@ else if ($page === 'modifierCompte'){
                 include_once 'vue/user.php';
             }
             else {
-                if ($user["pseudo"] || $user["email"] || $user["mdp"]){
-                    echo USER::updateUser($_SESSION['user']['id_user'],array("pseudo" => $user["pseudo"], 
+                if ($user["pseudo"]!=NULL || $user["email"]!=NULL || $user["mdp"]!=NULL){
+                    $_SESSION['user'] = USER::updateUser($_SESSION['user']['id_user'],array("pseudo" => $user["pseudo"], 
                         "email" => $user["email"], 
                         "mdp" => $user["mdp"], 
                         "role" => 3));
-                    die();
-                    header('Location: http://localhost/wikhitema/index.php?page=modifierCompte');
+                    
+                    
+                    header('Location: http://localhost/wikhitema/index.php?page=formModifierCompte');
                 }else{
                     include_once 'vue/user.php';
                 }

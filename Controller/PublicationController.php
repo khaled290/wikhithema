@@ -57,5 +57,7 @@ elseif ($page === 'publications-cat') {
 
 }
 else if ($page === "recherchePublication"){
-    
+    $recherche = filter_input(INPUT_POST, "recherche", FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+    $publications = Publication::recherchePublications($recherche);
+    include_once 'vue/publicationsRecherche.php';
 }

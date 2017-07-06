@@ -28,8 +28,8 @@
 
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 <ul class="nav navbar-nav navbar-left ">
-                    <form action="" method="POST" class="input-group input-group-md zone-search col-xs-12">
-                        <input type="text" class="form-control col-xs-8" autofocus/>
+                    <form action="index.php?page=recherchePublication" method="POST" class="input-group input-group-md zone-search col-xs-12">
+                        <input type="text" name="recherche" id="recherche" class="form-control col-xs-8" autofocus/>
                         <button type="submit" class="btn btn-info col-xs-2"><i class="fa fa-search" aria-hidden="true"></i></button>
                     </form>
                 </ul>
@@ -48,7 +48,7 @@
                                 Pseudo : <?php echo $_SESSION['user']['pseudo']; ?>
                             </li>
                             <li>
-                                <a href="index.php">Parametres</a>
+                                <a href="index.php?page=formModifierCompte">Parametres</a>
                             </li>
                             <li>
                                 <a href="index.php">Mes publication</a>

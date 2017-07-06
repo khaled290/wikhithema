@@ -19,15 +19,26 @@ if (isset($_SESSION['user']['pseudo'])){
             <?php 
             $numPage = filter_input(INPUT_GET, 'numPage', FILTER_SANITIZE_NUMBER_INT);
             $numPage = isset($numPage) ? $numPage : 1 ;
-            for($i=($numPage-1); $i< (($numPage)*4); $i++){ ?>
-                <div class="col-md-6">
-                    <h3>
-                        <a href="blog-post.php">Titre publication</a>
-                    </h3>
-                    <p>Publié par <strong>User</strong> dans la catégorie <strong>Informatique</strong></p>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</p>
-                    <a class="btn btn-primary" href="blog-post.php">Lire l'article <i class="fa fa-angle-right"></i></a>
-                </div>
+            for($i=($numPage*4-1); $i< (($numPage)*4); $i++){ 
+               $publication = $publications[$i];
+            ?>
+           
+            <article class="col-md-6">
+                <h3><a href="file:///C:/Users/LAM/Desktop/Wiki-Project/bootstrap/blog-post.php" class="titre-article-link"> <?php echo $publication['titre']; ?></a></h3>
+                <span><strong>Date de mise à jour :</strong> <?php echo date_format(date_create($publication['date']), 'd/m/Y H:i' ) ?></span>
+                <p>
+                    <?php echo $publication['contenu']; ?>
+                </p>
+                <?php if(($_SESSION['user']['id_user']===$publication['id_user'] && $_SESSION['user']['role'] < 3) || $_SESSION['user']['role']==1) {
+                    ?>
+                    <a href="index.php?page=modifPublications&id=<?php echo $publication['id_publication']; ?>" class="btn btn-default" >modifier</a> 
+                    <a href="index.php?page=supprPublications&id=<?php echo $publication['id_publication']; ?>" class="btn btn-default" >supprimer</a>
+                <?php
+                } 
+                //var_dump($_SESSION['user']);
+                    ?>
+            </article>
+            
             
             <?php 
             if ($i%4>1){
@@ -35,6 +46,7 @@ if (isset($_SESSION['user']['pseudo'])){
             }
             
             } ?>
+
             
 
         </div>

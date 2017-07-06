@@ -1,6 +1,7 @@
 <?php 
     //Si on accède à la page sans passer par le controleur on redirige
     if (!isset($page)){
+        session_destroy();
         header('Location: http://localhost/wikhitema/index.php?page=connect');
     }
     else if(isset ($_SESSION['user']['pseudo'])){
@@ -114,4 +115,4 @@
 	</div>
 </body>
 </html>
-    <?php }
+    <?php } 

@@ -68,6 +68,21 @@ class User {
         );
     }
     
+    public function to_array_mdp(){
+        $array = $this->to_array();
+        $array['mdp'] = $this->selectMdp();
+        return $array;
+    }
+
+    private function selectMdp(){
+        global $pdo;
+        $requete = "SELECT * FROM user where id_user = ?";
+        $sth=$pdo->prepare($requete);
+        $sth->execute(array($this->id_user));
+        $result=$sth->fetch(PDO::FETCH_ASSOC);
+        return $result['mdp'];
+    }
+
     public static function json_to_user($json){
         $tab=json_decode($json);
         return new User(
@@ -113,7 +128,8 @@ class User {
         $requete = "UPDATE user SET pseudo = ?, email = ?, mdp = ?, role = ? WHERE id_user = ?";
         $sth=$pdo->prepare($requete);
         
-        $oldUser = USER::selectUserById($id_user)->to_array();
+        $oldUser = USER::selectUserById($id_user)->to_array_mdp();
+        
         
         $user["mdp"]=USER::cryptMdp($user["mdp"]);
         

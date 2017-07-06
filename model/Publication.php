@@ -212,12 +212,13 @@ class Publication
     
     public static function recherchePublications($recherche){
         global $pdo;
-        $string = "SELECT * FROM user NATURAL JOIN publication NATURAL JOIN thematique WHERE pseudo LIKE '%:cle%' OR publication.titre LIKE '%:cle%' OR publication.contenu LIKE '%:cle%';";
-        $req = $pdo->prepare($tring);
-        $rowCount = $req->execute(array(
-            ":cle" => $recherche
-        ));
-        $rowCount = $req->fetch(PDO::FETCH_ASSOC);
+        $recherche = filter_var($recherche, FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+        $string = "SELECT * FROM user NATURAL JOIN publication NATURAL JOIN thematique WHERE pseudo LIKE '%$recherche%' OR publication.titre LIKE '%$recherche%' OR publication.contenu LIKE '%$recherche%' OR thematique.nom LIKE '%$recherche%';";
+        $req = $pdo->prepare($string);
+        
+        $req->execute();
+        
+        $rowCount = $req->fetchAll(PDO::FETCH_ASSOC);
         return $rowCount;
     }
 }

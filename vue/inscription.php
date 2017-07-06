@@ -1,5 +1,6 @@
 <?php 
     //Si on accède à la page sans passer par le controleur on redirige
+    session_destroy();
     if (!isset($page)){
         header('Location: http://localhost/wikhitema/index.php?page=connect');
     }
@@ -87,10 +88,14 @@
 							<span class="input-group-addon"><i class="fa fa-lock"></i></span>
 							<input  type="password" class="form-control mdp-zone" name="passwordConfirm" placeholder="Confirmez le mot de passe" required>
 						</div>
-                                                <span class="help-block"> blabla</span>
+                                                <span class="help-block"> </span>
 
 						<button class="btn btn-lg btn-success btn-block" type="submit">Créer un compte</button>
 					</form>
+                                    
+                                    <div class="col-xs-12 col-sm-6">	
+				    <button class="btn btn-lg btn-success btn-block"><a href="index.php?page=connect">Connectez vous</a></button>
+				</div>
 				</div>
 	    	</div>	    	
 
