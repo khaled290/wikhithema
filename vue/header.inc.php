@@ -36,8 +36,16 @@
 
                 <ul class="nav navbar-nav navbar-right">
                     <li class="dropdown">
-                        <button class="btn btn-warning add-publication-btn">
-                            <a href="index.php?page=formPublication" class="btn-new-post">Ajouter une publication</a>
+                        <button class="btn btn-warning add-publication-btn" <?php if ($_SESSION['user']['role'] == 3){ ?>
+                            disabled="disabled"
+                         <?php } ?>>
+                            <?php if ($_SESSION['user']['role'] < 3){ ?>
+                            <a href="index.php?page=formPublication" class="btn-new-post">
+                                <?php } ?> 
+                                Ajouter une publication
+                            <?php if ($_SESSION['user']['role'] < 3){ ?>
+                            </a>
+                            <?php } ?>
                         </button>
                     </li>
 

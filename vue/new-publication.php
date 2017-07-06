@@ -1,7 +1,8 @@
 <?php
 //On vérifie que l'utilisateur est connecté pour afficher la page (toutes les pages sauf inscription et connexion l'ont
 if (isset($_SESSION['user']['pseudo'])) {
-    if (isset($listeThematique)) {
+    if ($_SESSION['user']['role']<3){
+        if (isset($listeThematique)) {
         $token = generer_token();
         include('header.inc.php');
         ?>
@@ -74,7 +75,12 @@ if (isset($_SESSION['user']['pseudo'])) {
         </html>
         <?php
 
-    } else {
+        } else {
+            header('Location: http://localhost/wikhitema/index.php?page=index');
+        }
+    
+    }else {
+        $_SESSION['user']['error']="Vous n'avez pas les droits pour publier quelque chose.";
         header('Location: http://localhost/wikhitema/index.php?page=index');
     }
 } else {
