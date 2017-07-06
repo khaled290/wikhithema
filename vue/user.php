@@ -6,7 +6,7 @@ if (isset($_SESSION['user']['pseudo'])){
 
    
     <section class="container-infos-user">
-    	<h1 class="text-center"><i class="fa fa-exclamation-triangle" aria-hidden="true"> </i>  Modifiez les champs que vous voulez mettre à jour <br><small>aucun champ n'est obligatoire</small></h1>
+    	<h2 class="text-center"><i class="fa fa-exclamation-triangle" aria-hidden="true"> </i> Modifiez les champs que vous voulez mettre à jour <br><small>aucun champ n'est obligatoire</small></h2>
         <?php if (isset($_SESSION['user']['error'])){
             echo '<div class="danger">'.$_SESSION['user']['error'].'</div>';
             unset($_SESSION['user']['error']);
@@ -44,7 +44,7 @@ if (isset($_SESSION['user']['pseudo'])){
 					<span class="help-block"></span>
 
 					<button class="btn btn-lg btn-primary btn-block" type="submit" style="display:inline;">Valider les modifications</button>
-					<button class="btn btn-lg btn-danger btn-block" type="submit"><a href="index.php">Ne rien modifier (retour à l'accueil)</a></button>
+					<button class="btn btn-lg btn-danger btn-block btn-return" type="submit"><a href="index.php">Ne rien modifier (retour à l'accueil)</a></button>
 				</form>
                 <hr><hr><br><br>
                 <form class="supprAccount" action="index.php?page=supprimerMonCompte" method="POST">
@@ -55,25 +55,26 @@ if (isset($_SESSION['user']['pseudo'])){
 
     </section>
 
-    <style type="text/css">
-    	h1 {
-    		color: #993333;
-    	}
-    	.btn-primary {
-    		display: none;
-    	}
-    </style>
-    <script type="text/javascript">
+        <!-- jQuery -->
+    <script src="vue/js/jquery.js"></script>
 
-		/*$("input").focus((function() {
-		    if(($(".pseudo-zone").val().length >= 1) || ($(".email-zone").val().length >= 1) || ($(".mdp-zone").val().length >= 1)) {
-		         $(".btn-primary").css({"display":"inline"});
-		    } else {
-		         $(".btn-primary").css({"display":"none"});
-		         // Disable submit button
-			}
-		});*/
-        </script>
+    <!-- Bootstrap Core JavaScript -->
+    <script src="vue/js/bootstrap.min.js"></script>
+
+    <script src="vue/js/text-editor.js"></script>
+
+    </style>
+<!--<script type="text/javascript">
+
+$("input").focus((function() {
+    if(($(".pseudo-zone").val().length >= 1) || ($(".email-zone").val().length >= 1) || ($(".mdp-zone").val().length >= 1)) {
+         $(".btn-primary").css({"display":"inline"});
+    } else {
+         $(".btn-primary").css({"display":"none"});
+         // Disable submit button
+	}
+});
+</script>-->
     </body>
 </html>
 <?php }

@@ -18,6 +18,9 @@ a:hover, a:focus {
   text-decoration: none;
 }
 
+.container-infos-user {
+  padding: 20px;
+}
 .title-new-publication {
   text-align: center;
 }
@@ -65,6 +68,14 @@ hr {
   z-index: 00;
 }
 
+.btn-return, .btn-return:hover, .btn-return:focus {
+  background: none;
+  border: none;
+}
+
+.btn-text-format { 
+  margin-bottom: 10px;
+}
 .login .authTitle {
     text-align: center;
   line-height: 300%;

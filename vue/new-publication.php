@@ -11,7 +11,7 @@ if (isset($_SESSION['user']['pseudo'])) {
         <section class="container-wiki-text-editor">
             <h2 class="title-new-publication">Création d'une nouvelle publication</h2><br>
 
-                  <input class="btn" type="button" onClick="iHorizontalRule()" value="HR"> 
+                  
             <form action="index.php?page=ajoutPublication" name="textEditor" id="textEditor" method="post">
                 <div class="form-group">
                     <label for="publicationTitle">Titre de votre publication</label>
@@ -22,16 +22,17 @@ if (isset($_SESSION['user']['pseudo'])) {
                 <div class="form-group">
                     <label for="zone-text">Mise en texte</label>
                     <div id="form-group">
-                        <input class="btn" type="button" onClick="iBold()" value="B">
-                        <input class="btn" type="button" onClick="iUnderline()" value="U">
-                        <input class="btn" type="button" onClick="iItalic()" value="I">
-                        <input class="btn" type="button" onClick="iFontSize()" value="Text Size">
-                        <input class="btn" type="button" onClick="iForeColor()" value="Text Color">
-                        <input class="btn" type="button" onClick="iHorizontalRule()" value="HR">
-                        <input class="btn" type="button" onClick="iUnorderedList()" value="Liste : 1.">
-                        <input class="btn" type="button" onClick="iOrderedList()" value="Liste : •">
-                        <input class="btn" type="button" onClick="iLink()" value="Link">
-                        <input class="btn" type="button" onClick="iUnLink()" value="UnLink">
+                        <input class="btn btn-text-format" type="button" onClick="iHorizontalRule()" value="HR"> 
+                        <input class="btn btn-text-format" type="button" onClick="iBold()" value="B">
+                        <input class="btn btn-text-format" type="button" onClick="iUnderline()" value="U">
+                        <input class="btn btn-text-format" type="button" onClick="iItalic()" value="I">
+                        <input class="btn btn-text-format" type="button" onClick="iFontSize()" value="Text Size">
+                        <input class="btn btn-text-format" type="button" onClick="iForeColor()" value="Text Color">
+                        <input class="btn btn-text-format" type="button" onClick="iHorizontalRule()" value="HR">
+                        <input class="btn btn-text-format" type="button" onClick="iUnorderedList()" value="Liste : 1.">
+                        <input class="btn btn-text-format" type="button" onClick="iOrderedList()" value="Liste : •">
+                        <input class="btn btn-text-format" type="button" onClick="iLink()" value="Link">
+                        <input class="btn btn-text-format" type="button" onClick="iUnLink()" value="UnLink">
 
                     </div>
                     <br><br>
