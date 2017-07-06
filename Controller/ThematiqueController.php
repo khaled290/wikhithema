@@ -1,8 +1,23 @@
 <?php
+
+
+/*---------------------------------------------------------------------------------------
+ * -------------------------- THEMATIQUE CONTROLLER -------------------------------------
+ ---------------------------------------------------------------------------------------*/
+
+
+/*---------------------------------------------------------------------------------------
+ * -------------------------- FORMULAIRE AJOUT/MODIFICATION -----------------------------
+ ---------------------------------------------------------------------------------------*/
 if ($page === 'formThematique' && $_SESSION['user']['role'] == 1) {
     $listeThematique = THEMATIQUE::selectAllThematique();
     include 'vue/admin-thematiques.php';
-} else if ($page === 'modifierThematique' && $_SESSION['user']['role'] == 1) {
+} 
+
+/*---------------------------------------------------------------------------------------
+ * -------------------------- MODIFICATION -----------------------------------------------
+ ---------------------------------------------------------------------------------------*/
+else if ($page === 'modifierThematique' && $_SESSION['user']['role'] == 1) {
     $thematique["id_thematique"] = filter_input(INPUT_POST, "id_thematique", FILTER_SANITIZE_FULL_SPECIAL_CHARS);
     $thematique["nom"] = filter_input(INPUT_POST, "titre_thematique", FILTER_SANITIZE_FULL_SPECIAL_CHARS);
 
@@ -12,7 +27,12 @@ if ($page === 'formThematique' && $_SESSION['user']['role'] == 1) {
         thematique::updateThematique($thematique["id_thematique"], $thematique["nom"]);
         header('Location: http://localhost/wikhitema/index.php?page=formThematique');
     }
-} else if ($page === 'ajoutThematique' && $_SESSION['user']['role'] == 1) {
+} 
+
+/*---------------------------------------------------------------------------------------
+ * -------------------------- AJOUT -----------------------------------------------
+ ---------------------------------------------------------------------------------------*/
+else if ($page === 'ajoutThematique' && $_SESSION['user']['role'] == 1) {
     $thematique["nom"] = filter_input(INPUT_POST, "titre_thematique", FILTER_SANITIZE_FULL_SPECIAL_CHARS);
     if ($thematique["nom"]) {
         echo thematique::createThematique($thematique["nom"]);

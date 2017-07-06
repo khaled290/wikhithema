@@ -1,12 +1,16 @@
 <?php
 
 
-/**
- * Description of UserController
- *
- * @author jason
- */
 
+/*---------------------------------------------------------------------------------------
+ * -------------------------- USER CONTROLLER -------------------------------------------
+ ---------------------------------------------------------------------------------------*/
+
+
+
+/*---------------------------------------------------------------------------------------
+ * -------------------------- CONNEXION -------------------------------------------------
+ ---------------------------------------------------------------------------------------*/
 if ($page === 'connect') {
     if (!isset($_SESSION["user"]["pseudo"])) {
         include 'vue/connexion.php';
@@ -32,12 +36,23 @@ if ($page === 'connect') {
     } else {
         include 'vue/index.php';
     }
-} else if ($page === 'deconnexion') {
+} 
+
+/*---------------------------------------------------------------------------------------
+ * -------------------------- DECONNECION -----------------------------------------------
+ ---------------------------------------------------------------------------------------*/
+else if ($page === 'deconnexion') {
     session_destroy();
     header('Location: http://localhost/wikhitema/index.php?page=connect');
-} else if ($page === 'formInscription') {
+}
+
+/*---------------------------------------------------------------------------------------
+ * -------------------------- INSCRIPTION -----------------------------------------------
+ ---------------------------------------------------------------------------------------*/
+else if ($page === 'formInscription') {
     include_once 'vue/inscription.php';
-} else if ($page === 'inscription') {
+} 
+else if ($page === 'inscription') {
     $user["pseudo"] = filter_input(INPUT_POST, "pseudo", FILTER_SANITIZE_FULL_SPECIAL_CHARS);
     $user["email"] = filter_input(INPUT_POST, "email", FILTER_SANITIZE_EMAIL);
     $user["mdp"] = filter_input(INPUT_POST, "password", FILTER_SANITIZE_STRING);
@@ -65,12 +80,12 @@ if ($page === 'connect') {
         }
     }
 
-} else if ($page === 'modification') {
+} 
 
-
-} else if ($page === 'user') {
-
-} else if ($page === 'supprimerCompte' && $_SESSION['user']['role'] == 1) {
+/*---------------------------------------------------------------------------------------
+ * -------------------------- SUPPRESSION -----------------------------------------------
+ ---------------------------------------------------------------------------------------*/
+else if ($page === 'supprimerCompte' && $_SESSION['user']['role'] == 1) {
     $listeUsers = User::selectAllUser();
     include 'vue/admin-users.php';
 
@@ -82,7 +97,12 @@ if ($page === 'connect') {
     } else {
         [$_SESSION["user"]["pseudo"], " Nous n'avonns pas pu supprimer cette utilisateur, veuillez réessayer s'il vous plait"];
     }
-} else if ($page === 'formModifierCompte') {
+} 
+
+/*---------------------------------------------------------------------------------------
+ * -------------------------- MODIFICATION -----------------------------------------------
+ ---------------------------------------------------------------------------------------*/
+else if ($page === 'formModifierCompte') {
     include_once 'vue/user.php';
 } else if ($page === 'modifierCompte') {
     $referer = filter_input(INPUT_POST, "token", FILTER_SANITIZE_FULL_SPECIAL_CHARS);
@@ -127,6 +147,15 @@ if ($page === 'connect') {
         include_once 'vue/user.php';
     }
 }
+
+
+
+/*---------------------------------------------------------------------------------------
+ * -------------------------- FONCTION UTILES -------------------------------------------
+ ---------------------------------------------------------------------------------------*/
+
+//FONCTION UTILISEE DANS LA SUPPRESSION D'UN UTILISATEUR POUR CHANGER LE CREATEUR DES
+//PUBICATIONS QUI LUI SONT ATTACHEE
 function updatePubli($publi)
 {
     var_dump($publi);
