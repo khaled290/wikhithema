@@ -7,11 +7,11 @@ if (isset($_SESSION['user']['pseudo'])){
 ?>
     <!-- Page Content -->
     <div class="container">
-
+    <br>
         <!-- Marketing Icons Section -->
         <div class="row">
             <div class="col-lg-12">
-                <h1 class="page-header"> Catégories de publications</h1>
+                <h2 class="page-header"> Thématiques de publications</h2>
             </div>
             <?php foreach ($thematiques as $thematique){ ?>
             <div class="col-md-4">

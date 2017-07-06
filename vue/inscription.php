@@ -92,9 +92,6 @@
 
 						<button class="btn btn-lg btn-success btn-block" type="submit">Créer un compte</button>
 					</form>
-                                    
-                                    <div class="col-xs-12 col-sm-6">	
-				    <button class="btn btn-lg btn-success btn-block"><a href="index.php?page=connect">Connectez vous</a></button>
 				</div>
 				</div>
 	    	</div>	    	

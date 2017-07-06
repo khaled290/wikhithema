@@ -9,6 +9,9 @@ body {
   z-index: 9999;
 }
 
+.logo {
+  z-index: 999;
+}
 a{
   color: #fff;
   text-decoration: none;
@@ -20,6 +23,8 @@ a:hover, a:focus {
 
 .container-infos-user {
   padding: 20px;
+  position: relative;
+  top: -50px;
 }
 .title-new-publication {
   text-align: center;
