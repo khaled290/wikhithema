@@ -13,7 +13,7 @@
     <link rel="stylesheet" type="text/css" href="vue/css/admin-style.css">
 </head>
 
-<body>
+<body onLoad="iFrameOn();">
     <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
         <div class="container">
             <div class="navbar-header mobile-menu">

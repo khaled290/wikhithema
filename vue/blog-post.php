@@ -1,11 +1,11 @@
 <?php
-session_start(); 
+session_start();
 //On vérifie que l'utilisateur est connecté pour afficher la page (toutes les pages sauf inscription et connexion l'ont
-if (isset($_SESSION['user']['pseudo'])){
+if (isset($_SESSION['user']['pseudo'])) {
     include('header.inc.php');
-?>
+    ?>
 
-    
+
     <!-- Page Content -->
     <div class="container">
 
@@ -14,7 +14,7 @@ if (isset($_SESSION['user']['pseudo'])){
             <div class="col-lg-12">
                 <h1 class="page-header">Titre articles
                 </h1>
-                
+
             </div>
         </div>
         <!-- /.row -->
@@ -40,11 +40,21 @@ if (isset($_SESSION['user']['pseudo'])){
                 <hr>
 
                 <!-- Post Content -->
-                <p class="lead">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ducimus, vero, obcaecati, aut, error quam sapiente nemo saepe quibusdam sit excepturi nam quia corporis eligendi eos magni recusandae laborum minus inventore?</p>
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ut, tenetur natus doloremque laborum quos iste ipsum rerum obcaecati impedit odit illo dolorum ab tempora nihil dicta earum fugiat. Temporibus, voluptatibus.</p>
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eos, doloribus, dolorem iusto blanditiis unde eius illum consequuntur neque dicta incidunt ullam ea hic porro optio ratione repellat perspiciatis. Enim, iure!</p>
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Error, nostrum, aliquid, animi, ut quas placeat totam sunt tempora commodi nihil ullam alias modi dicta saepe minima ab quo voluptatem obcaecati?</p>
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Harum, dolor quis. Sunt, ut, explicabo, aliquam tenetur ratione tempore quidem voluptates cupiditate voluptas illo saepe quaerat numquam recusandae? Qui, necessitatibus, est!</p>
+                <p class="lead">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ducimus, vero, obcaecati, aut,
+                    error quam sapiente nemo saepe quibusdam sit excepturi nam quia corporis eligendi eos magni
+                    recusandae laborum minus inventore?</p>
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ut, tenetur natus doloremque laborum quos
+                    iste ipsum rerum obcaecati impedit odit illo dolorum ab tempora nihil dicta earum fugiat.
+                    Temporibus, voluptatibus.</p>
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eos, doloribus, dolorem iusto blanditiis
+                    unde eius illum consequuntur neque dicta incidunt ullam ea hic porro optio ratione repellat
+                    perspiciatis. Enim, iure!</p>
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Error, nostrum, aliquid, animi, ut quas
+                    placeat totam sunt tempora commodi nihil ullam alias modi dicta saepe minima ab quo voluptatem
+                    obcaecati?</p>
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Harum, dolor quis. Sunt, ut, explicabo,
+                    aliquam tenetur ratione tempore quidem voluptates cupiditate voluptas illo saepe quaerat numquam
+                    recusandae? Qui, necessitatibus, est!</p>
 
                 <hr>
 
@@ -74,7 +84,9 @@ if (isset($_SESSION['user']['pseudo'])){
                         <h4 class="media-heading">Auteur
                             <small>Publié le 04/07/2017</small>
                         </h4>
-                        Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin commodo. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis. Fusce condimentum nunc ac nisi vulputate fringilla. Donec lacinia congue felis in faucibus.
+                        Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin
+                        commodo. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis. Fusce condimentum
+                        nunc ac nisi vulputate fringilla. Donec lacinia congue felis in faucibus.
                     </div>
                 </div>
 
@@ -103,11 +115,9 @@ if (isset($_SESSION['user']['pseudo'])){
     <!-- Bootstrap Core JavaScript -->
     <script src="js/bootstrap.min.js"></script>
 
-</body>
+    </body>
 
-</html>
-<?php }
-
-else{
+    </html>
+<?php } else {
     header('Location: http://localhost/wikhitema/index.php?page=connect');
 }

@@ -85,6 +85,8 @@ else if ($page === 'inscription') {
 /*---------------------------------------------------------------------------------------
  * -------------------------- SUPPRESSION -----------------------------------------------
  ---------------------------------------------------------------------------------------*/
+
+//POUR LA PARTIE ADMINISTRATION
 else if ($page === 'supprimerCompte' && $_SESSION['user']['role'] == 1) {
     $listeUsers = User::selectAllUser();
     include 'vue/admin-users.php';
@@ -98,36 +100,75 @@ else if ($page === 'supprimerCompte' && $_SESSION['user']['role'] == 1) {
         [$_SESSION["user"]["pseudo"], " Nous n'avonns pas pu supprimer cette utilisateur, veuillez réessayer s'il vous plait"];
     }
 } 
-
+// SUPPRESSION DU COMPTE PAR L'UTILISATEUR
+//Affichage d'un formulaire de validation de la suppression
+else if ($page === 'supprimerMonCompte') {
+    
+    include 'vue/validerSuppression.php';
+    
+    $userDelete["id_user"] = filter_input(INPUT_POST, "id_user", FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+    $PubUserDelete = Publication::selectPublicationByIdUser($userDelete["id_user"]);
+    if (!empty($userDelete)) {
+        updatePubli($PubUserDelete);
+        User::deleteUser($userDelete["id_user"]);
+    } else {
+        [$_SESSION["user"]["pseudo"], " Nous n'avonns pas pu supprimer cette utilisateur, veuillez réessayer s'il vous plait"];
+    }
+} 
+//Suppression du compte
+else if ($page === 'suppressionMonCompte') {
+    
+    $PubUserDelete = Publication::selectPublicationByIdUser($_SESSION['user']['id_user']);
+    if (!empty($_SESSION['user']['id_user'])) {
+        updatePubli($PubUserDelete);
+        User::deleteUser($_SESSION['user']['id_user']);
+        session_destroy();
+    } else {
+        [$_SESSION["user"]["pseudo"], " Nous n'avonns pas pu supprimer cette utilisateur, veuillez réessayer s'il vous plait"];
+    }
+}
 /*---------------------------------------------------------------------------------------
  * -------------------------- MODIFICATION -----------------------------------------------
  ---------------------------------------------------------------------------------------*/
+//Formulaire de modification du compte
 else if ($page === 'formModifierCompte') {
     include_once 'vue/user.php';
-} else if ($page === 'modifierCompte') {
+} 
+//Modification du compte si le boutton modifier est cliqué
+else if ($page === 'modifierCompte') {
+    //Recupération du token
     $referer = filter_input(INPUT_POST, "token", FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+    //On vérifie le token
     if (verifier_token($referer)) {
         $user["pseudo"] = filter_input(INPUT_POST, "pseudo", FILTER_SANITIZE_FULL_SPECIAL_CHARS);
         $user["email"] = filter_input(INPUT_POST, "email", FILTER_SANITIZE_EMAIL);
         $user["mdp"] = filter_input(INPUT_POST, "password", FILTER_SANITIZE_STRING);
         $user["mdpConfirme"] = filter_input(INPUT_POST, "passwordConfirme", FILTER_SANITIZE_STRING);
         $mdpChanged = $user["mdp"] !== '' && $user["mdpConfirme"] !== '' && $user["mdp"] !== NULL && $user["mdpConfirme"] !== NULL;
+        //Si le mot de passe est changé, on vérifie que la confirmation est la même que le mdp, si elle ne l'est pas
         if ($mdpChanged && $user["mdp"] !== $user["mdpConfirme"]) {
             $_SESSION['user']['error'] = "Les mots de passes sont différents";
             include_once 'vue/user.php';
-        } else {
+        } 
+        //Si le mdp et la confirmation match bien
+        else {
             unset($user["mdpConfirme"]);
+            // Si le mot de passe n'est pas changé, on le met à null
             if (!$mdpChanged) {
                 $user["mdp"] = NULL;
             }
-
+            // On vérifie que le nouveau mail n'est pas celui d'une autre personne
             if (User::selectUserByEmail($user["email"])->getEmail() !== $_SESSION['user']['email'] && User::selectUserByEmail($user["email"])->getEmail() === $user["email"]) {
                 $email = true;
                 include_once 'vue/user.php';
-            } else if (User::selectUserByPseudo($user["pseudo"])->getPseudo() !== $_SESSION['user']['pseudo'] && User::selectUserByPseudo($user["pseudo"])->getPseudo() === $user["pseudo"]) {
+            } 
+            //De même pour le pseudo
+            else if (User::selectUserByPseudo($user["pseudo"])->getPseudo() !== $_SESSION['user']['pseudo'] && User::selectUserByPseudo($user["pseudo"])->getPseudo() === $user["pseudo"]) {
                 $pseudo = true;
                 include_once 'vue/user.php';
-            } else {
+            } 
+            //Si toutes les vérifications sont passée, on update
+            else {
                 if ($user["pseudo"] != NULL || $user["email"] != NULL || $user["mdp"] != NULL) {
                     USER::updateUser($_SESSION['user']['id_user'], array(
                         "pseudo" => $user["pseudo"],
@@ -142,7 +183,9 @@ else if ($page === 'formModifierCompte') {
                 }
             }
         }
-    } else {
+    } 
+    // Si le token à expiré ou si il n'est pas bon
+    else {
         $_SESSION['user']['error'] = 'le token n\'a pas passer la vérification, veuillez réessayer l\'opération.';
         include_once 'vue/user.php';
     }
