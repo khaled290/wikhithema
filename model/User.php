@@ -113,7 +113,7 @@ class User {
         $requete = "UPDATE user SET pseudo = ?, email = ?, mdp = ?, role = ? WHERE id_user = ?";
         $sth=$pdo->prepare($requete);
         
-        $oldUser = USER::selectUser($id_user);
+        $oldUser = USER::selectUserById($id_user)->to_array();
         
         $user["mdp"]=USER::cryptMdp($user["mdp"]);
         
@@ -131,7 +131,7 @@ class User {
         $isRoleChanged = !empty($user["role"]) && $user["role"] !== NULL && $user["role"] !== $oldUser["role"] && $user["role"] !== '';
         $role = $isRoleChanged && filter_var($user["role"], FILTER_VALIDATE_INT) ? $user["role"] : $oldUser["role"];
         
-        $rowCount = $sth->execute(array($pseudo, $email, $this->cryptMdp($mdp), $role, $id_user));
+        $rowCount = $sth->execute(array($pseudo, $email, User::cryptMdp($mdp), $role, $id_user));
         return $rowCount;
     }
     
@@ -157,7 +157,7 @@ class User {
         global $pdo;
         $requete = "SELECT * FROM user where pseudo = ?";
         $sth=$pdo->prepare($requete);
-        $sth->execute(array($$pseudo));
+        $sth->execute(array($pseudo));
         $result=$sth->fetch(PDO::FETCH_ASSOC);
         return new User($result['id_user'],$result['pseudo'], $result['email'], $result['role']);
     }
@@ -177,7 +177,11 @@ class User {
         $sth = $pdo->prepare($requete);
         $sth->execute(array($login, $mdpCrypt));
         $result = $sth->fetch(PDO::FETCH_ASSOC);
-        return new User($result['id_user'], $result['pseudo'], $result['email'], $result['role']);
+        if ($result['id_user']!==NULL){
+            return new User($result['id_user'], $result['pseudo'], $result['email'], $result['role']);
+        }else{
+            return false;
+        }
     }
     
     public static function cryptMdp($mdp){

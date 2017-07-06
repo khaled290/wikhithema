@@ -5,24 +5,25 @@ if ($page === 'formPublication'){
     include 'vue/new-publication.php';
 }
 else if ($page === 'ajoutPublication'){
-    $publication["titre"] = filter_input(INPUT_POST,"titre", FILTER_SANITIZE_FULL_SPECIAL_CHARS);
-    $publication["contenu"] = filter_input(INPUT_POST,"contenu", FILTER_SANITIZE_FULL_SPECIAL_CHARS);
-    $publication["id_user"] = $_SESSION['user']['id_user'];
-    $publication["path_media"] = filter_input(INPUT_POST,"media", FILTER_SANITIZE_FULL_SPECIAL_CHARS);
-    $publication["id_thematique"]= filter_input(INPUT_POST,"thematique", FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+    if (verifier_token($referer)){
+        $publication["titre"] = filter_input(INPUT_POST,"titre", FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+        $publication["contenu"] = filter_input(INPUT_POST,"contenu", FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+        $publication["id_user"] = $_SESSION['user']['id_user'];
+        $publication["path_media"] = filter_input(INPUT_POST,"media", FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+        $publication["id_thematique"]= filter_input(INPUT_POST,"thematique", FILTER_SANITIZE_FULL_SPECIAL_CHARS);
 
-    if ($publication["path_media"] && $publication["titre"] && $publication["contenu"] && $publication["id_user"] && $publication["id_thematique"]){
-        Publication::createPublication($publication["titre"],$publication["contenu"],$publication["id_user"],$publication["path_media"],$publication["id_thematique"]);
-        upload();
-        header('Location: http://localhost/wikhitema/index.php?page=index');
+        if ($publication["path_media"] && $publication["titre"] && $publication["contenu"] && $publication["id_user"] && $publication["id_thematique"]){
+            Publication::createPublication($publication["titre"],$publication["contenu"],$publication["id_user"],$publication["path_media"],$publication["id_thematique"]);
+            upload();
+            header('Location: http://localhost/wikhitema/index.php?page=index');
+        }
+        else if ($publication["titre"] && $publication["contenu"] && $publication["id_user"] && $publication["id_thematique"]){
+            Publication::createPublication($publication["titre"],$publication["contenu"],$publication["id_user"],NULL,$publication["id_thematique"]);
+            header('Location: http://localhost/wikhitema/index.php?page=index'); 
+        }else{
+            $_SESSION["user"]["error"]=" Nous n'avonns pas pu ajouter une publication, veuillez réessayer s'il vous plait";
+        }
     }
-    else if ($publication["titre"] && $publication["contenu"] && $publication["id_user"] && $publication["id_thematique"]){
-        Publication::createPublication($publication["titre"],$publication["contenu"],$publication["id_user"],NULL,$publication["id_thematique"]);
-        header('Location: http://localhost/wikhitema/index.php?page=index'); 
-    }else{
-        $_SESSION["user"]["error"]=" Nous n'avonns pas pu ajouter une publication, veuillez réessayer s'il vous plait";
-    }
-
 }
 
 else if ($page === "ajoutMedia"){

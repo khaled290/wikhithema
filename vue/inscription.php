@@ -67,12 +67,14 @@
 				    	<div class="input-group">
 							<span class="input-group-addon"><i class="fa fa-user"></i></span>
 							<input type="text" class="form-control pseudo-zone" name="pseudo" placeholder="Votre pseudo" autofocus autocomplete="on" required>
+                                                        <?php echo isset($pseudo) && $pseudo ? '<div class="warning">Ce Pseudo à déjà été utilisé</div>' : ''; ?>
 						</div>
 						<span class="help-block"></span>
 
 						<div class="input-group">
 							<span class="input-group-addon"><i class="fa fa-user"></i></span>
 							<input type="email" class="form-control email-zone" name="email" placeholder="Votre e-mail" required>
+                                                        <?php echo isset($email) && $email ? '<div class="warning">Cet email à déjà été utilisé</div>' : ''; ?>
 						</div>
 						<span class="help-block"></span>
 											

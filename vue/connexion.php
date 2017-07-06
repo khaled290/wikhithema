@@ -3,6 +3,9 @@
     if (!isset($page)){
         header('Location: http://localhost/wikhitema/index.php?page=connect');
     }
+    else if(isset ($_SESSION['user']['pseudo'])){
+        header('Location: http://localhost/wikhitema/index.php?page=index');
+    }
     else{
 
 ?>
@@ -80,7 +83,6 @@
 							<input  type="password" class="form-control mdp-zone" name="password" placeholder="Password" required>
 						</div>
 	                    <span class="help-block"></span>
-
 						<button class="btn btn-lg btn-primary btn-block" type="submit">Connexion</button>
 					</form>
 				</div>
@@ -100,7 +102,7 @@
 				<br><br><br><br>
 
 				<div class="col-xs-12 col-sm-6">	
-				    <button class="btn btn-lg btn-success btn-block"><a href="index.php?page=inscription">Créer un compte</a></button>
+				    <button class="btn btn-lg btn-success btn-block"><a href="index.php?page=formInscription">Créer un compte</a></button>
 				</div>
 
 			</div>	    	

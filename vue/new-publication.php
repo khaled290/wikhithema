@@ -3,6 +3,7 @@
 if (isset($_SESSION['user']['pseudo'])){
         if (isset($listeThematique)){
             include('header.inc.php');
+                    $token = generer_token();
 ?>
 
     <section class="container-wiki-text-editor">
@@ -51,6 +52,10 @@ if (isset($_SESSION['user']['pseudo'])){
                 <input type="file" id="fileUpload" name="media" id="pathMedia" >
                 <p class="help-block">Formats acceptés : mp3, jpeg</p>
             </div>
+            <input type="hidden" name="token" id="token" value="<?php
+                //Le champ caché a pour valeur le jeton
+                echo $token;
+                        ?>"/>
             <br>
             <input class="btn btn-primary" name="btnSubmit" type="button" value="Publier" onClick="javascript:submit_form();"/>
         </form>
