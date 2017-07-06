@@ -56,3 +56,6 @@ elseif ($page === 'publications-cat') {
     }
 
 }
+else if ($page === "recherchePublication"){
+    
+}
