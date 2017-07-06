@@ -47,7 +47,7 @@ if (isset($_SESSION['user']['pseudo'])){
 					<button class="btn btn-lg btn-danger btn-block" type="submit"><a href="index.php">Ne rien modifier (retour à l'accueil)</a></button>
 				</form>
                 <hr><hr><br><br>
-                <form class="supprAccount" action="index.php?page=supprimerCompte" method="POST">
+                <form class="supprAccount" action="index.php?page=supprimerMonCompte" method="POST">
                     <button class="btn btn-lg btn-danger btn-block" type="submit">Supprimer le compte</button>
                 </form>
 			</div>
