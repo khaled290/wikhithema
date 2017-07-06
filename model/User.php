@@ -129,25 +129,26 @@ class User {
         $sth=$pdo->prepare($requete);
         
         $oldUser = USER::selectUserById($id_user)->to_array_mdp();
-        
-        
-        $user["mdp"]=USER::cryptMdp($user["mdp"]);
-        
+        If ($user["mdp"]!==NULL){
+            $user["mdp"]=USER::cryptMdp($user["mdp"]);
+            $isMdpChanged = !empty($user["mdp"]) && $user["mdp"] !== $oldUser["mdp"] && $user["mdp"] !== '';
+            $mdp = $isMdpChanged ? $user["mdp"] : $oldUser["mdp"];
+        }
+        else{
+            $mdp = $oldUser["mdp"];                     
+        }
         //Les lignes suivantes sont des conditions ternaire, cela permet d'aller plus vite
         //Et pour notre cas je trouve ça plus simple à comprendre... Si la nouvelle valeur est vide, on met l'ancienne
         $isPseudoChanged = !empty($user["pseudo"]) && $user["pseudo"] !== NULL && $user["pseudo"] !== $oldUser["pseudo"] && $user["pseudo"] !== '';
-        $pseudo = $isPseudoChanged && filter_var($user["pseudo"], FILTER_SANITIZE_FULL_SPECIAL_CHARS) ? $user["pseudo"] : $oldUser["pseudo"];
+        $pseudo = $isPseudoChanged && filter_var($user["pseudo"], FILTER_SANITIZE_FULL_SPECIAL_CHARS) !==NULL ? $user["pseudo"] : $oldUser["pseudo"];
         
         $isEmailChanged = !empty($user["email"]) && $user["email"] !== NULL && $user["email"] !== $oldUser["email"] && $user["email"] !== '';
-        $email = $isEmailChanged && filter_var($user["email"], FILTER_SANITIZE_EMAIL) ? $user["email"] : $oldUser["email"];
-        
-        $isMdpChanged = !empty($user["mdp"]) && $user["mdp"] !== NULL && $user["mdp"] !== $oldUser["mdp"] && $user["mdp"] !== '';
-        $mdp = $isMdpChanged && filter_var($user["mdp"]) ? $user["mdp"] : $oldUser["mdp"];
+        $email = $isEmailChanged && filter_var($user["email"], FILTER_SANITIZE_EMAIL) !==NULL ? $user["email"] : $oldUser["email"];
         
         $isRoleChanged = !empty($user["role"]) && $user["role"] !== NULL && $user["role"] !== $oldUser["role"] && $user["role"] !== '';
-        $role = $isRoleChanged && filter_var($user["role"], FILTER_VALIDATE_INT) ? $user["role"] : $oldUser["role"];
+        $role = $isRoleChanged && filter_var($user["role"], FILTER_VALIDATE_INT) !==NULL ? $user["role"] : $oldUser["role"];
         
-        $rowCount = $sth->execute(array($pseudo, $email, User::cryptMdp($mdp), $role, $id_user));
+        $rowCount = $sth->execute(array($pseudo, $email, $mdp, $role, $id_user));
         return $rowCount;
     }
     

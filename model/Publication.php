@@ -196,7 +196,7 @@ class Publication
         $req->execute(array(
             $id_cat
         ));
-        $rowCount = $req->fetch(PDO::FETCH_ASSOC);
+        $rowCount = $req->fetchAll(PDO::FETCH_ASSOC);
         return $rowCount;
     }
 

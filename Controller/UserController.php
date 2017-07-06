@@ -8,7 +8,7 @@
  */
 
 if($page==='connect' ){
-    if (!isset($_SESSION["user"])){
+    if (!isset($_SESSION["user"]["pseudo"])){
         include 'vue/connexion.php';
     }
     else{
@@ -80,8 +80,8 @@ else if ($page === 'modifierCompte'){
         $user["pseudo"] = filter_input(INPUT_POST, "pseudo", FILTER_SANITIZE_FULL_SPECIAL_CHARS);
         $user["email"] = filter_input(INPUT_POST, "email", FILTER_SANITIZE_EMAIL);
         $user["mdp"] = filter_input(INPUT_POST, "password", FILTER_SANITIZE_STRING);
-        $user["mdpConfirme"] = filter_input(INPUT_POST, "passwordConfirm", FILTER_SANITIZE_STRING);
-        $mdpChanged = $user["mdp"] !== '' && $user["mdpConfirme"] !== '';
+        $user["mdpConfirme"] = filter_input(INPUT_POST, "passwordConfirme", FILTER_SANITIZE_STRING);
+        $mdpChanged = $user["mdp"] !== '' && $user["mdpConfirme"] !== '' && $user["mdp"] !== NULL && $user["mdpConfirme"] !== NULL;
         if ($mdpChanged && $user["mdp"] !== $user["mdpConfirme"]){
             $_SESSION['user']['error']="Les mots de passes sont différents";
             include_once 'vue/user.php';
@@ -90,22 +90,24 @@ else if ($page === 'modifierCompte'){
             if (!$mdpChanged){
                 $user["mdp"]=NULL;
             }
-            if (User::selectUserByEmail($user["email"])->getEmail() === $user["email"]){
+            
+            if (User::selectUserByEmail($user["email"])->getEmail() !== $_SESSION['user']['email'] && User::selectUserByEmail($user["email"])->getEmail() === $user["email"]){
                 $email = true;
                 include_once 'vue/user.php';
             }
-            else if(User::selectUserByPseudo($user["pseudo"])->getPseudo() === $user["pseudo"]){
+            else if(User::selectUserByPseudo($user["pseudo"])->getPseudo() !== $_SESSION['user']['pseudo'] && User::selectUserByPseudo($user["pseudo"])->getPseudo() === $user["pseudo"] ){
                 $pseudo = true;
                 include_once 'vue/user.php';
             }
             else {
                 if ($user["pseudo"]!=NULL || $user["email"]!=NULL || $user["mdp"]!=NULL){
-                    $_SESSION['user'] = USER::updateUser($_SESSION['user']['id_user'],array("pseudo" => $user["pseudo"], 
+                    USER::updateUser($_SESSION['user']['id_user'],array(
+                        "pseudo" => $user["pseudo"], 
                         "email" => $user["email"], 
                         "mdp" => $user["mdp"], 
-                        "role" => 3));
-                    
-                    
+                        "role" => $_SESSION['user']['role']
+                    ));
+                    $_SESSION['user']= User::selectUserByPseudo($user["pseudo"])->to_array();
                     header('Location: http://localhost/wikhitema/index.php?page=formModifierCompte');
                 }else{
                     include_once 'vue/user.php';
