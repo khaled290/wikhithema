@@ -12,10 +12,10 @@ if (isset($_SESSION['user']['pseudo'])){
     <meta name="description" content="meilleur wiki au monde - WikHiTema">
     <meta name="author" content="AMLYS KHALED JASON">
     <title>WikHiTema</title>
-    <link href="../vue/css/bootstrap.css" rel="stylesheet">
-    <link rel="stylesheet" type="text/css" href="../vue/css/wiki-style.css">
-    <link href="../vue/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
-    <link rel="stylesheet" type="text/css" href="../vue/css/wiki-blog-articles.css">
+    <link href="vue/css/bootstrap.css" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="vue/css/wiki-style.css">
+    <link href="vue/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" type="text/css" href="vue/css/wiki-blog-articles.css">
 </head>
 
 <body>
@@ -35,7 +35,7 @@ if (isset($_SESSION['user']['pseudo'])){
                 <ul class="nav navbar-nav navbar-right">
                     <li>
                         <button class="btn btn-warning add-publication-btn">
-                            <a href="../Controller/Controller.php?page=formPublication" class="btn-new-post">Ajouter une publication</a>
+                            <a href="index.php?page=formPublication" class="btn-new-post">Ajouter une publication</a>
                         </button>
                     </li>
                     <li class="dropdown">
@@ -43,7 +43,7 @@ if (isset($_SESSION['user']['pseudo'])){
                         <ul class="dropdown-menu">
                             <?php foreach($thematiques as $thematique){ ?>
                             <li>
-                                <a href="../Controller/Controller.php?page=publications&cat=<?php echo $thematique['id_thematique']; ?>"><?php echo $thematique['nom']; ?></a>
+                                <a href="index.php?page=publications&cat=<?php echo $thematique['id_thematique']; ?>"><?php echo $thematique['nom']; ?></a>
                             </li>     
                             <?php  }?>
                         </ul>
@@ -89,7 +89,7 @@ if (isset($_SESSION['user']['pseudo'])){
                         <h4><i class="<?php  ?>"></i> <?php echo $thematique['nom']; ?></h4>
                     </div>
                     <div class="panel-body">
-                        <a href="../Controller/Controller.php?page=publications&cat=<?php echo $thematique['id_thematique']; ?>" class="btn btn-default"> Voir les publications</a>
+                        <a href="index.php?page=publications&cat=<?php echo $thematique['id_thematique']; ?>" class="btn btn-default"> Voir les publications</a>
                     </div>
                 </div>
             </div>
@@ -116,8 +116,8 @@ if (isset($_SESSION['user']['pseudo'])){
                 </p>
                 <?php if(($_SESSION['user']['id_user']===$publication['id_user'] && $_SESSION['user']['role'] < 3) || $_SESSION['user']['role']===1) {
                     ?>
-                    <a href="../Controller/Controller.php?page=modifPublications&id=<?php echo $publication['id_publication']; ?>" class="btn btn-default" >modifier</a> 
-                    <a href="../Controller/Controller.php?page=supprPublications&id=<?php echo $publication['id_publication']; ?>" class="btn btn-default" >supprimer</a>
+                    <a href="index.php?page=modifPublications&id=<?php echo $publication['id_publication']; ?>" class="btn btn-default" >modifier</a> 
+                    <a href="index.php?page=supprPublications&id=<?php echo $publication['id_publication']; ?>" class="btn btn-default" >supprimer</a>
                 <?php
                 } 
                 //var_dump($_SESSION['user']);
@@ -143,10 +143,10 @@ if (isset($_SESSION['user']['pseudo'])){
     <!-- /.container -->
 
     <!-- jQuery -->
-    <script src="../vue/js/jquery.js"></script>
+    <script src="vue/js/jquery.js"></script>
 
     <!-- Bootstrap Core JavaScript -->
-    <script src="../vue/js/bootstrap.min.js"></script>
+    <script src="vue/js/bootstrap.min.js"></script>
 
     <!-- Script to Activate the Carousel -->
     <script>
@@ -161,9 +161,9 @@ if (isset($_SESSION['user']['pseudo'])){
 <?php }
     //Si les variables publications et thematiques ne sont pas présentes, on redirige
     else{
-        header('Location: http://localhost/wikhitema/Controller/Controller.php?page=index');
+        header('Location: http://localhost/wikhitema/index.php?page=index');
     }
 }
 else{
-    header('Location: http://localhost/wikhitema/vue/connexion.php');
+    header('Location: http://localhost/wikhitema/index.php?page=connect');
 }

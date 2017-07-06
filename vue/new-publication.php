@@ -6,17 +6,10 @@
     <meta name="description" content="meilleur wiki au monde - WikHiTema">
     <meta name="author" content="AMLYS KHALED JASON">
     <title>WikHiTema -- Compte utilisateur</title>
-    <link href="../vue/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
-    <link href="../vue/css/bootstrap.css" rel="stylesheet">
-    <link rel="stylesheet" type="text/css" href="../vue/css/wiki-style.css">
-    <script type="text/javascript" src="../vue/js/text-editor.js"></script>
-
-    <link href="font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
-    <link href="css/bootstrap.css" rel="stylesheet">
-    <link rel="stylesheet" type="text/css" href="css/wiki-style.css">
-    <script type="text/javascript" src="js/text-editor.js"></script>
-    <link href="../vue/css/bootstrap.css" rel="stylesheet">
-    <link rel="stylesheet" type="text/css" href="../vue/css/wiki-style.css">
+    <link href="vue/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <link href="vue/css/bootstrap.css" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="vue/css/wiki-style.css">
+    <script type="text/javascript" src="vue/js/text-editor.js"></script>
     <script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
 </head>
 
@@ -78,7 +71,7 @@
     </nav>
     <section class="container-wiki-text-editor">
         <h2 class="title-new-publication">Création d'une nouvelle publication</h2><br>
-        <form action="../Controller/Controller.php?page=ajoutPublication" name="textEditor" id="textEditor" method="post">
+        <form action="index.php?page=ajoutPublication" name="textEditor" id="textEditor" method="post">
             <div class="form-group">
                 <label for="publicationTitle">Titre de votre publication</label>
                 <input type="text" name="titre" class="form-control" id="publicationTitle" placeholder="EX: quelque chose blabla">

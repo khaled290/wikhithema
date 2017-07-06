@@ -1,8 +1,10 @@
 <?php
 session_start();
-require '../model/Publication.php';
-require '../model/thematique.php';
-require '../model/User.php';
+require '/model/Publication.php';
+require '/model/thematique.php';
+require '/model/User.php';
+
+//ICI CA FONCTIONNE
 
 $page = filter_input(INPUT_GET, 'page', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
 $option = filter_input(INPUT_GET, 'otpion', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
@@ -20,5 +22,5 @@ if ($page === 'index'){
     
     $publications = Publication::selectAllPublication();
     
-    require_once '../vue/index.php';
+    require_once 'vue/index.php';
 }

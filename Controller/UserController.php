@@ -7,21 +7,30 @@
  * @author jason
  */
 
-if($page==='connexion'){
+if($page==='connect' ){
+    echo "Je suis la";
+    if (!isset($_SESSION["user"]) ||  $_SESSION["user"]===false  ){
+        include 'vue/connexion.php';
+    }
+    else{
+         header('Location: http://localhost/wikhitema/index.php?page=index');
+    }
+}
+else if($page==='connexion'){
     $login = filter_input(INPUT_POST, "login", FILTER_SANITIZE_EMAIL);
     $mdp = filter_input(INPUT_POST, "password", FILTER_SANITIZE_STRING);
     
     if(isset($login) && $login !== false){
         $_SESSION["user"]=USER::connexion($login, $mdp)->to_array();  
     }else{
-        $_SESSION["user"]["error"]="Nous ne pouvons pas accèder à votre requêtes avec les informations saisies, veuillez réessayer.";
+        $_SESSION["user"]["error"]="Nous ne pouvons pas vous connecter avec les informations saisies, veuillez réessayer.";
     }
     
     if ($_SESSION["user"]===false){
-        include '../vue/connexion.php';
+        include 'vue/connexion.php';
     }
     else{
-        include '../vue/index.php';
+        include 'vue/index.php';
     }
 }
 else if ($page ==='inscription'){
@@ -37,17 +46,17 @@ else if ($page ==='inscription'){
         if ($user["pseudo"] && $user["email"] && $user["mdp"]){
             echo USER::createUser($user["pseudo"], $user["email"], $user["mdp"]);
         }else{
-            echo [$user["pseudo"] && $user["email"],"Nous n'avonns pas pu créer l'utilisateur, veuillez réessayer s'il vous plait"];
+            include_once 'vue/inscription.php';
         }
     }
-    header('Location: http://localhost/wikhitema/vue/connexion.php');
+    header('Location: http://localhost/wikhitema/index.php?page=connect');
 }
 else if ($page === 'modification'){
     
 }
-else if ($page=== 'user'){
+else if ($page === 'user'){
     
 }
- else if ($page==='supprimerCompte'){
+ else if ($page ==='supprimerCompte'){
     
 }

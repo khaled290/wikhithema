@@ -2,8 +2,7 @@
 
 if ($page === 'formPublication'){
     $listeThematique = THEMATIQUE::selectAllThematique();
-    include '../vue/new-publication.php';
-
+    include 'vue/new-publication.php';
 }
 else if ($page === 'ajoutPublication'){
     $publication["titre"] = filter_input(INPUT_POST,"titre", FILTER_SANITIZE_FULL_SPECIAL_CHARS);
@@ -25,53 +24,6 @@ else if ($page === 'ajoutPublication'){
 
 }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 else if ($page === "ajoutMedia"){
     if (isset($_FILES['media']) AND $_FILES['media']['error'] == 0)
     {
@@ -91,44 +43,7 @@ else if ($page === "ajoutMedia"){
         }
     }
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-elseif ($page = 'publication-cat') {
+elseif ($page === 'publication-cat') {
     $cat = filter_input(INPUT_GET, 'cat', FILTER_VALIDATE_INT);
     
     if (isset($_GET['cat']) && $cat!==false){
