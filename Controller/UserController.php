@@ -162,6 +162,10 @@ else if ($page === 'modifierCompte') {
         $user["email"] = filter_input(INPUT_POST, "email", FILTER_SANITIZE_EMAIL);
         $user["mdp"] = filter_input(INPUT_POST, "password", FILTER_SANITIZE_STRING);
         $user["mdpConfirme"] = filter_input(INPUT_POST, "passwordConfirme", FILTER_SANITIZE_STRING);
+        $user["mdpActu"] = filter_input(INPUT_POST, "passwordActuel", FILTER_SANITIZE_STRING);
+        
+        //Vérification de son mot de passe actuel
+        $mdpValide = User::selectUserByPseudo($_SESSION['user']['pseudo'])->to_array_mdp()['mdp'] === User::cryptMdp($user["mdpActu"]);
         $mdpChanged = $user["mdp"] !== '' && $user["mdpConfirme"] !== '' && $user["mdp"] !== NULL && $user["mdpConfirme"] !== NULL;
         //Si le mot de passe est changé, on vérifie que la confirmation est la même que le mdp, si elle ne l'est pas
         if ($mdpChanged && $user["mdp"] !== $user["mdpConfirme"]) {
@@ -169,7 +173,7 @@ else if ($page === 'modifierCompte') {
             include_once 'vue/user.php';
         } 
         //Si le mdp et la confirmation match bien
-        else {
+        else if ($mdpValide) {
             unset($user["mdpConfirme"]);
             // Si le mot de passe n'est pas changé, on le met à null
             if (!$mdpChanged) {
@@ -200,6 +204,9 @@ else if ($page === 'modifierCompte') {
                     include_once 'vue/user.php';
                 }
             }
+        } else {
+            $_SESSION['user']['error']="Erreur dans votre mot de passe actuel, veuillez réessayer";
+            include_once 'vue/user.php';
         }
     } 
     // Si le token à expiré ou si il n'est pas bon

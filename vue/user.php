@@ -16,7 +16,7 @@ if (isset($_SESSION['user']['pseudo'])){
                     <hr>
                     <div class="input-group">
                         <span class="input-group-addon"><i class="fa fa-lock"></i> Votre mot de passe actuel</span>
-                        <input  type="password" class="form-control mdp-zone" name="password" placeholder="Votre mot de passe ACTUEL" required>
+                        <input  type="password" class="form-control mdp-zone" name="passwordActuel" placeholder="Votre mot de passe ACTUEL" required>
                     </div>
                     <hr>
 					<div class="input-group">
