@@ -23,7 +23,7 @@
 </head>
 
 <body id="page">
-	<h1 class="text-center logo">WikHiTema</h1>
+	<h1 class="text-center logo"><i class="fa fa-graduation-cap" aria-hidden="true"></i> WikHiTema</h1>
 
     <ul class="slideshow">
         <li><span>Image 01</span></li>

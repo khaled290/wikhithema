@@ -23,7 +23,7 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand logo" href="index.php">WikHiTema</a>
+                <a class="navbar-brand logo" href="index.php"><i class="fa fa-graduation-cap" aria-hidden="true"></i> WikHiTema</a>
             </div>
 
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
@@ -79,8 +79,8 @@
 
     <div class="col-xs-12 zone-search-mobile">
         <center>
-            <form action="" method="POST" class="input-group input-group-md">
-                <input type="text" class="form-control col-xs-8 to-left" autofocus/>
+            <form action="index.php?page=recherchePublication" method="POST" class="input-group input-group-md">
+                <input type="text" name="recherche" id="recherche" class="form-control col-xs-8 to-left" autofocus/>
                 <button type="submit" class="btn btn-info col-xs-2 to-right"><i class="fa fa-search" aria-hidden="true"></i></button>
             </form>
         </center>
