@@ -98,7 +98,7 @@ else if ($page === 'supprimerCompte') {
             updatePubli($PubUserDelete);
             User::deleteUser($userDelete["id_user"]);
         } else {
-            [$_SESSION["user"]["pseudo"], " Nous n'avonns pas pu supprimer cette utilisateur, veuillez réessayer s'il vous plait"];
+            [$_SESSION["user"]["error"], " Nous n'avonns pas pu supprimer cette utilisateur, veuillez réessayer s'il vous plait"];
         }
     }else{
         $_SESSION['user']['error']="Vous n'avez pas les droits d'acces à cette page.";
@@ -117,7 +117,7 @@ else if ($page === 'supprimerMonCompte') {
         updatePubli($PubUserDelete);
         User::deleteUser($userDelete["id_user"]);
     } else {
-        [$_SESSION["user"]["pseudo"], " Nous n'avonns pas pu supprimer cette utilisateur, veuillez réessayer s'il vous plait"];
+        [$_SESSION["user"]["error"], " Nous n'avonns pas pu supprimer cette utilisateur, veuillez réessayer s'il vous plait"];
     }
 } 
 //Suppression du compte
@@ -136,7 +136,7 @@ else if ($page === 'suppressionMonCompte') {
             header('Location: http://localhost/wikhitema/index.php?page=connect');
             
         } else {
-            [$_SESSION["user"]["pseudo"], " Nous n'avonns pas pu supprimer cette utilisateur, veuillez réessayer s'il vous plait"];
+            [$_SESSION["user"]["error"], " Nous n'avonns pas pu supprimer cette utilisateur, veuillez réessayer s'il vous plait"];
         }
     }
 }

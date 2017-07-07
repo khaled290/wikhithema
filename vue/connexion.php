@@ -65,16 +65,7 @@
 	    	</div>
 
 	    	<div class="row row-sm-offset-3">
-				<div class="col-xs-12 col-sm-3 garder-session">
-					<label class="checkbox">
-						<input type="checkbox" value="remember-me">Garder ma session
-					</label>
-				</div>
-				<div class="col-xs-12 col-sm-3">
-					<p class="forgotPwd">
-						<a href="oublie-mdp.php">Mot de passe oublié</a>
-					</p>
-				</div>
+
 				<br><br><br><br>
 
 				<div class="col-xs-12 col-sm-6">	
