@@ -200,6 +200,7 @@ hr {
 body>nav {
   z-index: 999;
   max-height: 10px;
+  background-color: #000;
 }
 
 
@@ -266,9 +267,10 @@ body>nav {
       margin-top:10px;
     }
 
+
 }
 
-@media (max-width: 768px) {
+@media (max-width: 1024px) {
   .add-publication-btn {
     position: relative;
     left: 15px;
