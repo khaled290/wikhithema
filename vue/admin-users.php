@@ -1,11 +1,9 @@
 <?php include('header.inc.php'); ?>
 
 <section class="container-infos-user">
-    <h2 class="text-center">Supprimer les utilisateurs</h2><br><br>
+    <h2 class="text-center">Gestion des utilisateurs<br><small> ou <a class="text-center" href="index.php?page=formThematique">gestion des thématiques</a></small></h2><br><br>
     <div class="row row-sm-offset-3">
         <div class="col-xs-12 col-sm-6">
-
-
             <?php
 
             foreach ($listeUsers as $users) {
