@@ -4,9 +4,9 @@
     <h2 class="text-center">Gestion des thématiques<br><small>ou <a href="index.php?page=supprimerCompte">gestion des utilisateurs</a></small></h3><br><br><hr>
         <div class="row row-sm-offset-3">
             <div class="col-xs-12 col-sm-6">
-                <form action="index.php?page=ajoutThematique">
+                <form action="index.php?page=ajoutThematique" method='POST' id='ajoutThematique'>
                     <div class="input-group input-group-lg">
-                        <input type="text" class="form-control" autofocus/>
+                        <input type="text" class="form-control" name="titre_thematique" id="titre_thematique" autofocus/>
                         <span class="input-group-btn">
                             <button type="submit" class="btn btn-info add-thematique">Ajouter une nouvelle thématique</button>
                         </span>

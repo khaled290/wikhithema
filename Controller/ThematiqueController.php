@@ -35,9 +35,10 @@ else if ($page === 'modifierThematique' && $_SESSION['user']['role'] == 1) {
 else if ($page === 'ajoutThematique' && $_SESSION['user']['role'] == 1) {
     $thematique["nom"] = filter_input(INPUT_POST, "titre_thematique", FILTER_SANITIZE_FULL_SPECIAL_CHARS);
     if ($thematique["nom"]) {
-        echo thematique::createThematique($thematique["nom"]);
+        thematique::createThematique($thematique["nom"]);
         header('Location: http://localhost/wikhitema/index.php?page=formThematique');
     } else {
-        [$_SESSION["user"]["pseudo"], " Nous n'avonns pas pu ajouter une publication, veuillez réessayer s'il vous plait"];
+        [$_SESSION["user"]["pseudo"], " Nous n'avonns pas pu ajouter votre thématique, veuillez réessayer s'il vous plait"];
+         include_once 'vue/admin-thematiques.php';
     }
 }
