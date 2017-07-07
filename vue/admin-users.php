@@ -1,4 +1,8 @@
-<?php include('header.inc.php'); ?>
+<?php 
+if (isset($_SESSION['user']['pseudo'])) {
+    if ($_SESSION['user']['role']==1){
+
+include('header.inc.php'); ?>
 
 <section class="container-infos-user">
     <h2 class="text-center">Gestion des utilisateurs<br><small> ou <a class="text-center" href="index.php?page=formThematique">gestion des thématiques</a></small></h2><br><br>
@@ -57,3 +61,14 @@
 <script type="text/javascript"></script>
 </body>
 </html>
+    <?php 
+    
+    }
+    else{
+        $_SESSION['user']['error']="Vous n'avez pas les droits d'acces à cette page.";
+        header('Location: http://localhost/wikhitema/index.php?page=index');
+    }
+}else{
+    header('Location: http://localhost/wikhitema/index.php?page=connect');
+}
+    

@@ -57,8 +57,28 @@ else if ($page === "ajoutMedia"){
 /*---------------------------------------------------------------------------------------
  * -------------------------- MODIFICATION ----------------------------------------------
  ---------------------------------------------------------------------------------------*/
-else if ($page ==='modifierPublications'){
+else if ($page ==='modifPublications'){
+    $listeThematique = THEMATIQUE::selectAllThematique();
+    $id = filter_input(INPUT_GET, 'id', FILTER_SANITIZE_NUMBER_INT);  
+    $publication = Publication::selectPublication($id);
+    if ($id !== '' && $id !== NULL && ($publication['id_user']===$_SESSION['user']['id_user'] || $_SESSION['user']['role']==1)){
+        include_once 'vue/new-publication.php';
+    }
+    else{
+        $_SESSION['user']['error']="Vous n'avez pas l'accès à cette page.";
+        header('Location: http://localhost/wikhitema/index.php?page=index');
+    }
+}
+else if ($page == 'modifierPublication'){
+    $publication["titre"] = filter_input(INPUT_POST,"titre", FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+    $publication["contenu"] = filter_input(INPUT_POST,"contenu", FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+    $publication["id_user"] = $_SESSION['user']['id_user'];
+    $publication["path_media"] = filter_input(INPUT_POST,"media", FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+    $publication["id_thematique"]= filter_input(INPUT_POST,"thematique", FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+    $publication["id_publication"] = filter_input(INPUT_POST,"id", FILTER_SANITIZE_FULL_SPECIAL_CHARS);
     
+    Publication::updatePublication($publication["id_publication"], $publication);
+    header('Location: http://localhost/wikhitema/index.php?page=index');
 }
 
 /*---------------------------------------------------------------------------------------

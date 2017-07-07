@@ -146,28 +146,25 @@ class Publication
     public static function updatePublication ($id_publication, Array $publication){
         global $pdo;
 
-        $oldPublication = Publication::selectPublication($id_publication);
-        $req = $pdo->prepare("UPDATE publication SET titre = :titre, contenu = :contenu, path_media = :path_media, date = NOW(), id_user= :id_user WHERE id_publication = :id_publication ");
+        $req = $pdo->prepare("UPDATE publication SET titre = :titre, contenu = :contenu, path_media = :path_media, date = NOW(), id_user= :id_user, id_thematique=:id_thematique WHERE id_publication = :id_publication ");
 
-        $isTitreChanged = !empty($publication['titre']) && $publication['titre'] !== $oldPublication["titre"] && $publication['titre'] === NULL  &&  $publication['titre'] !== '';
-        $titre = $isTitreChanged && filter_var($publication['titre'], FILTER_SANITIZE_FULL_SPECIAL_CHARS) ? $publication['titre'] : $oldPublication["titre"];
+        $titre = $publication['titre'];
 
-        $isContenuChanged = !empty($publication['contenu']) && $publication['contenu'] !== $oldPublication["contenu"] && $publication['contenu'] === NULL  &&  $publication['contenu'] !== '';
-        $contenu = $isContenuChanged && filter_var($publication['contenu'], FILTER_SANITIZE_FULL_SPECIAL_CHARS) ? $publication['contenu'] : $oldPublication["contenu"];
+        $contenu = $publication['contenu'];
 
-        $isUserChanged = !empty($publication['id_user']) && $publication['id_user'] !== $oldPublication["id_user"] && $publication['id_user'] === NULL  &&  $publication['id_user'] !== '';
-        $user = $isUserChanged && filter_var($publication['id_user'], FILTER_SANITIZE_NUMBER_INT) ? $publication['id_user'] : $oldPublication["id_user"];
+        $user = $publication['id_user'] ;
 
-        $isPath_mediaChanged = !empty($publication['path_media']) && $publication['path_media'] !== $oldPublication["path_media"] && $publication['path_media'] === NULL  &&  $publication['path_media'] !== '';
-        $path_media= $isPath_mediaChanged && filter_var($publication['path_media'], FILTER_SANITIZE_FULL_SPECIAL_CHARS) ? $publication['path_media'] : $oldPublication["path_media"];
+        $path_media= $publication['path_media'];
+       
+        $thematique= $publication['id_thematique'];
 
-//        var_dump($user);die();
         $rowCount = $req->execute(array(
             ":id_publication" => $id_publication,
             ":titre" => $titre,
             ":contenu" => $contenu,
             ":id_user" => $user,
             ":path_media" => $path_media,
+            ":id_thematique" => $thematique
         ));
 
         return $rowCount;

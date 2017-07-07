@@ -87,17 +87,22 @@ else if ($page === 'inscription') {
  ---------------------------------------------------------------------------------------*/
 
 //POUR LA PARTIE ADMINISTRATION
-else if ($page === 'supprimerCompte' && $_SESSION['user']['role'] == 1) {
-    $listeUsers = User::selectAllUser();
-    include 'vue/admin-users.php';
+else if ($page === 'supprimerCompte') {
+    if ($_SESSION['user']['role'] == 1){
+        $listeUsers = User::selectAllUser();
+        include 'vue/admin-users.php';
 
-    $userDelete["id_user"] = filter_input(INPUT_POST, "id_user", FILTER_SANITIZE_FULL_SPECIAL_CHARS);
-    $PubUserDelete = Publication::selectPublicationByIdUser($userDelete["id_user"]);
-    if (!empty($userDelete)) {
-        updatePubli($PubUserDelete);
-        User::deleteUser($userDelete["id_user"]);
-    } else {
-        [$_SESSION["user"]["pseudo"], " Nous n'avonns pas pu supprimer cette utilisateur, veuillez réessayer s'il vous plait"];
+        $userDelete["id_user"] = filter_input(INPUT_POST, "id_user", FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+        $PubUserDelete = Publication::selectPublicationByIdUser($userDelete["id_user"]);
+        if (!empty($userDelete)) {
+            updatePubli($PubUserDelete);
+            User::deleteUser($userDelete["id_user"]);
+        } else {
+            [$_SESSION["user"]["pseudo"], " Nous n'avonns pas pu supprimer cette utilisateur, veuillez réessayer s'il vous plait"];
+        }
+    }else{
+        $_SESSION['user']['error']="Vous n'avez pas les droits d'acces à cette page.";
+        header('Location: http://localhost/wikhitema/index.php?page=index');
     }
 } 
 // SUPPRESSION DU COMPTE PAR L'UTILISATEUR
