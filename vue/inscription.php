@@ -41,7 +41,7 @@
             </div>
 
 			<div class="row row-sm-offset-3">
-				<div class="col-xs-12 col-sm-6">	
+				<div class="col-xs-12">	
 				    <form class="loginForm" action="index.php?page=inscription" autocomplete="off" method="POST">
 
 				    	<div class="input-group">
@@ -70,7 +70,7 @@
                                                 <span class="help-block"> </span>
 
 						<button class="btn btn-lg btn-success btn-block" type="submit">Créer un compte</button>  
-                        <br><br><hr><a href="index.php?page=index" class="orange-link">Retour à la page de connexion</a>
+                                                <br><br><hr><a href="index.php?page=index" class="orange-link">Retour à la page de connexion</a><br><br>
 					</form>
 				</div>
 				</div>
