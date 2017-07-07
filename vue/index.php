@@ -90,10 +90,7 @@ if (isset($_SESSION['user']['pseudo'])){
     })
     </script>
 
-    <script type="text/javascript">
-        var theContent = $('.content-publication-index');
-        theContent.text(theContent.text().substring(0,350))
-    </script>
+
 </body>
 
 </html>
