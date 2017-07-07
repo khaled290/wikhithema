@@ -78,7 +78,7 @@
 				<br><br><br><br>
 
 				<div class="col-xs-12 col-sm-6">	
-				    <button class="btn btn-lg btn-success btn-block"><a href="index.php?page=formInscription">Créer un compte</a></button>
+				    <a href="index.php?page=formInscription"><button class="btn btn-lg btn-success btn-block">Créer un compte</button></a>
 				</div>
 
 			</div>	    	

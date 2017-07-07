@@ -46,7 +46,7 @@ if (isset($_SESSION['user']['pseudo'])){
             <article class="col-md-6">
                 <h3><a href="index.php?page=afficherPublication&id=&id=<?php echo $publication['id_publication']; ?>" class="titre-article-link"> <?php echo $publication['titre']; ?></a></h3>
                 <span><strong>Date de mise à jour :</strong> <?php echo date_format(date_create($publication['date']), 'd/m/Y H:i' ) ?></span>
-                <p>
+                <p class="content-publication-index">
                     <?php echo $publication['contenu']; ?>
                 </p>
                 <?php if(($_SESSION['user']['id_user']===$publication['id_user'] && $_SESSION['user']['role'] < 3) || $_SESSION['user']['role']==1) {
@@ -90,6 +90,10 @@ if (isset($_SESSION['user']['pseudo'])){
     })
     </script>
 
+    <script type="text/javascript">
+        var theContent = $('.content-publication-index');
+        theContent.text(theContent.text().substring(0,350))
+    </script>
 </body>
 
 </html>

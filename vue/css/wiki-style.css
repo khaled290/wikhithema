@@ -42,6 +42,13 @@ form#modifThematique.loginForm button.btn-modif-thematiques {
   z-index: 999;
 }
 
+article .content-publication-index {
+  display: block;
+  max-height: 50px;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
 .btn-submit-publication{
   text-align: center;
 }
@@ -242,6 +249,7 @@ body>nav {
 
 
 /*********** HEADER ********************/
+
 
 @media (min-width: 768px) {
     .row-sm-offset-3 div:first-child[class*="col-"] {

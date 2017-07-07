@@ -36,7 +36,7 @@
 
                 <ul class="nav navbar-nav navbar-right">
                     <li class="dropdown">
-                        <button class="btn btn-warning add-publication-btn" <?php if ($_SESSION['user']['role'] == 3){ ?>
+                         <button class="btn btn-warning add-publication-btn" <?php if ($_SESSION['user']['role'] == 3){ ?>
                             disabled="disabled"
                          <?php } ?>>
                             <?php if ($_SESSION['user']['role'] < 3){ ?>
@@ -47,6 +47,8 @@
                             </a>
                             <?php } ?>
                         </button>
+
+                        
                     </li>
 
                     <li class="dropdown">
