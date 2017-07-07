@@ -4,7 +4,7 @@
     <h2 class="text-center">Gestion des thématiques<br><small>ou <a href="index.php?page=supprimerCompte">gestion des utilisateurs</a></small></h3><br><br><hr>
         <div class="row row-sm-offset-3">
             <div class="col-xs-12 col-sm-6">
-                <form>
+                <form action="index.php?page=ajoutThematique">
                     <div class="input-group input-group-lg">
                         <input type="text" class="form-control" autofocus/>
                         <span class="input-group-btn">

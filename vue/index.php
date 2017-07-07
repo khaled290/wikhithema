@@ -9,6 +9,10 @@ if (isset($_SESSION['user']['pseudo'])){
     <div class="container">
     <br>
         <!-- Marketing Icons Section -->
+        <?php if (isset($_SESSION['user']['error'])){
+            unset($_SESSION['user']['error']);
+        } ?>
+        
         <div class="row">
             <div class="col-lg-12">
                 <h2 class="page-header"> Thématiques de publications</h2>

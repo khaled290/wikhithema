@@ -32,7 +32,10 @@ else if ($page === 'ajoutPublication'){
             $_SESSION["user"]["error"]=" Nous n'avonns pas pu ajouter une publication, veuillez réessayer s'il vous plait";
         }
     }
-}else if ($page === "ajoutMedia"){
+}
+// FONCTION PERMETTANT D'AJOUTER UN MEDIA
+//NON FONCTIONNEL
+else if ($page === "ajoutMedia"){
     if (isset($_FILES['media']) AND $_FILES['media']['error'] == 0)
     {
         // Testons si le fichier n'est pas trop gros
@@ -63,9 +66,14 @@ else if ($page ==='modifierPublications'){
  ---------------------------------------------------------------------------------------*/
 else if ($page ==='supprPublications'){
     $id = filter_input(INPUT_GET, 'id', FILTER_SANITIZE_NUMBER_INT);
-    if ($id !== '' && $id !== NULL){
+    $publication = Publication::selectPublication($id);
+    if ($id !== '' && $id !== NULL && ($publication['id_user']===$_SESSION['user']['id_user'] || $_SESSION['user']['role']==1)){
         Publication::deletePublication($id);
         header('Location: http://localhost/wikhitema/index.php?page=index'); 
+    }
+    else{
+        $_SESSION['user']['error']="Nous n'avons pas pus supprimer la publication, veuillez réessayer";
+        header('Location: http://localhost/wikhitema/index.php?page=index');
     }
 }
 
