@@ -38,31 +38,6 @@
 
 	<div class="container container-connexion-inscription">
 	    <div class="login">
-
-	    	<div class="container-social">			
-				<div class="row row-sm-offset-3 socialButtons">
-		    	    <div class="col-xs-4 col-sm-2">
-				        <a href="#" class="btn btn-lg btn-block btn-facebook">
-					        <i class="fa fa-facebook visible-xs"></i>
-					        <span>Facebook</span>
-				        </a>
-			        </div>
-		        	<div class="col-xs-4 col-sm-2">
-				        <a href="#" class="btn btn-lg btn-block btn-twitter">
-					        <i class="fa fa-twitter visible-xs"></i>
-					        <span>Twitter</span>
-				        </a>
-			        </div>	
-		        	<div class="col-xs-4 col-sm-2">
-				        <a href="#" class="btn btn-lg btn-block btn-google">
-					        <i class="fa fa-google-plus visible-xs"></i>
-					        <span>Google+</span>
-				        </a>
-			        </div>	
-				</div>
-
-				<div></div>
-			</div>
                 
                        <?php if (isset($_SESSION["user"]["error"])){ ?>
                             <div class ="warning"> <?php 

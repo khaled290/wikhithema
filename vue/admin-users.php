@@ -12,21 +12,22 @@
                 echo "<section><form class='loginForm' action='index.php?page=supprimerCompte' autocomplete='off' method='POST' id='modifThematique'>
                     <div class='input-group'>";
                 echo "<input type=\"hidden\" name=\"id_user\" value=\"" . $users['id_user'] . "\"/>";
-                echo "<span>" . $users['pseudo'] . "</span>";
+                echo "<span><strong>" . $users['pseudo'] . "</strong></span> est un ";
                 if ($users['role'] == 1) {
-                    echo "<span> admin</span>";
+                    echo "<span> administrateur</span>";
                 } elseif ($users['role'] == 2) {
                     echo "<span> auteur</span>";
                 } elseif ($users['role'] == 3) {
-                    echo "<span> Utilisateur</span>";
+                    echo "<span> utilisateur</span>";
                 }
                 if($users['role']>1){
-                    echo "<span><a href='index.php?page=modificationRole&role=3&id=" . $users['id_user'] . "'>Utilisateur</a>||</span>
-                        <span><a href='index.php?page=modificationRole&role=2&id=" . $users['id_user'] . "'>Auteur</a>||</span>
-                        <span><a href='index.php?page=modificationRole&role=1&id=" . $users['id_user'] . "'>Administrateur</a></span>
+                    echo "<br>Attribuer un nouveau rôle : 
+                        <span><a href='index.php?page=modificationRole&role=3&id=" . $users['id_user'] . "'>Utilisateur</a>  ||  </span>
+                        <span><a href='index.php?page=modificationRole&role=2&id=" . $users['id_user'] . "'>Auteur</a>  ||  </span>
+                        <span><a href='index.php?page=modificationRole&role=1&id=" . $users['id_user'] . "'>Administrateur</a>  </span>
                             </div>
                     
-                    <button class='btn btn-danger' type=\"submit\">Supprimer l'utilisateur</button>
+                    <button class='btn btn-danger btn-supprUser' type=\"submit\">Supprimer l'utilisateur</button>
                     <span class='help-block'></span>
                     </form><hr></section>";
                 }   

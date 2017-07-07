@@ -37,29 +37,8 @@
 	    <div class="login">
 
 	    	<div class="container-social">			
-                    <div class="row row-sm-offset-3 socialButtons">
-                    <div class="col-xs-4 col-sm-2">
-                                <a href="#" class="btn btn-lg btn-block btn-facebook">
-                                        <i class="fa fa-facebook visible-xs"></i>
-                                        <span>Facebook</span>
-                                </a>
-                        </div>
-                        <div class="col-xs-4 col-sm-2">
-                                <a href="#" class="btn btn-lg btn-block btn-twitter">
-                                        <i class="fa fa-twitter visible-xs"></i>
-                                        <span>Twitter</span>
-                                </a>
-                        </div>	
-                        <div class="col-xs-4 col-sm-2">
-                                <a href="#" class="btn btn-lg btn-block btn-google">
-                                        <i class="fa fa-google-plus visible-xs"></i>
-                                        <span>Google+</span>
-                                </a>
-                        </div>	
-                        </div>
-
-                        <div></div>
-                </div>
+                <h2 class="white-link">Créez votre compte</h2>
+            </div>
 
 			<div class="row row-sm-offset-3">
 				<div class="col-xs-12 col-sm-6">	
@@ -90,7 +69,8 @@
 						</div>
                                                 <span class="help-block"> </span>
 
-						<button class="btn btn-lg btn-success btn-block" type="submit">Créer un compte</button>
+						<button class="btn btn-lg btn-success btn-block" type="submit">Créer un compte</button>  
+                        <br><br><hr><a href="index.php?page=index" class="orange-link">Retour à la page de connexion</a>
 					</form>
 				</div>
 				</div>
