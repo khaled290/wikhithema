@@ -145,7 +145,7 @@ hr {
 }
 .add-publication-btn {
   position: relative;
-  top: 8px;
+  top: -9px;
   background-color: #fa5e12;
   border: none;
   right: 20px;

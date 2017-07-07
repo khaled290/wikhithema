@@ -35,19 +35,20 @@
                 </ul>
 
                 <ul class="nav navbar-nav navbar-right">
-                    <li class="dropdown">
-                         <button class="btn btn-warning add-publication-btn" <?php if ($_SESSION['user']['role'] == 3){ ?>
+                    <li class="dropdown" <?php if ($_SESSION['user']['role'] == 3){ ?>
                             disabled="disabled"
                          <?php } ?>>
-                            <?php if ($_SESSION['user']['role'] < 3){ ?>
+                         <?php if ($_SESSION['user']['role'] < 3){ ?>
                             <a href="index.php?page=formPublication" class="btn-new-post">
                                 <?php } ?> 
+                         <button class="btn btn-warning add-publication-btn">
+                            
                                 Ajouter une publication
-                            <?php if ($_SESSION['user']['role'] < 3){ ?>
+                            
+                        </button>
+                        <?php if ($_SESSION['user']['role'] < 3){ ?>
                             </a>
                             <?php } ?>
-                        </button>
-
                         
                     </li>
 
@@ -66,7 +67,7 @@
                             </li>
                             <?php } ?>
                             <li>
-                                <a href="index.php">Mes publication</a>
+                                <a href="index.php">Mes publications</a>
                             </li>
                             <li>
                                 <a href="index.php?page=deconnexion">Déconnexion</a>
