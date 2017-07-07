@@ -248,11 +248,13 @@ body>nav {
 }
 
 
-
+.userPseudo {
+  color: #ccc;
+}
 /*********** HEADER ********************/
 
 
-@media (min-width: 768px) {
+@media (min-width: 980px) {
     .row-sm-offset-3 div:first-child[class*="col-"] {
         margin-left: 25%;
     }
@@ -270,10 +272,10 @@ body>nav {
 
 }
 
-@media (max-width: 1024px) {
+@media (max-width: 1200px) {
   .add-publication-btn {
     position: relative;
-    left: 15px;
+    left: 25px;
     margin-bottom: 10px;
   }
 
@@ -282,6 +284,8 @@ body>nav {
   }
   .zone-search-mobile {
     display: inline;
+    position: relative;
+    left: -5px;
   }
 
   .navbar-inverse .navbar-collapse, .navbar-inverse .navbar-form {

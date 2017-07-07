@@ -35,7 +35,7 @@
                 </ul>
 
                 <ul class="nav navbar-nav navbar-right">
-                    <li class="dropdown" <?php if ($_SESSION['user']['role'] == 3){ ?>
+                    <li class="dropdown userPseudo" <?php if ($_SESSION['user']['role'] == 3){ ?>
                             disabled="disabled"
                          <?php } ?>>
                          <?php if ($_SESSION['user']['role'] < 3){ ?>
@@ -55,7 +55,7 @@
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown">Compte <b class="caret"></b></a>
                         <ul class="dropdown-menu">
                             <li class="dropdown-header">Profil</li>
-                            <li>
+                            <li class="userPseudo">
                                 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Pseudo : <?php echo $_SESSION['user']['pseudo']; ?>
                             </li>
                             <?php if ($_SESSION['user']['role']==2){ ?>
