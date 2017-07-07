@@ -30,7 +30,7 @@ if (isset($_SESSION['user']['pseudo'])){
                 <h3><a href="index.php?page=afficherPublication&id=&id=<?php echo $publication['id_publication']; ?>" class="titre-article-link"> <?php echo $publication['titre']; ?></a></h3>
                 <span><strong>Date de mise à jour :</strong> <?php echo date_format(date_create($publication['date']), 'd/m/Y H:i' ) ?></span>
                 <p>
-                    <?php echo $publication['contenu']; ?>
+                    <?php echo strlen($publication['contenu'])<300 ? $publication['contenu'] : substr($publication['contenu'], 0, 300).'...'; ?>
                 </p>
                 <?php if(($_SESSION['user']['id_user']===$publication['id_user'] && $_SESSION['user']['role'] < 3) || $_SESSION['user']['role']==1) {
                     ?>
