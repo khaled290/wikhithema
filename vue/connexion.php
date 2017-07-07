@@ -46,7 +46,7 @@
                             ?> </div>
                        <?php } ?>     
 			<div class="row row-sm-offset-3">
-				<div class="col-xs-12">	
+				<div class="col-xs-12 col-sm-6">	
                                     <form class="loginForm" action="index.php?page=connexion" autocomplete="off" method="POST">
 						<div class="input-group">
 							<span class="input-group-addon"><i class="fa fa-user"></i></span>
@@ -65,11 +65,22 @@
 	    	</div>
 
 	    	<div class="row row-sm-offset-3">
+				<div class="col-xs-12 col-sm-3 garder-session">
+					<label class="checkbox">
+						<input type="checkbox" value="remember-me">Garder ma session
+					</label>
+				</div>
+				<div class="col-xs-12 col-sm-3">
+					<p class="forgotPwd">
+						<a href="oublie-mdp.php">Mot de passe oublié</a>
+					</p>
+				</div>
 				<br><br><br><br>
 
-				<div class="col-xs-12">	
+				<div class="col-xs-12 col-sm-6">	
 				    <a href="index.php?page=formInscription"><button class="btn btn-lg btn-success btn-block">Créer un compte</button></a>
 				</div>
+
 			</div>	    	
 
 
