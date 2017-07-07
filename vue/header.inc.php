@@ -78,7 +78,9 @@
                                 <a href="index.php?page=formThematique">Gestion des thématiques</a>
                             </li>
                             <?php } ?>
-
+                            <li>
+                                <a href="index.php?page=faq">Aide ?</a>
+                            </li>
                             <li>
                                 <a href="index.php?page=deconnexion">Déconnexion</a>
                             </li>
