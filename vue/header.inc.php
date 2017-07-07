@@ -40,35 +40,45 @@
                          <?php } ?>>
                          <?php if ($_SESSION['user']['role'] < 3){ ?>
                             <a href="index.php?page=formPublication" class="btn-new-post">
-                                <?php } ?> 
+                         <?php } ?> 
                          <button class="btn btn-warning add-publication-btn">
-                            
-                                Ajouter une publication
-                            
+                                Ajouter une publication                            
                         </button>
                         <?php if ($_SESSION['user']['role'] < 3){ ?>
                             </a>
-                            <?php } ?>
-                        
+                        <?php } ?>
                     </li>
 
+
                     <li class="dropdown">
+
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown">Compte <b class="caret"></b></a>
                         <ul class="dropdown-menu">
+                            <li class="dropdown-header">Profil</li>
                             <li>
-                                Pseudo : <?php echo $_SESSION['user']['pseudo']; ?>
+                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Pseudo : <?php echo $_SESSION['user']['pseudo']; ?>
                             </li>
-                            <li>
-                                <a href="index.php?page=formModifierCompte">Parametres</a>
-                            </li>
-                            <?php if ($_SESSION['user']['role']==1){ ?>
-                            <li>
-                                <a href="index.php?page=supprimerCompte">Administration</a>
-                            </li>
-                            <?php } ?>
+                            <?php if ($_SESSION['user']['role']==2){ ?>
                             <li>
                                 <a href="index.php">Mes publications</a>
                             </li>
+                            <?php } ?>
+                            <li>
+                                <a href="index.php?page=formModifierCompte">Parametres</a>
+                            </li>
+                            
+                            <?php if ($_SESSION['user']['role']==1){ ?>
+                            <li class="dropdown-header">Administration</li>
+                            <li>
+                                <a href="index.php?page=supprimerCompte">Gestion des utilisateurs</a>
+                            </li>
+                            <?php } ?>
+                            <?php if ($_SESSION['user']['role']==1){ ?>
+                            <li>
+                                <a href="index.php?page=formThematique">Gestion des thématiques</a>
+                            </li>
+                            <?php } ?>
+
                             <li>
                                 <a href="index.php?page=deconnexion">Déconnexion</a>
                             </li>

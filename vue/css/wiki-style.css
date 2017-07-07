@@ -145,7 +145,7 @@ hr {
 }
 .add-publication-btn {
   position: relative;
-  top: -9px;
+  top: -7px;
   background-color: #fa5e12;
   border: none;
   right: 20px;
@@ -158,6 +158,9 @@ hr {
   color: #fa5e12;
 }
 
+.dropdown-header {
+  color: #f00;
+}
 .container-wiki-text-editor{
   padding: 30px 30px 30px 30px;
 }
