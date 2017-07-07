@@ -43,11 +43,8 @@ form#modifThematique.loginForm button.btn-modif-thematiques {
 }
 
 article .content-publication-index {
-  display: block;
-  max-height: 50px;
-  overflow: hidden;
-  white-space: nowrap;
-  text-overflow: ellipsis;
+  min-height: 10px;
+  max-height: 70px;
 }
 .btn-submit-publication{
   text-align: center;
