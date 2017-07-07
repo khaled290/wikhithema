@@ -38,6 +38,9 @@ if ($page === 'index'){
     
     require_once 'vue/index.php';
 }
+else if ($page == 'faq'){
+    include_once 'vue/faq.php';
+}
 
 
 /*---------------------------------------------------------------------------------------
