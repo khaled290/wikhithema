@@ -21,6 +21,11 @@ a:hover, a:focus {
   text-decoration: none;
 }
 
+form#modifThematique.loginForm button.btn-modif-thematiques {
+    position: relative;
+    top: -31px;
+    right: -300px;
+}
 .container-infos-user {
   padding: 20px;
   position: relative;

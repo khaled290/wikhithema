@@ -1,14 +1,14 @@
 <?php include('header.inc.php'); ?>
 
 <section class="container-infos-user">
-    <h2 class="text-center">Modifiez les champs que vous voulez mettre à jour</h3><br><br>
+    <h2 class="text-center">Gestion des thématiques<br><small>ou <a href="index.php?page=supprimerCompte">gestion des utilisateurs</a></small></h3><br><br><hr>
         <div class="row row-sm-offset-3">
             <div class="col-xs-12 col-sm-6">
                 <form>
                     <div class="input-group input-group-lg">
                         <input type="text" class="form-control" autofocus/>
                         <span class="input-group-btn">
-                            <button type="submit" class="btn btn-info add-thematique">Ajouter la thématique</button>
+                            <button type="submit" class="btn btn-info add-thematique">Ajouter une nouvelle thématique</button>
                         </span>
                     </div>
                 </form>
@@ -20,12 +20,11 @@
                 foreach ($listeThematique as $thematique) {
                     echo "<form class='loginForm' action='index.php?page=modifierThematique' autocomplete='off' method='POST' id='modifThematique'>
                     <div class='input-group'>";
-                    echo "<input type=\"hidden\" name=\"id_thematique\" value=\"" . $thematique['id_thematique'] . "\"/>";
-                    echo "<input type='text' name='titre_thematique' value=\"" . $thematique['nom'] . "\" />";
+                    echo "<input type='hidden' name='id_thematique' value='" . $thematique['id_thematique'] . "'/>";
+                    echo "<input type='text' name='titre_thematique' value='" . $thematique['nom'] . "' />";
                     echo "</div>
-                    <hr>
-                    <button class='btn btn-info'>Envoyer les modifications</button>
-                    <span class='help-block'></span>
+                    <button class='btn btn-warning btn-modif-thematiques'>Modifier la thématique</button>
+                    <span class='help-block'></span><hr>
                     </form>";
                 }
                 ?>

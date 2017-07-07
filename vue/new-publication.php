@@ -6,9 +6,7 @@ if (isset($_SESSION['user']['pseudo'])) {
         $token = generer_token();
         include('header.inc.php');
         ?>
-        <head>
 
-        </head>
         <section class="container-wiki-text-editor">
             <h2 class="title-new-publication">Création d'une nouvelle publication</h2><br>
 
