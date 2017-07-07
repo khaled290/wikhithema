@@ -6,7 +6,7 @@ if (isset($_SESSION['user']['pseudo'])){
 
    
     <section class="container-infos-user">
-    	<h1 class="text-center"><i class="fa fa-exclamation-triangle" aria-hidden="true"> </i>  VOulez vous vraiment supprimer votre compte<br><small>Cette action est définitive</small></h1>
+    	<h1 class="text-center"><i class="fa fa-exclamation-triangle" aria-hidden="true"> </i>  Vuulez-vous vraiment supprimer votre compte ?<br><small>Cette action est définitive</small></h1>
         <?php if (isset($_SESSION['user']['error'])){
             echo '<div class="danger">'.$_SESSION['user']['error'].'</div>';
             unset($_SESSION['user']['error']);
@@ -15,13 +15,13 @@ if (isset($_SESSION['user']['pseudo'])){
 			<div class="col-xs-12 col-sm-6">	
 				<form class="loginForm" action="index.php?page=suppressionMonCompte" autocomplete="off" method="POST">
 					<div class="input-group">
-						<span class="input-group-addon"><i class="fa fa-user"></i></span>
+						<span class="input-group-addon"></span>
                                                 <h2> <?php echo $_SESSION['user']['pseudo']; ?></h2>
 					</div>
 					<span class="help-block"></span>
 
 					<div class="input-group">
-						<span class="input-group-addon"><i class="fa fa-user"></i></span>
+						<span class="input-group-addon"></span>
 						<h2> <?php echo $_SESSION['user']['email']; ?></h2>
                                         </div>
 					<span class="help-block"></span>
@@ -31,7 +31,7 @@ if (isset($_SESSION['user']['pseudo'])){
                                         ?>"/>
 					<span class="help-block"></span>
 
-					<button class="btn btn-lg btn-primary btn-block" type="submit" style="display:inline;">Supprimer le compte</button>
+					<button class="btn btn-lg btn-danger btn-block" type="submit" style="display:inline;">Supprimer le compte</button>
 				</form>
                 <hr><hr><br><br>
                 <form class="supprAccount" action="index.php?page=supprimerMonCompte" method="POST">
